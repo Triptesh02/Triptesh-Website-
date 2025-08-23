@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Triptesh Acharjee</title>
+<style>
+body {font-family: Arial, sans-serif; margin:0; background:#f4f4f9; color:#333;}
+header {background:linear-gradient(to right,#283e51,#4b79a1); color:white; text-align:center; padding:40px 20px;}
+header h1 {margin:0; font-size:2.5em;}
+header p {margin-top:10px; font-size:1.2em;}
+section {max-width:1000px; margin:auto; padding:40px 20px; background:white; border-radius:10px; margin-bottom:20px; box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+h2 {border-bottom:2px solid #4b79a1; display:inline-block; padding-bottom:5px; margin-bottom:20px;}
+ul {list-style-type:square; padding-left:20px;}
+a {color:#4b79a1; text-decoration:none;}
+a:hover {text-decoration:underline;}
+.gallery-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:15px;}
+.gallery-grid img {width:100%; border-radius:10px; transition:0.3s;}
+.gallery-grid img:hover {transform:scale(1.05); box-shadow:0 6px 20px rgba(0,0,0,0.3);}
+.resume-button {display:inline-block; margin-top:15px; padding:12px 25px; background:#4b79a1; color:white; border-radius:8px; font-weight:bold; transition:0.3s;}
+.resume-button:hover {background:#283e51; transform:translateY(-3px);}
+.skill {margin-bottom:20px;}
+.skill-bar {width:100%; background:#e0e0e0; border-radius:20px; overflow:hidden;}
+.skill-bar-fill {height:20px; width:0; background:#4b79a1; border-radius:20px; text-align:right; padding-right:10px; color:white; line-height:20px; font-size:0.9em; transition:2s;}
+.timeline-container {display:flex; overflow-x:auto; padding:20px 0;}
+.timeline-event {min-width:200px; flex:0 0 auto; background:#e8f0fe; margin-right:20px; border-radius:10px; padding:15px; position:relative; text-align:center;}
+.timeline-event::before {content:""; position:absolute; top:50%; left:-10px; width:4px; height:4px; background:#4b79a1; border-radius:50%; transform:translateY(-50%);}
+footer {text-align:center; padding:20px; background:#283e51; color:white;}
+@media(max-width:600px){header h1{font-size:2em;} header p{font-size:1em;}}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Triptesh Acharjee</h1>
+<p>ISRO Aspiring Scientist | Planetary Science & Exoplanets</p>
+</header>
+
+<section>
+<h2>About Me</h2>
+<p>Passionate student and researcher in Physics and Geology, focusing on gas giant atmospheres and spectroscopy. Interning at IIRS, ISRO in atmospheric science.</p>
+</section>
+
+<section>
+<h2>Education</h2>
+<ul>
+<li>B.Sc. Physics & Geology (S.Y.)</li>
+<li>Focus: Vector Analysis, Electrostatics, Magnetostatics, Dielectric & Magnetic Properties, Electrical Circuits</li>
+</ul>
+</section>
+
+<section>
+<h2>Projects & Research</h2>
+<ul>
+<li>Exoplanet Atmospheres: "Giants under the Telescope"</li>
+<li>Black Body Radiation Study with MSc student</li>
+<li>Application for research data visualization & analysis</li>
+<li>Poster Exhibition: Planetary missions, 3rd position</li>
+</ul>
+</section>
+
+<section>
+<h2>Skills</h2>
+<div class="skill">Physics<div class="skill-bar"><div class="skill-bar-fill" data-width="95%">95%</div></div></div>
+<div class="skill">Geology<div class="skill-bar"><div class="skill-bar-fill" data-width="90%">90%</div></div></div>
+<div class="skill">Programming<div class="skill-bar"><div class="skill-bar-fill" data-width="80%">80%</div></div></div>
+<div class="skill">Data Analysis<div class="skill-bar"><div class="skill-bar-fill" data-width="85%">85%</div></div></div>
+<div class="skill">Research<div class="skill-bar"><div class="skill-bar-fill" data-width="90%">90%</div></div></div>
+</section>
+
+<section>
+<h2>Timeline / Journey</h2>
+<div class="timeline-container">
+<div class="timeline-event"><h3>2023</h3><p>Started advanced studies in Physics & Geology</p></div>
+<div class="timeline-event"><h3>2024</h3><p>Poster Exhibition - 3rd position</p></div>
+<div class="timeline-event"><h3>2024</h3><p>Black Body Radiation Project</p></div>
+<div class="timeline-event"><h3>2025</h3><p>Internship at IIRS, ISRO</p></div>
+<div class="timeline-event"><h3>2025</h3><p>Exoplanet Research</p></div>
+</div>
+</section>
+
+<section>
+<h2>Gallery</h2>
+<div class="gallery-grid">
+<img src="https://via.placeholder.com/300x200.png?text=Science+Park" alt="Science Park">
+<img src="https://via.placeholder.com/300x200.png?text=Research+Project" alt="Research Project">
+<img src="https://via.placeholder.com/300x200.png?text=Poster+Exhibition" alt="Poster Exhibition">
+</div>
+</section>
+
+<section>
+<h2>Contact</h2>
+<div>
+Phone: 9955502069<br>
+<a href="https://www.linkedin.com/in/triptesh-acharjee-09b0a3163" target="_blank">LinkedIn</a> | 
+<a href="https://www.instagram.com/loveliholic?igsh=cXVkMnh2YTgyeTg3" target="_blank">Instagram</a>
+</div>
+<br>
+<a class="resume-button" href="Triptesh_Acharjee_Resume.pdf" download>Download Resume</a>
+</section>
+
+<footer>&copy; 2025 Triptesh Acharjee</footer>
+
+<script>
+window.addEventListener('load',()=>{document.querySelectorAll('.skill-bar-fill').forEach(bar=>{bar.style.width=bar.getAttribute('data-width');});});
+</script>
+</body>
+</html>
