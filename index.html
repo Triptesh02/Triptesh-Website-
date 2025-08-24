@@ -15,6 +15,11 @@ header h1 { margin:0; font-size:2em; }
 header h1 span { font-size:0.6em; vertical-align:super; }
 header p { margin:5px 0; font-size:1em; }
 
+/* --- Navigation --- */
+nav { position:sticky; top:0; z-index:1000; background:#1e3c72; display:flex; flex-wrap:wrap; justify-content:center; gap:10px; padding:8px; }
+nav a { color:white; text-decoration:none; font-weight:500; transition: color 0.3s, border-bottom 0.3s; padding-bottom:4px; cursor:pointer; }
+nav a:hover, nav a.active { color:#ffcc00; border-bottom:2px solid #ffcc00; }
+
 /* Content Box */
 .content {
     background: linear-gradient(120deg,#ffffff,#f3f3f3);
@@ -22,7 +27,11 @@ header p { margin:5px 0; font-size:1em; }
     box-shadow:0 4px 12px rgba(0,0,0,0.08);
     margin:15px 0;
     padding:20px;
+    opacity:0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
 }
+.content.active { opacity:1; transform: translateY(0); }
 
 /* Timeline */
 .timeline { position:relative; padding-left:20px; border-left:3px solid #2a5298; }
@@ -55,6 +64,17 @@ footer p, footer a { color:white; text-decoration:none; font-size:0.9em; }
 </style>
 </head>
 <body>
+
+<!-- Navigation -->
+<nav>
+    <a data-section="education">Education</a>
+    <a data-section="skills">Skills</a>
+    <a data-section="experience">Experience</a>
+    <a data-section="projects">Projects</a>
+    <a data-section="achievements">Achievements</a>
+    <a data-section="hobbies">Hobbies</a>
+    <a data-section="contact">Contact</a>
+</nav>
 
 <header>
     <img src="profile.jpg" alt="Triptesh Acharjee" class="profile-pic">
@@ -124,6 +144,25 @@ Participated in multiple inter-college science fairs and astronomy competitions.
 <p>Designed & Developed by Triptesh Acharjee</p>
 <p>Contact: <a href="tel:+919955502069">+91-9955502069</a> | <a href="mailto:tripteshacharjee2005@gmail.com">tripteshacharjee2005@gmail.com</a></p>
 </footer>
+
+<script>
+// Sections navigation
+const navLinks = document.querySelectorAll("nav a");
+const contents = document.querySelectorAll(".content");
+let currentSection = contents[0];
+currentSection.classList.add("active");
+
+navLinks.forEach(link=>{
+    link.addEventListener("click",()=>{
+        const targetId = link.getAttribute("data-section");
+        const targetSection = document.getElementById(targetId);
+        contents.forEach(c => c.classList.remove("active"));
+        targetSection.classList.add("active");
+        navLinks.forEach(l => l.classList.remove("active"));
+        link.classList.add("active");
+    });
+});
+</script>
 
 </body>
 </html>
