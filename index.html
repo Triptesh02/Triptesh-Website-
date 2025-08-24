@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Triptesh Acharjee | Academic Portfolio</title>
+<title>Triptesh Acharjee | Portfolio</title>
 <style>
     body {
         font-family: 'Segoe UI', Tahoma, sans-serif;
@@ -11,6 +11,35 @@
         background: #fafafa;
         color: #222;
         line-height: 1.6;
+        scroll-behavior: smooth;
+        overflow-x: hidden; /* Prevent horizontal scroll */
+    }
+    /* Navigation Bar */
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: #1e3c72;
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        padding: 15px;
+    }
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s, border-bottom 0.3s;
+        padding-bottom: 5px;
+        cursor: pointer;
+    }
+    nav a:hover {
+        color: #ffcc00;
+        border-bottom: 2px solid #ffcc00;
+    }
+    nav a.active {
+        color: #ffcc00;
+        border-bottom: 2px solid #ffcc00;
     }
     header {
         background: linear-gradient(135deg, #1e3c72, #2a5298);
@@ -18,18 +47,26 @@
         padding: 50px 20px;
         text-align: center;
     }
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 4px solid white;
+        object-fit: cover;
+        margin-bottom: 15px;
+        transition: transform 0.3s;
+    }
+    .profile-pic:hover {
+        transform: scale(1.1);
+    }
     header h1 {
         margin: 0;
-        font-size: 2.8em;
+        font-size: 2.6em;
         font-weight: 600;
     }
     header p {
         margin: 8px 0;
         font-size: 1.1em;
-    }
-    header .contact-info {
-        margin-top: 15px;
-        font-size: 0.95em;
     }
     .cv-button {
         display: inline-block;
@@ -44,16 +81,38 @@
     }
     .cv-button:hover {
         background: #e6b800;
-        transform: translateY(-2px);
+        transform: translateY(-3px) scale(1.05);
     }
-    section {
+    /* Sections */
+    .content {
         max-width: 1000px;
         margin: auto;
-        background: white;
         padding: 35px 30px;
-        margin-bottom: 25px;
+        background: white;
         border-radius: 10px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        margin-bottom: 20px;
+
+        position: absolute;
+        width: 100%;
+        left: 100%; /* hidden offscreen right */
+        opacity: 0;
+        transition: all 0.6s ease;
+    }
+    .content.active {
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 1;
+    }
+    .content.exit-left {
+        left: -100%;
+        opacity: 0;
+    }
+    .content.all-active {
+        position: relative;
+        left: 0;
+        transform: none;
+        opacity: 1;
     }
     h2 {
         color: #1e3c72;
@@ -62,117 +121,151 @@
         font-size: 1.6em;
         margin-bottom: 20px;
     }
-    ul {
-        padding-left: 18px;
-    }
-    ul li {
-        margin-bottom: 8px;
-    }
-    .logos {
-        display: flex;
-        gap: 30px;
-        margin-top: 15px;
-    }
-    .logos img {
-        height: 60px;
-    }
     footer {
         text-align: center;
         padding: 20px;
         background: #1e3c72;
         color: white;
         font-size: 0.9em;
+        margin-top: 40px;
     }
-    a {
-        color: #2a5298;
-        text-decoration: none;
+    /* Back to Top Button */
+    #backToTop {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: #ffcc00;
+        color: #222;
+        padding: 12px 18px;
+        border-radius: 50%;
+        border: none;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        display: none;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        transition: 0.3s;
+        z-index: 1001;
     }
-    a:hover {
-        text-decoration: underline;
+    #backToTop:hover {
+        background: #e6b800;
+        transform: scale(1.2) rotate(10deg);
     }
 </style>
 </head>
 <body>
 
+<!-- Navigation -->
+<nav>
+    <a data-section="contact">Contact</a>
+    <a data-section="education">Education</a>
+    <a data-section="skills">Skills</a>
+    <a data-section="experience">Experience</a>
+    <a data-section="projects">Projects</a>
+    <a data-section="achievements">Achievements</a>
+    <a data-section="hobbies">Hobbies</a>
+    <a data-section="all">All</a>
+</nav>
+
 <header>
+    <img src="images/profile.jpg" alt="Triptesh Acharjee" class="profile-pic">
     <h1>Triptesh Acharjee</h1>
     <p>B.Sc (Hons) Physics, Fergusson College (Autonomous), Pune</p>
-    <div class="contact-info">
-        📞 +91-9955502069 | +91-6200316593 <br>
-        ✉️ <a href="mailto:tripteshacharjee2005@gmail.com" style="color:white;">tripteshacharjee2005@gmail.com</a><br>
-        🌐 <a href="https://www.linkedin.com/in/triptesh-acharjee-09b0a3163" target="_blank" style="color:white;">LinkedIn</a> | 
-        <a href="https://www.instagram.com/loveliholic" target="_blank" style="color:white;">Instagram</a>
-    </div>
     <a class="cv-button" href="Triptesh_Acharjee_CV.pdf" download>📄 Download CV</a>
 </header>
 
-<section>
+<!-- Sections -->
+<div id="education" class="content">
     <h2>Education</h2>
-    <ul>
-        <li><strong>Fergusson College (Autonomous), Pune</strong> (2023–2027) – B.Sc (Hons) Physics, CGPA: 8.09/10</li>
-        <li><strong>Jusco School Kadma</strong> (2021–2023) – Pre-University, 63.6%</li>
-        <li><strong>Carmel Junior College</strong> (2011–2021) – Secondary, 80%</li>
-    </ul>
-    <div class="logos">
-        <img src="images/fergusson-logo.png" alt="Fergusson College Logo">
-        <img src="images/astroclub-logo.png" alt="Astro Club Logo">
-    </div>
-</section>
+    <p>Fergusson College, Jusco School Kadma, Carmel Junior College</p>
+</div>
 
-<section>
+<div id="skills" class="content">
     <h2>Skills</h2>
-    <ul>
-        <li><strong>Languages:</strong> English, Hindi, Bengali, Marathi, Punjabi</li>
-        <li><strong>Programming:</strong> Python, Java, HTML, Linux, LaTeX, MySQL</li>
-        <li><strong>Tools:</strong> MS Word, Excel, PowerPoint</li>
-        <li><strong>Soft Skills:</strong> Public Speaking, Diplomacy, Decision Making, Analytical Thinking</li>
-        <li><strong>Coursework:</strong> Mechanics, Thermodynamics, Optics, Quantum Mechanics, Astrophysics, Cosmology, Particle Physics, Petrology</li>
-        <li><strong>Interests:</strong> Radio Astronomy, Data Analysis, Astrophotography, Telescope Handling</li>
-    </ul>
-</section>
+    <p>Python, Java, Linux, Astronomy, Spectroscopy, Public Speaking, Diplomacy</p>
+</div>
 
-<section>
-    <h2>Experience / Workshops</h2>
-    <ul>
-        <li><strong>Data Analytics Workshop</strong> (IDIA & BRICS, 2025) – Capstone on Lightkurve (TESS), Grade 89/100</li>
-        <li><strong>PRL Dust Ices Workshop</strong> (2025) – Insights from recent telescopes</li>
-        <li><strong>Radio Astronomy Workshop</strong> (NCRA, 2025)</li>
-        <li><strong>43rd Astronomical Society of India</strong> (2025) – Poster: “Accelerating Astronomy”</li>
-        <li><strong>Cosmology From Home</strong> (2024)</li>
-        <li><strong>IIRS (ISRO)</strong> (2024) – Remote Sensing</li>
-        <li><strong>Frontiers in Physics</strong> (2024, 2025) – Volunteer, Technical Team</li>
-        <li><strong>IUCAA National Science Day</strong> (2025) – SKAO Model Presentation</li>
-    </ul>
-</section>
+<div id="experience" class="content">
+    <h2>Experience</h2>
+    <p>Workshops: IDIA BRICS, PRL, NCRA, IIRS, IUCAA, etc.</p>
+</div>
 
-<section>
+<div id="projects" class="content">
     <h2>Projects</h2>
-    <ul>
-        <li><strong>Detecting Stellar Variability via TESS</strong> (2025) – Lomb-Scargle periodogram, Python</li>
-        <li><strong>Accelerating Astronomy</strong> (2025–Present) – Unified Data Access Application</li>
-        <li><strong>Heat Wave Monitoring with WBGT</strong> (2024) – Fergusson College</li>
-    </ul>
-</section>
+    <p>Detecting Stellar Variability (TESS), Accelerating Astronomy, Heat Wave Monitoring</p>
+</div>
 
-<section>
+<div id="achievements" class="content">
     <h2>Achievements</h2>
-    <ul>
-        <li>Astro Club Poster Exhibitions: 1st (2024), 3rd (2023)</li>
-        <li>Scienceporium, Jamshedpur: 3rd (2022)</li>
-    </ul>
-</section>
+    <p>Astro Club Poster Exhibitions: 1st (2024), 3rd (2023)</p>
+</div>
 
-<section>
-    <h2>Hobbies & Interests</h2>
-    <ul>
-        <li>Writing: Quotes</li>
-        <li>Music: Guitar</li>
-        <li>Sports: Swimming, Waterpolo, Cricket, Badminton, Tennis, Football, Kabaddi</li>
-        <li>Reading: Science Fiction, Fantasy, Non-Fiction, Self-Improvement</li>
-    </ul>
-</section>
+<div id="hobbies" class="content">
+    <h2>Hobbies</h2>
+    <p>Writing, Guitar, Swimming, Football, Reading Sci-Fi</p>
+</div>
+
+<div id="contact" class="content">
+    <h2>Contact</h2>
+    <p>📞 +91-9955502069 | +91-6200316593<br>
+    ✉️ <a href="mailto:tripteshacharjee2005@gmail.com">tripteshacharjee2005@gmail.com</a><br>
+    🌐 LinkedIn | Instagram</p>
+</div>
 
 <footer>&copy; 2025 Triptesh Acharjee</footer>
+
+<!-- Back to Top Button -->
+<button id="backToTop">↑</button>
+
+<script>
+// Sections
+const navLinks = document.querySelectorAll("nav a");
+const contents = document.querySelectorAll(".content");
+
+// Default: Contact
+document.getElementById("contact").classList.add("active");
+navLinks[0].classList.add("active");
+
+let currentSection = document.getElementById("contact");
+
+navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+        const targetId = link.getAttribute("data-section");
+        const targetSection = document.getElementById(targetId);
+
+        navLinks.forEach(l => l.classList.remove("active"));
+        link.classList.add("active");
+
+        if (targetId === "all") {
+            contents.forEach(c => {
+                c.classList.remove("active", "exit-left");
+                c.classList.add("all-active");
+            });
+            currentSection = null;
+        } else {
+            contents.forEach(c => c.classList.remove("all-active"));
+
+            if (currentSection && currentSection !== targetSection) {
+                currentSection.classList.remove("active");
+                currentSection.classList.add("exit-left");
+                setTimeout(() => currentSection.classList.remove("exit-left"), 600);
+            }
+
+            targetSection.classList.add("active");
+            currentSection = targetSection;
+        }
+    });
+});
+
+// Back to Top Button
+const backToTop = document.getElementById("backToTop");
+window.addEventListener("scroll", () => {
+    backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+});
+backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+</script>
 
 </body>
 </html>
