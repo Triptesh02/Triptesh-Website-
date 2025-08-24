@@ -23,10 +23,20 @@ nav a { color:white; text-decoration:none; font-weight:500; transition: color 0.
 nav a:hover, nav a.active { color:#ffcc00; border-bottom:2px solid #ffcc00; }
 
 /* --- Content Box --- */
-.content { background: linear-gradient(120deg,#ffffff,#f3f3f3); border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.08); margin-bottom:20px; position:absolute; width:90%; left:100%; opacity:0; transition:all 0.6s ease; border-top: 2px solid #e0e0e0; padding-top:30px; }
-.content.active { left:50%; transform:translateX(-50%); opacity:1; }
-.content.exit-left { left:-100%; opacity:0; }
-.content.all-active { position:relative; left:0; transform:none; opacity:1; }
+.content {
+    background: linear-gradient(120deg,#ffffff,#f3f3f3);
+    border-radius:10px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom:20px;
+    padding:30px;
+    opacity:0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+    position: relative;  /* Keep relative so footer is visible */
+    width: 100%;
+}
+.content.active { opacity:1; transform: translateY(0); }
+.content.all-active { opacity:1; transform: translateY(0); }
 
 /* --- Timeline --- */
 .timeline { position:relative; padding-left:20px; border-left:3px solid #2a5298; }
@@ -155,7 +165,8 @@ footer { background: #1e3c72; color: white; padding: 25px 20px 10px 20px; font-s
 
 <div id="achievements" class="content">
 <h2>Achievements</h2>
-<p>Astro Club Poster Exhibitions: 1st place (2024), 3rd place (2023)<br>Participated in multiple inter-college science fairs and astronomy competitions.</p>
+<p>Astro Club Poster Exhibitions: 1st place (2024), 3rd place (2023)<br>
+Participated in multiple inter-college science fairs and astronomy competitions.</p>
 </div>
 
 <div id="hobbies" class="content">
@@ -173,24 +184,24 @@ Instagram: <a href="https://www.instagram.com/loveliholic" target="_blank">@Trip
 
 <!-- Footer -->
 <footer>
-  <div class="footer-container">
-    <div class="footer-left"><p>&copy; 2025 Triptesh Acharjee <span>®</span>. All Rights Reserved.</p></div>
-    <div class="footer-center">
-      <a href="#education">Education</a>
-      <a href="#skills">Skills</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#achievements">Achievements</a>
-      <a href="#hobbies">Hobbies</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <div class="footer-right">
-      <a href="mailto:tripteshacharjee2005@gmail.com">✉️ Email</a>
-      <a href="https://www.linkedin.com/in/triptesh-acharjee-09b0a3163/" target="_blank">🔗 LinkedIn</a>
-      <a href="https://www.instagram.com/loveliholic" target="_blank">📸 Instagram</a>
-    </div>
-  </div>
-  <p class="footer-bottom">Designed & Developed by Triptesh Acharjee</p>
+<div class="footer-container">
+<div class="footer-left"><p>&copy; 2025 Triptesh Acharjee <span>®</span>. All Rights Reserved.</p></div>
+<div class="footer-center">
+<a href="#education">Education</a>
+<a href="#skills">Skills</a>
+<a href="#experience">Experience</a>
+<a href="#projects">Projects</a>
+<a href="#achievements">Achievements</a>
+<a href="#hobbies">Hobbies</a>
+<a href="#contact">Contact</a>
+</div>
+<div class="footer-right">
+<a href="mailto:tripteshacharjee2005@gmail.com">✉️ Email</a>
+<a href="https://www.linkedin.com/in/triptesh-acharjee-09b0a3163/" target="_blank">🔗 LinkedIn</a>
+<a href="https://www.instagram.com/loveliholic" target="_blank">📸 Instagram</a>
+</div>
+</div>
+<p class="footer-bottom">Designed & Developed by Triptesh Acharjee</p>
 </footer>
 
 <!-- Back to Top Button -->
@@ -222,19 +233,14 @@ navLinks.forEach(link=>{
         link.classList.add("active");
 
         if(targetId==="all"){
-            contents.forEach(c=>{ c.classList.remove("active","exit-left"); c.classList.add("all-active"); });
+            contents.forEach(c=>c.classList.add("all-active"));
             currentSection = null;
             contents.forEach(c=>{
                 const items = c.querySelectorAll(".timeline-item");
                 items.forEach((item,index)=>{ setTimeout(()=>{ item.classList.add("show"); }, index*150); });
             });
         } else{
-            contents.forEach(c=>c.classList.remove("all-active"));
-            if(currentSection && currentSection!==targetSection){
-                currentSection.classList.remove("active");
-                currentSection.classList.add("exit-left");
-                setTimeout(()=>currentSection.classList.remove("exit-left"),600);
-            }
+            contents.forEach(c=>c.classList.remove("all-active","active"));
             targetSection.classList.add("active");
             currentSection = targetSection;
             if(targetId!=="contact") animateTimeline(targetId);
