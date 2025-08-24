@@ -12,16 +12,12 @@ body { display:flex; flex-direction:column; align-items:center; min-height:100vh
 header { position:relative; text-align:center; color:white; padding:60px 20px; width:100%; overflow:hidden; }
 .header-bg { position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; background: linear-gradient(135deg,#1e3c72,#2a5298); }
 .star { position:absolute; background:white; border-radius:50%; opacity:0.8; }
-
-/* Header Content */
 .header-content { position:relative; z-index:1; }
 .profile-pic { width:120px; height:120px; border-radius:50%; border:4px solid white; object-fit:cover; margin-bottom:15px; transition: transform 0.3s, box-shadow 0.3s; }
 .profile-pic:hover { transform: scale(1.1); box-shadow:0 0 20px rgba(255,204,0,0.6); }
 header h1 { margin:0; font-size:2.2em; } 
 header p.degree { margin:5px 0; font-size:1.1em; }
 header p.tagline { margin:5px 0 15px 0; font-size:1em; font-style:italic; color:#ffcc00; }
-
-/* CV & Social */
 .header-buttons { display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-top:10px; }
 .cv-button { padding:10px 20px; background:#ffcc00; color:#222; text-decoration:none; font-weight:bold; border-radius:6px; transition:0.3s; }
 .cv-button:hover { background:#e6b800; transform:translateY(-2px) scale(1.05); }
@@ -86,19 +82,84 @@ footer a { color:white; text-decoration:none; }
     </div>
 </header>
 
-<!-- Example Section: Contact -->
-<div class="content" id="contact">
-  <h2>Contact <span class="arrow">►</span></h2>
+<!-- Education -->
+<div class="content" id="education">
+  <h2>Education <span class="arrow">►</span></h2>
   <div class="section-body">
     <div class="timeline">
-      <div class="timeline-item" data-icon="📞"><div class="timeline-content"><h3>Phone</h3><p><a href="tel:+919955502069">+91-9955502069</a> | <a href="tel:+916200316593">+91-6200316593</a></p></div></div>
-      <div class="timeline-item" data-icon="✉️"><div class="timeline-content"><h3>Email</h3><p><a href="mailto:tripteshacharjee2005@gmail.com">tripteshacharjee2005@gmail.com</a></p></div></div>
-      <div class="timeline-item" data-icon="🌐"><div class="timeline-content"><h3>Social</h3><p><a href="https://www.linkedin.com/in/triptesh-acharjee-09b0a3163/" target="_blank">LinkedIn</a> | <a href="https://www.instagram.com/loveliholic" target="_blank">Instagram</a></p></div></div>
+      <div class="timeline-item" data-icon="🎓"><div class="timeline-content"><h3>B.Sc (Hons) Physics</h3><p>Fergusson College, Pune (2023-2026)</p></div></div>
+      <div class="timeline-item" data-icon="🏫"><div class="timeline-content"><h3>Higher Secondary</h3><p>Carmel Junior College (2021-2023)</p></div></div>
+      <div class="timeline-item" data-icon="🏠"><div class="timeline-content"><h3>Schooling</h3><p>Jusco School Kadma (2005-2021)</p></div></div>
     </div>
   </div>
 </div>
 
-<!-- Repeat for other sections (Education, Skills, Experience, Projects, Achievements, Hobbies) with same structure -->
+<!-- Skills -->
+<div class="content" id="skills">
+  <h2>Skills <span class="arrow">►</span></h2>
+  <div class="section-body">
+    <div class="timeline">
+      <div class="timeline-item" data-icon="💻"><div class="timeline-content"><h3>Programming</h3><p>Python, Java</p></div></div>
+      <div class="timeline-item" data-icon="🖥️"><div class="timeline-content"><h3>Operating Systems</h3><p>Linux</p></div></div>
+      <div class="timeline-item" data-icon="🔭"><div class="timeline-content"><h3>Astronomy & Spectroscopy</h3><p>Stellar observations, Data analysis</p></div></div>
+      <div class="timeline-item" data-icon="📝"><div class="timeline-content"><h3>Communication</h3><p>Public Speaking, Diplomacy</p></div></div>
+      <div class="timeline-item" data-icon="📊"><div class="timeline-content"><h3>Other Skills</h3><p>Data visualization, Research methodology</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Experience -->
+<div class="content" id="experience">
+  <h2>Experience <span class="arrow">►</span></h2>
+  <div class="section-body">
+    <div class="timeline">
+      <div class="timeline-item" data-icon="🛠️"><div class="timeline-content"><h3>IDIA BRICS Workshop – Pune, 2024</h3><p>Hands-on astronomical data analysis and Python scripting.</p></div></div>
+      <div class="timeline-item" data-icon="🔭"><div class="timeline-content"><h3>PRL Internship – Ahmedabad, 2024</h3><p>Worked on solar observation datasets and research discussions.</p></div></div>
+      <div class="timeline-item" data-icon="📡"><div class="timeline-content"><h3>NCRA – Pune, 2023</h3><p>Radio astronomy lab visits and interferometry learning.</p></div></div>
+      <div class="timeline-item" data-icon="🛰️"><div class="timeline-content"><h3>IIRS Internship – 2025</h3><p>Atmospheric sciences, satellite data processing, and experiments.</p></div></div>
+      <div class="timeline-item" data-icon="🌌"><div class="timeline-content"><h3>IUCAA – Pune, 2023</h3><p>Workshops on exoplanet detection and spectroscopy techniques.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Projects -->
+<div class="content" id="projects">
+  <h2>Projects <span class="arrow">►</span></h2>
+  <div class="section-body">
+    <div class="timeline">
+      <div class="timeline-item" data-icon="⭐"><div class="timeline-content"><h3>Detecting Stellar Variability (TESS) – 2024</h3><p>Analyzed TESS data for brightness variations of stars.</p></div></div>
+      <div class="timeline-item" data-icon="⚡"><div class="timeline-content"><h3>Accelerating Astronomy – 2023</h3><p>Created Python scripts to optimize observational data processing.</p></div></div>
+      <div class="timeline-item" data-icon="🌡️"><div class="timeline-content"><h3>Heat Wave Monitoring – 2025</h3><p>Remote sensing project analyzing regional temperature anomalies.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Achievements -->
+<div class="content" id="achievements">
+  <h2>Achievements <span class="arrow">►</span></h2>
+  <div class="section-body">
+    <div class="timeline">
+      <div class="timeline-item" data-icon="🏆"><div class="timeline-content"><h3>Astro Club Poster Exhibitions</h3><p>1st place (2024), 3rd place (2023)</p></div></div>
+      <div class="timeline-item" data-icon="🎖️"><div class="timeline-content"><h3>Science Fairs & Competitions</h3><p>Participated in multiple inter-college events and astronomy contests.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Hobbies -->
+<div class="content" id="hobbies">
+  <h2>Hobbies <span class="arrow">►</span></h2>
+  <div class="section-body">
+    <div class="timeline">
+      <div class="timeline-item" data-icon="✍️"><div class="timeline-content"><h3>Writing</h3></div></div>
+      <div class="timeline-item" data-icon="🎸"><div class="timeline-content"><h3>Guitar</h3></div></div>
+      <div class="timeline-item" data-icon="🏊‍♂️"><div class="timeline-content"><h3>Swimming</h3></div></div>
+      <div class="timeline-item" data-icon="⚽"><div class="timeline-content"><h3>Football</h3></div></div>
+      <div class="timeline-item" data-icon="📚"><div class="timeline-content"><h3>Reading Sci-Fi</h3></div></div>
+      <div class="timeline-item" data-icon="🌌"><div class="timeline-content"><h3>Star-gazing</h3></div></div>
+      <div class="timeline-item" data-icon="✈️"><div class="timeline-content"><h3>Travel</h3></div></div>
+    </div>
+  </div>
+</div>
 
 <footer>
   <div class="footer-container">
@@ -110,39 +171,33 @@ footer a { color:white; text-decoration:none; }
 
 <script>
 // Star Animation
-const header = document.querySelector('.header-bg');
-const numStars = 60;
-for(let i=0;i<numStars;i++){
-    const star = document.createElement('div');
-    star.classList.add('star');
-    const size = Math.random()*3+1+'px';
-    star.style.width = size;
-    star.style.height = size;
-    star.style.top = Math.random()*100+'%';
-    star.style.left = Math.random()*100+'%';
+const headerBg = document.querySelector('.header-bg');
+for(let i=0;i<60;i++){
+    const star = document.createElement('div'); star.classList.add('star');
+    const size=Math.random()*3+1+'px';
+    star.style.width = size; star.style.height = size;
+    star.style.top=Math.random()*100+'%'; star.style.left=Math.random()*100+'%';
     star.style.opacity = Math.random()*0.8+0.2;
     star.style.animation = `twinkle ${Math.random()*5+3}s infinite alternate`;
-    header.appendChild(star);
+    headerBg.appendChild(star);
 }
 const style = document.createElement('style');
-style.innerHTML = `@keyframes twinkle {0% {opacity:0.2;} 50% {opacity:0.8;} 100% {opacity:0.2;}}`;
+style.innerHTML = `@keyframes twinkle {0%{opacity:0.2;}50%{opacity:0.8;}100%{opacity:0.2;}}`;
 document.head.appendChild(style);
 
 // Scroll Animation for timeline
 function animateTimeline() {
-    const items = document.querySelectorAll('.timeline-item');
-    const windowHeight = window.innerHeight;
-    items.forEach(item => {
+    document.querySelectorAll('.timeline-item').forEach(item=>{
         const top = item.getBoundingClientRect().top;
-        if(top < windowHeight - 100) { item.classList.add('visible'); }
+        if(top < window.innerHeight-100) item.classList.add('visible');
     });
 }
 window.addEventListener('scroll', animateTimeline);
 window.addEventListener('load', animateTimeline);
 
-// Collapsible Sections with arrow rotation
-document.querySelectorAll('.content h2').forEach(header => {
-    header.addEventListener('click', () => {
+// Collapsible Sections
+document.querySelectorAll('.content h2').forEach(header=>{
+    header.addEventListener('click',()=>{
         const body = header.nextElementSibling;
         const arrow = header.querySelector('.arrow');
         const isOpen = body.style.display === 'block';
@@ -151,11 +206,6 @@ document.querySelectorAll('.content h2').forEach(header => {
         animateTimeline();
     });
 });
-
-// Open Contact by default
-const contactBody = document.querySelector('#contact .section-body');
-contactBody.style.display = 'block';
-document.querySelector('#contact .arrow').style.transform = 'rotate(90deg)';
 </script>
 </body>
 </html>
