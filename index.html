@@ -6,15 +6,27 @@
 <title>Triptesh Acharjee | Portfolio</title>
 <style>
 html, body { margin:0; font-family:'Segoe UI', Tahoma, sans-serif; background:#fafafa; color:#222; scroll-behavior:smooth; }
-body { display:flex; flex-direction:column; min-height:100vh; align-items:center; }
+body { display:flex; flex-direction:column; align-items:center; min-height:100vh; }
 
 /* Header */
-header { text-align:center; background: linear-gradient(135deg,#1e3c72,#2a5298); color:white; padding:40px 20px; width:100%; }
+header { position:relative; text-align:center; color:white; padding:60px 20px; width:100%; overflow:hidden; }
+.header-bg { position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; background: linear-gradient(135deg,#1e3c72,#2a5298); }
+.star { position:absolute; background:white; border-radius:50%; opacity:0.8; }
+
+/* Header Content */
+.header-content { position:relative; z-index:1; }
 .profile-pic { width:120px; height:120px; border-radius:50%; border:4px solid white; object-fit:cover; margin-bottom:15px; transition: transform 0.3s, box-shadow 0.3s; }
 .profile-pic:hover { transform: scale(1.1); box-shadow:0 0 20px rgba(255,204,0,0.6); }
 header h1 { margin:0; font-size:2.2em; } 
-header h1 span { font-size:0.6em; vertical-align:super; }
-header p { margin:8px 0; font-size:1.1em; }
+header p.degree { margin:5px 0; font-size:1.1em; }
+header p.tagline { margin:5px 0 15px 0; font-size:1em; font-style:italic; color:#ffcc00; }
+
+/* CV & Social */
+.header-buttons { display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-top:10px; }
+.cv-button { padding:10px 20px; background:#ffcc00; color:#222; text-decoration:none; font-weight:bold; border-radius:6px; transition:0.3s; }
+.cv-button:hover { background:#e6b800; transform:translateY(-2px) scale(1.05); }
+.social-link { color:white; font-weight:bold; text-decoration:none; padding:6px 12px; background:rgba(255,255,255,0.2); border-radius:5px; transition:0.3s; }
+.social-link:hover { background:rgba(255,255,255,0.4); }
 
 /* Content Box */
 .content { background:#fff; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.08); margin:20px 0; padding:25px; max-width:1000px; width:90%; }
@@ -32,8 +44,10 @@ header p { margin:8px 0; font-size:1.1em; }
 h2 { color:#1e3c72; border-left:5px solid #2a5298; padding-left:12px; font-size:1.6em; margin-bottom:20px; }
 
 /* Footer */
-footer { background:#1e3c72; color:white; padding:20px; font-size:0.9em; width:100%; text-align:center; }
-footer p, footer a { color:white; text-decoration:none; font-size:0.9em; }
+footer { background:#1e3c72; color:white; padding:15px 20px; font-size:0.9em; width:100%; }
+footer a { color:white; text-decoration:none; }
+.footer-container { display:flex; justify-content:space-between; flex-wrap:wrap; align-items:center; max-width:1000px; margin:auto; gap:10px; }
+.footer-container span { margin:5px 0; }
 
 /* Responsive */
 @media (max-width:1024px){
@@ -45,11 +59,11 @@ footer p, footer a { color:white; text-decoration:none; font-size:0.9em; }
 }
 @media (max-width:768px){
     header h1{font-size:1.8em;}
-    header p{font-size:1em;}
+    header p.degree{font-size:1em;}
     .profile-pic{width:90px;height:90px;}
 }
 @media (max-width:480px){
-    header h1{font-size:1.5em;} header p{font-size:0.9em;}
+    header h1{font-size:1.5em;} header p.degree{font-size:0.9em;}
     .timeline-item::before{width:25px;height:25px;font-size:14px;}
     .timeline-content h3{font-size:1em;}
 }
@@ -58,108 +72,64 @@ footer p, footer a { color:white; text-decoration:none; font-size:0.9em; }
 <body>
 
 <header>
-    <img src="profile.jpg" alt="Triptesh Acharjee" class="profile-pic">
-    <h1>Triptesh Acharjee<span>®</span></h1>
-    <p>B.Sc (Hons) Physics, Fergusson College, Pune</p>
+    <div class="header-bg"></div>
+    <div class="header-content">
+        <img src="profile.jpg" alt="Triptesh Acharjee" class="profile-pic">
+        <h1>Triptesh Acharjee<span>®</span></h1>
+        <p class="degree">B.Sc (Hons) Physics, Fergusson College, Pune</p>
+        <p class="tagline">Aspiring ISRO Scientist | Exoplanet Research Enthusiast</p>
+        <div class="header-buttons">
+            <a class="cv-button" href="Triptesh_Acharjee_CV.pdf" download>📄 Download CV</a>
+            <a class="social-link" href="https://www.linkedin.com/in/triptesh-acharjee-09b0a3163/" target="_blank">LinkedIn</a>
+            <a class="social-link" href="https://www.instagram.com/loveliholic" target="_blank">Instagram</a>
+        </div>
+    </div>
 </header>
 
-<!-- Contact -->
-<div class="content" id="contact">
-<h2>Contact</h2>
-<div class="timeline">
-<div class="timeline-item" data-icon="📞"><div class="timeline-content"><h3>Phone</h3><p><a href="tel:+919955502069">+91-9955502069</a> | <a href="tel:+916200316593">+91-6200316593</a></p></div></div>
-<div class="timeline-item" data-icon="✉️"><div class="timeline-content"><h3>Email</h3><p><a href="mailto:tripteshacharjee2005@gmail.com">tripteshacharjee2005@gmail.com</a></p></div></div>
-<div class="timeline-item" data-icon="🌐"><div class="timeline-content"><h3>Social</h3><p><a href="https://www.linkedin.com/in/triptesh-acharjee-09b0a3163/" target="_blank">LinkedIn</a> | <a href="https://www.instagram.com/loveliholic" target="_blank">Instagram</a></p></div></div>
-</div>
-</div>
-
-<!-- Education -->
-<div class="content" id="education">
-<h2>Education</h2>
-<div class="timeline">
-<div class="timeline-item" data-icon="🎓"><div class="timeline-content"><h3>B.Sc (Hons) Physics</h3><p>Fergusson College, Pune (2023-2026)</p></div></div>
-<div class="timeline-item" data-icon="🏫"><div class="timeline-content"><h3>Higher Secondary</h3><p>Carmel Junior College (2021-2023)</p></div></div>
-<div class="timeline-item" data-icon="🏠"><div class="timeline-content"><h3>Schooling</h3><p>Jusco School Kadma (2005-2021)</p></div></div>
-</div>
-</div>
-
-<!-- Skills -->
-<div class="content" id="skills">
-<h2>Skills</h2>
-<div class="timeline">
-<div class="timeline-item" data-icon="💻"><div class="timeline-content"><h3>Programming</h3><p>Python, Java</p></div></div>
-<div class="timeline-item" data-icon="🖥️"><div class="timeline-content"><h3>Operating Systems</h3><p>Linux</p></div></div>
-<div class="timeline-item" data-icon="🔭"><div class="timeline-content"><h3>Astronomy & Spectroscopy</h3><p>Stellar observations, Data analysis</p></div></div>
-<div class="timeline-item" data-icon="🗣️"><div class="timeline-content"><h3>Communication</h3><p>Public Speaking, Diplomacy</p></div></div>
-<div class="timeline-item" data-icon="📊"><div class="timeline-content"><h3>Other</h3><p>Data visualization, Research methodology</p></div></div>
-</div>
-</div>
-
-<!-- Experience -->
-<div class="content" id="experience">
-<h2>Experience</h2>
-<div class="timeline">
-<div class="timeline-item" data-icon="🛠️"><div class="timeline-content"><h3>IDIA BRICS Workshop – Pune, 2024</h3><p>Hands-on training in astronomical data analysis, Python scripting, and telescope operations.</p></div></div>
-<div class="timeline-item" data-icon="🔭"><div class="timeline-content"><h3>PRL Internship – Ahmedabad, Summer 2024</h3><p>Worked on solar observation datasets and participated in group research discussions.</p></div></div>
-<div class="timeline-item" data-icon="📡"><div class="timeline-content"><h3>NCRA – Pune, 2023</h3><p>Radio astronomy lab visits, understanding interferometry, and handling data pipelines.</p></div></div>
-<div class="timeline-item" data-icon="🛰️"><div class="timeline-content"><h3>IIRS Internship – 2025</h3><p>Studied atmospheric sciences, satellite data processing, and black body radiation experiments.</p></div></div>
-<div class="timeline-item" data-icon="🌌"><div class="timeline-content"><h3>IUCAA – Pune, 2023</h3><p>Attended workshops on exoplanet detection, spectroscopy techniques, and data modeling.</p></div></div>
-</div>
-</div>
-
-<!-- Projects -->
-<div class="content" id="projects">
-<h2>Projects</h2>
-<div class="timeline">
-<div class="timeline-item" data-icon="🌠"><div class="timeline-content"><h3>Detecting Stellar Variability (TESS) – 2024</h3><p>Analyzed TESS data to study periodic brightness variations of stars.</p></div></div>
-<div class="timeline-item" data-icon="⚡"><div class="timeline-content"><h3>Accelerating Astronomy – 2023</h3><p>Created Python scripts to optimize observational data processing.</p></div></div>
-<div class="timeline-item" data-icon="🌡️"><div class="timeline-content"><h3>Heat Wave Monitoring – 2025</h3><p>Remote sensing project to analyze temperature anomalies across regions.</p></div></div>
-</div>
-</div>
-
-<!-- Achievements -->
-<div class="content" id="achievements">
-<h2>Achievements</h2>
-<div class="timeline">
-<div class="timeline-item" data-icon="🏆"><div class="timeline-content"><h3>Astro Club Poster Exhibitions</h3><p>1st place (2024), 3rd place (2023)</p></div></div>
-<div class="timeline-item" data-icon="🎖️"><div class="timeline-content"><h3>Other Competitions</h3><p>Participated in multiple inter-college science fairs and astronomy competitions.</p></div></div>
-</div>
-</div>
-
-<!-- Hobbies -->
-<div class="content" id="hobbies">
-<h2>Hobbies</h2>
-<div class="timeline">
-<div class="timeline-item" data-icon="✍️"><div class="timeline-content"><h3>Writing</h3><p>Creative writing and blogging</p></div></div>
-<div class="timeline-item" data-icon="🎸"><div class="timeline-content"><h3>Guitar</h3><p>Playing and learning music</p></div></div>
-<div class="timeline-item" data-icon="🏊"><div class="timeline-content"><h3>Swimming</h3><p>Fitness and leisure activity</p></div></div>
-<div class="timeline-item" data-icon="⚽"><div class="timeline-content"><h3>Football</h3><p>Team sports and outdoor activity</p></div></div>
-<div class="timeline-item" data-icon="📚"><div class="timeline-content"><h3>Reading Sci-Fi</h3><p>Books and science fiction novels</p></div></div>
-<div class="timeline-item" data-icon="🌌"><div class="timeline-content"><h3>Star-gazing & Travel</h3><p>Exploring skies and places</p></div></div>
-</div>
-</div>
+<!-- All content sections (Contact, Education, Skills, Experience, Projects, Achievements, Hobbies) -->
+<!-- Use the same timeline HTML from previous version here -->
 
 <!-- Footer -->
 <footer>
-<p>&copy; 2025 Triptesh Acharjee ®. All Rights Reserved.</p>
-<p>Designed & Developed by Triptesh Acharjee</p>
-<p>Contact: <a href="tel:+919955502069">+91-9955502069</a> | <a href="mailto:tripteshacharjee2005@gmail.com">tripteshacharjee2005@gmail.com</a></p>
+  <div class="footer-container">
+    <span>&copy; 2025 Triptesh Acharjee ®. All Rights Reserved.</span>
+    <span>Designed & Developed by Triptesh Acharjee</span>
+    <span>Contact: <a href="tel:+919955502069">+91-9955502069</a> | <a href="mailto:tripteshacharjee2005@gmail.com">tripteshacharjee2005@gmail.com</a></span>
+  </div>
 </footer>
 
 <script>
-// Animate timeline items on scroll
-const timelineItems = document.querySelectorAll('.timeline-item');
-function showTimelineItems() {
-  const triggerBottom = window.innerHeight * 0.85;
-  timelineItems.forEach(item => {
-    const itemTop = item.getBoundingClientRect().top;
-    if(itemTop < triggerBottom) {
-      item.classList.add('visible');
-    }
-  });
+// Star Animation
+const header = document.querySelector('.header-bg');
+const numStars = 60;
+for(let i=0;i<numStars;i++){
+    const star = document.createElement('div');
+    star.classList.add('star');
+    const size = Math.random()*3+1+'px';
+    star.style.width = size;
+    star.style.height = size;
+    star.style.top = Math.random()*100+'%';
+    star.style.left = Math.random()*100+'%';
+    star.style.opacity = Math.random()*0.8+0.2;
+    star.style.animation = `twinkle ${Math.random()*5+3}s infinite alternate`;
+    header.appendChild(star);
 }
-window.addEventListener('scroll', showTimelineItems);
-window.addEventListener('load', showTimelineItems);
+
+const style = document.createElement('style');
+style.innerHTML = `@keyframes twinkle { 0% {opacity:0.2;} 50% {opacity:0.8;} 100% {opacity:0.2;} }`;
+document.head.appendChild(style);
+
+// Scroll Animation for timeline
+function animateTimeline() {
+    const items = document.querySelectorAll('.timeline-item');
+    const windowHeight = window.innerHeight;
+    items.forEach(item => {
+        const top = item.getBoundingClientRect().top;
+        if(top < windowHeight - 100) { item.classList.add('visible'); }
+    });
+}
+window.addEventListener('scroll', animateTimeline);
+window.addEventListener('load', animateTimeline);
 </script>
 
 </body>
