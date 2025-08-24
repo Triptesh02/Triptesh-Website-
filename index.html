@@ -12,7 +12,7 @@
         color: #222;
         line-height: 1.6;
         scroll-behavior: smooth;
-        overflow-x: hidden; /* Prevent horizontal scroll */
+        overflow-x: hidden;
     }
     /* Navigation Bar */
     nav {
@@ -95,7 +95,7 @@
 
         position: absolute;
         width: 100%;
-        left: 100%; /* hidden offscreen right */
+        left: 100%;
         opacity: 0;
         transition: all 0.6s ease;
     }
@@ -151,6 +151,49 @@
         background: #e6b800;
         transform: scale(1.2) rotate(10deg);
     }
+
+    /* Timeline Style for Experience and Projects */
+    .timeline {
+        position: relative;
+        margin-left: 40px;
+        padding-left: 20px;
+        border-left: 3px solid #2a5298;
+    }
+    .timeline-item {
+        display: flex;
+        margin-bottom: 30px;
+        position: relative;
+        opacity: 0;
+        transform: translateX(-30px);
+        transition: all 0.6s ease;
+    }
+    .timeline-item.show {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    .timeline-icon {
+        width: 35px;
+        height: 35px;
+        background: #ffcc00;
+        color: #222;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: bold;
+        position: absolute;
+        left: -50px;
+        top: 0;
+    }
+    .timeline-content h3 {
+        margin: 0 0 5px 0;
+        font-size: 1.2em;
+        color: #1e3c72;
+    }
+    .timeline-content p {
+        margin: 0;
+    }
 </style>
 </head>
 <body>
@@ -177,39 +220,115 @@
 <!-- Sections -->
 <div id="education" class="content">
     <h2>Education</h2>
-    <p>Fergusson College, Jusco School Kadma, Carmel Junior College</p>
+    <p>
+        <strong>B.Sc (Hons) Physics</strong> – Fergusson College, Pune (2023-2026)<br>
+        <strong>Higher Secondary</strong> – Carmel Junior College (2021-2023)<br>
+        <strong>Schooling</strong> – Jusco School Kadma (2005-2021)
+    </p>
 </div>
 
 <div id="skills" class="content">
     <h2>Skills</h2>
-    <p>Python, Java, Linux, Astronomy, Spectroscopy, Public Speaking, Diplomacy</p>
+    <ul>
+        <li>Programming: Python, Java</li>
+        <li>Operating Systems: Linux</li>
+        <li>Astronomy & Spectroscopy: Stellar observations, Data analysis</li>
+        <li>Communication: Public Speaking, Diplomacy</li>
+        <li>Other: Data visualization, Research methodology</li>
+    </ul>
 </div>
 
 <div id="experience" class="content">
     <h2>Experience</h2>
-    <p>Workshops: IDIA BRICS, PRL, NCRA, IIRS, IUCAA, etc.</p>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-icon">🛠️</div>
+            <div class="timeline-content">
+                <h3>IDIA BRICS Workshop – Pune, 2024 (2 weeks)</h3>
+                <p>Hands-on training in astronomical data analysis, scripting in Python, and telescope operations.</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-icon">🔭</div>
+            <div class="timeline-content">
+                <h3>PRL Internship – Ahmedabad, Summer 2024 (1 month)</h3>
+                <p>Worked on solar observation datasets and participated in group research discussions.</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-icon">📡</div>
+            <div class="timeline-content">
+                <h3>NCRA – Pune, 2023 (10 days)</h3>
+                <p>Radio astronomy lab visits, understanding interferometry, and handling data pipelines.</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-icon">🛰️</div>
+            <div class="timeline-content">
+                <h3>IIRS Internship – 2025 (3 months)</h3>
+                <p>Studied atmospheric sciences, satellite data processing, and black body radiation experiments.</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-icon">🌌</div>
+            <div class="timeline-content">
+                <h3>IUCAA – Pune, 2023 (1 week)</h3>
+                <p>Attended workshops on exoplanet detection, spectroscopy techniques, and data modeling.</p>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div id="projects" class="content">
     <h2>Projects</h2>
-    <p>Detecting Stellar Variability (TESS), Accelerating Astronomy, Heat Wave Monitoring</p>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-icon">⭐</div>
+            <div class="timeline-content">
+                <h3>Detecting Stellar Variability (TESS) – 2024</h3>
+                <p>Analyzed TESS data to study periodic brightness variations of stars.</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-icon">⚡</div>
+            <div class="timeline-content">
+                <h3>Accelerating Astronomy – 2023</h3>
+                <p>Created Python scripts to optimize observational data processing.</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-icon">🌡️</div>
+            <div class="timeline-content">
+                <h3>Heat Wave Monitoring – 2025</h3>
+                <p>Remote sensing project to analyze temperature anomalies across regions.</p>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div id="achievements" class="content">
     <h2>Achievements</h2>
-    <p>Astro Club Poster Exhibitions: 1st (2024), 3rd (2023)</p>
+    <p>
+        Astro Club Poster Exhibitions: 1st place (2024), 3rd place (2023)<br>
+        Participated in multiple inter-college science fairs and astronomy competitions.
+    </p>
 </div>
 
 <div id="hobbies" class="content">
     <h2>Hobbies</h2>
-    <p>Writing, Guitar, Swimming, Football, Reading Sci-Fi</p>
+    <p>
+        Writing, Guitar, Swimming, Football, Reading Sci-Fi, Star-gazing, Travel
+    </p>
 </div>
 
 <div id="contact" class="content">
     <h2>Contact</h2>
-    <p>📞 +91-9955502069 | +91-6200316593<br>
-    ✉️ <a href="mailto:tripteshacharjee2005@gmail.com">tripteshacharjee2005@gmail.com</a><br>
-    🌐 LinkedIn | Instagram</p>
+    <p>
+        📞 +91-9955502069 | +91-6200316593<br>
+        ✉️ <a href="mailto:tripteshacharjee2005@gmail.com">tripteshacharjee2005@gmail.com</a><br>
+        🌐 LinkedIn: <a href="https://www.linkedin.com/in/triptesh-acharjee/" target="_blank">Triptesh Acharjee</a> | 
+        Instagram: <a href="https://www.instagram.com/yourusername" target="_blank">@yourusername</a>
+    </p>
 </div>
 
 <footer>&copy; 2025 Triptesh Acharjee</footer>
@@ -228,10 +347,25 @@ navLinks[0].classList.add("active");
 
 let currentSection = document.getElementById("contact");
 
+// Function to animate timeline items
+function animateTimeline(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+    const items = section.querySelectorAll(".timeline-item");
+    items.forEach((item, index) => {
+        setTimeout(() => {
+            item.classList.add("show");
+        }, index * 150); // stagger effect
+    });
+}
+
 navLinks.forEach(link => {
     link.addEventListener("click", () => {
         const targetId = link.getAttribute("data-section");
         const targetSection = document.getElementById(targetId);
+
+        // Reset previous animations
+        document.querySelectorAll(".timeline-item").forEach(item => item.classList.remove("show"));
 
         navLinks.forEach(l => l.classList.remove("active"));
         link.classList.add("active");
@@ -254,8 +388,16 @@ navLinks.forEach(link => {
             targetSection.classList.add("active");
             currentSection = targetSection;
         }
+
+        // Animate timeline if needed
+        if (targetId === "experience" || targetId === "projects") {
+            animateTimeline(targetId);
+        }
     });
 });
+
+// Animate default section if it has timeline
+animateTimeline(currentSection.id);
 
 // Back to Top Button
 const backToTop = document.getElementById("backToTop");
