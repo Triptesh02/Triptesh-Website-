@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Triptesh Acharjee | Portfolio</title>
 <style>
-/* --- Base Styles --- */
-body { font-family: 'Segoe UI', Tahoma, sans-serif; margin:0; background:#fafafa; color:#222; line-height:1.5; scroll-behavior:smooth; overflow-x:hidden; }
+html, body { height:100%; margin:0; font-family:'Segoe UI', Tahoma, sans-serif; background:#fafafa; color:#222; scroll-behavior:smooth; }
+body { display:flex; flex-direction:column; min-height:100vh; }
 header, .content, footer { max-width:1000px; margin:auto; box-sizing:border-box; }
 header { text-align:center; background: linear-gradient(135deg,#1e3c72,#2a5298); color:white; padding:30px 20px; border-bottom: 4px solid #ffcc00; }
 .profile-pic { width:100px; height:100px; border-radius:50%; border:4px solid white; object-fit:cover; margin-bottom:10px; transition: transform 0.3s, box-shadow 0.3s; }
@@ -14,57 +14,33 @@ header { text-align:center; background: linear-gradient(135deg,#1e3c72,#2a5298);
 header h1 { margin:0; font-size:2em; } 
 header h1 span { font-size:0.6em; vertical-align:super; }
 header p { margin:5px 0; font-size:1em; }
-.cv-button { display:inline-block; margin-top:10px; padding:10px 20px; background:#ffcc00; color:#222; border-radius:6px; font-weight:bold; text-decoration:none; transition:0.3s; }
-.cv-button:hover { background:#e6b800; transform: translateY(-3px) scale(1.05); }
 
-/* --- Navigation --- */
-nav { position:sticky; top:0; z-index:1000; background:#1e3c72; display:flex; flex-wrap:wrap; justify-content:center; gap:10px; padding:8px; }
-nav a { color:white; text-decoration:none; font-weight:500; transition: color 0.3s, border-bottom 0.3s; padding-bottom:4px; cursor:pointer; }
-nav a:hover, nav a.active { color:#ffcc00; border-bottom:2px solid #ffcc00; }
-
-/* --- Content Box --- */
+/* Content Box */
 .content {
     background: linear-gradient(120deg,#ffffff,#f3f3f3);
     border-radius:10px;
     box-shadow:0 4px 12px rgba(0,0,0,0.08);
-    margin-bottom:15px;
+    margin:15px 0;
     padding:20px;
-    opacity:0;
-    transform: translateY(20px);
-    transition: all 0.6s ease;
-    position: relative;
-    width: 100%;
 }
-.content.active { opacity:1; transform: translateY(0); }
-.content.all-active { opacity:1; transform: translateY(0); }
 
-/* --- Timeline --- */
+/* Timeline */
 .timeline { position:relative; padding-left:20px; border-left:3px solid #2a5298; }
-.timeline-item { display:flex; flex-direction:row; align-items:flex-start; margin-bottom:15px; position:relative; opacity:0; transform: translateX(-50px); transition:all 0.6s ease; padding:5px 10px; }
-.timeline-item.show { opacity:1; transform:translateX(0); }
-.timeline-item:hover { transform: scale(1.02); box-shadow:0 6px 15px rgba(0,0,0,0.1); background: linear-gradient(120deg, rgba(255,204,0,0.1), rgba(255,255,255,0.05)); border-radius:6px; transition: all 0.3s ease; }
-.timeline-item::before { content: attr(data-icon); position: absolute; left: -50px; top: 0; width: 30px; height: 30px; background: #ffcc00; border-radius: 50%; display:flex; align-items:center; justify-content:center; font-size:16px; color:#222; transition: all 0.3s ease; }
-.timeline-item::before:hover { transform: scale(1.2); box-shadow:0 0 10px rgba(255,204,0,0.7); }
-
-/* Timeline content */
+.timeline-item { display:flex; flex-direction:row; align-items:flex-start; margin-bottom:15px; position:relative; padding:5px 10px; }
+.timeline-item::before { content: attr(data-icon); position: absolute; left: -50px; top: 0; width: 30px; height: 30px; background: #ffcc00; border-radius: 50%; display:flex; align-items:center; justify-content:center; font-size:16px; color:#222; }
 .timeline-content { margin-left:40px; }
 .timeline-content h3 { margin:0 0 4px 0; font-size:1.1em; color:#1e3c72; }
 .timeline-content p, .timeline-content ul, .timeline-content li { margin:0; padding:0; list-style:none; }
 
-/* --- Back to Top --- */
-#backToTop { position:fixed; bottom:20px; right:20px; background:#ffcc00; color:#222; padding:10px 14px; border-radius:50%; border:none; font-size:16px; font-weight:bold; cursor:pointer; display:none; box-shadow:0 4px 12px rgba(0,0,0,0.2); transition:0.3s; z-index:1001; }
-#backToTop:hover { background:#e6b800; transform: scale(1.2) rotate(10deg); }
-
-/* --- Headers --- */
+/* Headers */
 h2 { color:#1e3c72; border-left:4px solid #2a5298; padding-left:10px; font-size:1.5em; margin-bottom:15px; }
 
-/* --- Footer --- */
-footer { background: #1e3c72; color: white; padding: 15px 20px; font-size: 0.9em; margin-top: 20px; text-align:center; }
+/* Footer */
+footer { background: #1e3c72; color: white; padding: 15px 20px; font-size: 0.9em; margin-top:auto; text-align:center; }
 footer p, footer a { color:white; text-decoration:none; font-size:0.9em; }
 
-/* --- Responsive --- */
+/* Responsive */
 @media (max-width:768px){
-    nav{gap:5px;}
     header h1{font-size:1.7em;}
     .profile-pic{width:80px;height:80px;}
     .timeline-item{flex-direction:column; align-items:flex-start; margin-left:0;}
@@ -73,7 +49,6 @@ footer p, footer a { color:white; text-decoration:none; font-size:0.9em; }
 }
 @media (max-width:480px){
     header h1{font-size:1.5em;} header p{font-size:0.9em;}
-    .cv-button{padding:8px 16px; font-size:0.9em;}
     .timeline-item::before{width:25px;height:25px;font-size:14px;}
     .timeline-content h3{font-size:1em;}
 }
@@ -81,34 +56,20 @@ footer p, footer a { color:white; text-decoration:none; font-size:0.9em; }
 </head>
 <body>
 
-<!-- Navigation -->
-<nav>
-    <a data-section="education">Education</a>
-    <a data-section="skills">Skills</a>
-    <a data-section="experience">Experience</a>
-    <a data-section="projects">Projects</a>
-    <a data-section="achievements">Achievements</a>
-    <a data-section="hobbies">Hobbies</a>
-    <a data-section="contact">Contact</a>
-    <a data-section="all">All</a>
-</nav>
-
 <header>
     <img src="profile.jpg" alt="Triptesh Acharjee" class="profile-pic">
     <h1>Triptesh Acharjee<span>®</span></h1>
     <p>B.Sc (Hons) Physics, Fergusson College, Pune</p>
-    <a class="cv-button" href="Triptesh_Acharjee_CV.pdf" download>📄 Download CV</a>
 </header>
 
-<!-- Sections -->
-<div id="education" class="content">
+<div class="content" id="education">
 <h2>Education</h2>
 <p><strong>B.Sc (Hons) Physics</strong> – Fergusson College, Pune (2023-2026)<br>
 <strong>Higher Secondary</strong> – Carmel Junior College (2021-2023)<br>
 <strong>Schooling</strong> – Jusco School Kadma (2005-2021)</p>
 </div>
 
-<div id="skills" class="content">
+<div class="content" id="skills">
 <h2>Skills</h2>
 <ul>
 <li>Programming: Python, Java</li>
@@ -119,7 +80,7 @@ footer p, footer a { color:white; text-decoration:none; font-size:0.9em; }
 </ul>
 </div>
 
-<div id="experience" class="content">
+<div class="content" id="experience">
 <h2>Experience</h2>
 <div class="timeline">
 <div class="timeline-item" data-icon="🛠️"><div class="timeline-content"><h3>IDIA BRICS Workshop – Pune, 2024</h3><p>Hands-on training in astronomical data analysis, Python scripting, and telescope operations.</p></div></div>
@@ -130,7 +91,7 @@ footer p, footer a { color:white; text-decoration:none; font-size:0.9em; }
 </div>
 </div>
 
-<div id="projects" class="content">
+<div class="content" id="projects">
 <h2>Projects</h2>
 <div class="timeline">
 <div class="timeline-item" data-icon="⭐"><div class="timeline-content"><h3>Detecting Stellar Variability (TESS) – 2024</h3><p>Analyzed TESS data to study periodic brightness variations of stars.</p></div></div>
@@ -139,77 +100,30 @@ footer p, footer a { color:white; text-decoration:none; font-size:0.9em; }
 </div>
 </div>
 
-<div id="achievements" class="content">
+<div class="content" id="achievements">
 <h2>Achievements</h2>
 <p>Astro Club Poster Exhibitions: 1st place (2024), 3rd place (2023)<br>
 Participated in multiple inter-college science fairs and astronomy competitions.</p>
 </div>
 
-<div id="hobbies" class="content">
+<div class="content" id="hobbies">
 <h2>Hobbies</h2>
 <p>Writing, Guitar, Swimming, Football, Reading Sci-Fi, Star-gazing, Travel</p>
 </div>
 
-<div id="contact" class="content">
+<div class="content" id="contact">
 <h2>Contact</h2>
 <p>📞 <a href="tel:+919955502069">+91-9955502069</a> | <a href="tel:+916200316593">+91-6200316593</a><br>
-✉️ <a href="mailto:tripteshacharjee2005@gmail.com">tripteshacharjee2005@gmail.com</a></p>
+✉️ <a href="mailto:tripteshacharjee2005@gmail.com">tripteshacharjee2005@gmail.com</a><br>
+🌐 <a href="https://www.linkedin.com/in/triptesh-acharjee-09b0a3163/" target="_blank">LinkedIn</a> | 
+📸 <a href="https://www.instagram.com/loveliholic" target="_blank">Instagram</a></p>
 </div>
 
-<!-- Footer -->
 <footer>
 <p>&copy; 2025 Triptesh Acharjee ®. All Rights Reserved.</p>
 <p>Designed & Developed by Triptesh Acharjee</p>
 <p>Contact: <a href="tel:+919955502069">+91-9955502069</a> | <a href="mailto:tripteshacharjee2005@gmail.com">tripteshacharjee2005@gmail.com</a></p>
 </footer>
-
-<!-- Back to Top -->
-<button id="backToTop">↑</button>
-
-<script>
-// Sections & Timeline
-const navLinks=document.querySelectorAll("nav a");
-const contents=document.querySelectorAll(".content");
-document.getElementById("contact").classList.add("active");
-navLinks[0].classList.add("active");
-let currentSection=document.getElementById("contact");
-
-function animateTimeline(sectionId){
-    const section=document.getElementById(sectionId);
-    if(!section) return;
-    const items=section.querySelectorAll(".timeline-item");
-    items.forEach((item,index)=>{setTimeout(()=>{item.classList.add("show");},index*150);});
-}
-
-navLinks.forEach(link=>{
-    link.addEventListener("click",()=>{
-        const targetId=link.getAttribute("data-section");
-        const targetSection=document.getElementById(targetId);
-        document.querySelectorAll(".timeline-item").forEach(item=>item.classList.remove("show"));
-        navLinks.forEach(l=>l.classList.remove("active"));
-        link.classList.add("active");
-        if(targetId==="all"){
-            contents.forEach(c=>c.classList.add("all-active"));
-            contents.forEach(c=>{
-                const items=c.querySelectorAll(".timeline-item");
-                items.forEach((item,index)=>{setTimeout(()=>{item.classList.add("show");},index*150);});
-            });
-            currentSection=null;
-        }else{
-            contents.forEach(c=>c.classList.remove("all-active","active"));
-            targetSection.classList.add("active");
-            currentSection=targetSection;
-            if(targetId!=="contact") animateTimeline(targetId);
-        }
-    });
-});
-animateTimeline(currentSection.id);
-
-// Back to Top
-const backToTop=document.getElementById("backToTop");
-window.addEventListener("scroll",()=>{backToTop.style.display=window.scrollY>300?"block":"none";});
-backToTop.addEventListener("click",()=>{window.scrollTo({top:0,behavior:'smooth'});});
-</script>
 
 </body>
 </html>
