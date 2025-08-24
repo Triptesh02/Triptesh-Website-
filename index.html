@@ -56,11 +56,18 @@ nav a:hover, nav a.active { color:#ffcc00; border-bottom:2px solid #ffcc00; }
 #backToTop { position:fixed; bottom:30px; right:30px; background:#ffcc00; color:#222; padding:12px 18px; border-radius:50%; border:none; font-size:18px; font-weight:bold; cursor:pointer; display:none; box-shadow:0 4px 12px rgba(0,0,0,0.2); transition:0.3s; z-index:1001; }
 #backToTop:hover { background:#e6b800; transform: scale(1.2) rotate(10deg); }
 
-/* --- Footer --- */
-footer { text-align:center; padding:20px; background:#1e3c72; color:white; font-size:0.9em; margin-top:40px; }
-
 /* --- Headers --- */
 h2 { color:#1e3c72; border-left:5px solid #2a5298; padding-left:12px; font-size:1.6em; margin-bottom:20px; }
+
+/* --- Footer --- */
+footer { background: #1e3c72; color: white; padding: 25px 20px 10px 20px; font-size: 0.9em; margin-top: 40px; }
+.footer-container { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; max-width: 1000px; margin: auto; }
+.footer-left, .footer-center, .footer-right { flex:1; min-width:200px; margin-bottom:15px; }
+.footer-center, .footer-right { text-align:center; }
+.footer-right { text-align:right; }
+.footer-center a, .footer-right a { color: #ffcc00; text-decoration: none; margin: 0 6px; transition:0.3s; }
+.footer-center a:hover, .footer-right a:hover { color:#e6b800; transform: scale(1.1); }
+.footer-bottom { text-align:center; margin-top:10px; font-size:0.8em; color:#ddd; }
 
 /* --- Responsive --- */
 @media (max-width:1024px) { header h1{font-size:2em;} .profile-pic{width:100px;height:100px;} }
@@ -71,6 +78,7 @@ h2 { color:#1e3c72; border-left:5px solid #2a5298; padding-left:12px; font-size:
     .timeline-item{flex-direction:column; align-items:flex-start; margin-left:0;}
     .timeline-item::before { left:-10px; margin-bottom:5px; }
     .timeline-content{margin-left:0; margin-top:5px;}
+    .footer-left, .footer-center, .footer-right { text-align:center; }
 }
 @media (max-width:480px){
     header h1{font-size:1.5em;} header p{font-size:0.9em;}
@@ -106,95 +114,86 @@ h2 { color:#1e3c72; border-left:5px solid #2a5298; padding-left:12px; font-size:
     <a class="cv-button" href="Triptesh_Acharjee_CV.pdf" download>📄 Download CV</a>
 </header>
 
-<!-- Education Section -->
+<!-- Sections -->
 <div id="education" class="content">
-    <h2>Education</h2>
-    <p><strong>B.Sc (Hons) Physics</strong> – Fergusson College, Pune (2023-2026)<br>
-    <strong>Higher Secondary</strong> – Carmel Junior College (2021-2023)<br>
-    <strong>Schooling</strong> – Jusco School Kadma (2005-2021)</p>
+<h2>Education</h2>
+<p><strong>B.Sc (Hons) Physics</strong> – Fergusson College, Pune (2023-2026)<br>
+<strong>Higher Secondary</strong> – Carmel Junior College (2021-2023)<br>
+<strong>Schooling</strong> – Jusco School Kadma (2005-2021)</p>
 </div>
 
-<!-- Skills Section -->
 <div id="skills" class="content">
-    <h2>Skills</h2>
-    <ul>
-        <li>Programming: Python, Java</li>
-        <li>Operating Systems: Linux</li>
-        <li>Astronomy & Spectroscopy: Stellar observations, Data analysis</li>
-        <li>Communication: Public Speaking, Diplomacy</li>
-        <li>Other: Data visualization, Research methodology</li>
-    </ul>
+<h2>Skills</h2>
+<ul>
+<li>Programming: Python, Java</li>
+<li>Operating Systems: Linux</li>
+<li>Astronomy & Spectroscopy: Stellar observations, Data analysis</li>
+<li>Communication: Public Speaking, Diplomacy</li>
+<li>Other: Data visualization, Research methodology</li>
+</ul>
 </div>
 
-<!-- Experience Section -->
 <div id="experience" class="content">
-    <h2>Experience</h2>
-    <div class="timeline">
-        <div class="timeline-item" data-icon="🛠️">
-            <div class="timeline-content"><h3>IDIA BRICS Workshop – Pune, 2024 (2 weeks)</h3>
-            <p>Hands-on training in astronomical data analysis, scripting in Python, and telescope operations.</p></div>
-        </div>
-        <div class="timeline-item" data-icon="🔭">
-            <div class="timeline-content"><h3>PRL Internship – Ahmedabad, Summer 2024 (1 month)</h3>
-            <p>Worked on solar observation datasets and participated in group research discussions.</p></div>
-        </div>
-        <div class="timeline-item" data-icon="📡">
-            <div class="timeline-content"><h3>NCRA – Pune, 2023 (10 days)</h3>
-            <p>Radio astronomy lab visits, understanding interferometry, and handling data pipelines.</p></div>
-        </div>
-        <div class="timeline-item" data-icon="🛰️">
-            <div class="timeline-content"><h3>IIRS Internship – 2025 (3 months)</h3>
-            <p>Studied atmospheric sciences, satellite data processing, and black body radiation experiments.</p></div>
-        </div>
-        <div class="timeline-item" data-icon="🌌">
-            <div class="timeline-content"><h3>IUCAA – Pune, 2023 (1 week)</h3>
-            <p>Attended workshops on exoplanet detection, spectroscopy techniques, and data modeling.</p></div>
-        </div>
-    </div>
+<h2>Experience</h2>
+<div class="timeline">
+<div class="timeline-item" data-icon="🛠️"><div class="timeline-content"><h3>IDIA BRICS Workshop – Pune, 2024 (2 weeks)</h3><p>Hands-on training in astronomical data analysis, scripting in Python, and telescope operations.</p></div></div>
+<div class="timeline-item" data-icon="🔭"><div class="timeline-content"><h3>PRL Internship – Ahmedabad, Summer 2024 (1 month)</h3><p>Worked on solar observation datasets and participated in group research discussions.</p></div></div>
+<div class="timeline-item" data-icon="📡"><div class="timeline-content"><h3>NCRA – Pune, 2023 (10 days)</h3><p>Radio astronomy lab visits, understanding interferometry, and handling data pipelines.</p></div></div>
+<div class="timeline-item" data-icon="🛰️"><div class="timeline-content"><h3>IIRS Internship – 2025 (3 months)</h3><p>Studied atmospheric sciences, satellite data processing, and black body radiation experiments.</p></div></div>
+<div class="timeline-item" data-icon="🌌"><div class="timeline-content"><h3>IUCAA – Pune, 2023 (1 week)</h3><p>Attended workshops on exoplanet detection, spectroscopy techniques, and data modeling.</p></div></div>
+</div>
 </div>
 
-<!-- Projects Section -->
 <div id="projects" class="content">
-    <h2>Projects</h2>
-    <div class="timeline">
-        <div class="timeline-item" data-icon="⭐">
-            <div class="timeline-content"><h3>Detecting Stellar Variability (TESS) – 2024</h3>
-            <p>Analyzed TESS data to study periodic brightness variations of stars.</p></div>
-        </div>
-        <div class="timeline-item" data-icon="⚡">
-            <div class="timeline-content"><h3>Accelerating Astronomy – 2023</h3>
-            <p>Created Python scripts to optimize observational data processing.</p></div>
-        </div>
-        <div class="timeline-item" data-icon="🌡️">
-            <div class="timeline-content"><h3>Heat Wave Monitoring – 2025</h3>
-            <p>Remote sensing project to analyze temperature anomalies across regions.</p></div>
-        </div>
-    </div>
+<h2>Projects</h2>
+<div class="timeline">
+<div class="timeline-item" data-icon="⭐"><div class="timeline-content"><h3>Detecting Stellar Variability (TESS) – 2024</h3><p>Analyzed TESS data to study periodic brightness variations of stars.</p></div></div>
+<div class="timeline-item" data-icon="⚡"><div class="timeline-content"><h3>Accelerating Astronomy – 2023</h3><p>Created Python scripts to optimize observational data processing.</p></div></div>
+<div class="timeline-item" data-icon="🌡️"><div class="timeline-content"><h3>Heat Wave Monitoring – 2025</h3><p>Remote sensing project to analyze temperature anomalies across regions.</p></div></div>
+</div>
 </div>
 
-<!-- Achievements Section -->
 <div id="achievements" class="content">
-    <h2>Achievements</h2>
-    <p>Astro Club Poster Exhibitions: 1st place (2024), 3rd place (2023)<br>
-    Participated in multiple inter-college science fairs and astronomy competitions.</p>
+<h2>Achievements</h2>
+<p>Astro Club Poster Exhibitions: 1st place (2024), 3rd place (2023)<br>Participated in multiple inter-college science fairs and astronomy competitions.</p>
 </div>
 
-<!-- Hobbies Section -->
 <div id="hobbies" class="content">
-    <h2>Hobbies</h2>
-    <p>Writing, Guitar, Swimming, Football, Reading Sci-Fi, Star-gazing, Travel</p>
+<h2>Hobbies</h2>
+<p>Writing, Guitar, Swimming, Football, Reading Sci-Fi, Star-gazing, Travel</p>
 </div>
 
-<!-- Contact Section -->
 <div id="contact" class="content">
-    <h2>Contact</h2>
-    <p>📞 +91-9955502069 | +91-6200316593<br>
-    ✉️ <a href="mailto:tripteshacharjee2005@gmail.com">tripteshacharjee2005@gmail.com</a><br>
-    🌐 LinkedIn: <a href="https://www.linkedin.com/in/triptesh-acharjee-09b0a3163/" target="_blank">Triptesh Acharjee</a> | 
-    Instagram: <a href="https://www.instagram.com/loveliholic" target="_blank">@Triptesh Acharjee</a></p>
+<h2>Contact</h2>
+<p>📞 +91-9955502069 | +91-6200316593<br>
+✉️ <a href="mailto:tripteshacharjee2005@gmail.com">tripteshacharjee2005@gmail.com</a><br>
+🌐 LinkedIn: <a href="https://www.linkedin.com/in/triptesh-acharjee-09b0a3163/" target="_blank">Triptesh Acharjee</a> | 
+Instagram: <a href="https://www.instagram.com/loveliholic" target="_blank">@Triptesh Acharjee</a></p>
 </div>
 
-<footer>&copy; 2025 Triptesh Acharjee. All Rights Reserved.</footer>
+<!-- Footer -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-left"><p>&copy; 2025 Triptesh Acharjee <span>®</span>. All Rights Reserved.</p></div>
+    <div class="footer-center">
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#hobbies">Hobbies</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-right">
+      <a href="mailto:tripteshacharjee2005@gmail.com">✉️ Email</a>
+      <a href="https://www.linkedin.com/in/triptesh-acharjee-09b0a3163/" target="_blank">🔗 LinkedIn</a>
+      <a href="https://www.instagram.com/loveliholic" target="_blank">📸 Instagram</a>
+    </div>
+  </div>
+  <p class="footer-bottom">Designed & Developed by Triptesh Acharjee</p>
+</footer>
+
+<!-- Back to Top Button -->
 <button id="backToTop">↑</button>
 
 <script>
