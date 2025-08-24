@@ -152,7 +152,7 @@
         transform: scale(1.2) rotate(10deg);
     }
 
-    /* Timeline Style for Experience and Projects */
+    /* Timeline Style for all sections except Contact */
     .timeline {
         position: relative;
         margin-left: 40px;
@@ -191,8 +191,12 @@
         font-size: 1.2em;
         color: #1e3c72;
     }
-    .timeline-content p {
+    .timeline-content p,
+    .timeline-content ul,
+    .timeline-content li {
         margin: 0;
+        padding: 0;
+        list-style: none;
     }
 </style>
 </head>
@@ -220,22 +224,70 @@
 <!-- Sections -->
 <div id="education" class="content">
     <h2>Education</h2>
-    <p>
-        <strong>B.Sc (Hons) Physics</strong> – Fergusson College, Pune (2023-2026)<br>
-        <strong>Higher Secondary</strong> – Carmel Junior College (2021-2023)<br>
-        <strong>Schooling</strong> – Jusco School Kadma (2005-2021)
-    </p>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-icon">🎓</div>
+            <div class="timeline-content">
+                <h3>B.Sc (Hons) Physics – Fergusson College, Pune</h3>
+                <p>(2023-2026)</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-icon">🏫</div>
+            <div class="timeline-content">
+                <h3>Higher Secondary – Carmel Junior College</h3>
+                <p>(2021-2023)</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-icon">🏫</div>
+            <div class="timeline-content">
+                <h3>Schooling – Jusco School Kadma</h3>
+                <p>(2005-2021)</p>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div id="skills" class="content">
     <h2>Skills</h2>
-    <ul>
-        <li>Programming: Python, Java</li>
-        <li>Operating Systems: Linux</li>
-        <li>Astronomy & Spectroscopy: Stellar observations, Data analysis</li>
-        <li>Communication: Public Speaking, Diplomacy</li>
-        <li>Other: Data visualization, Research methodology</li>
-    </ul>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-icon">💻</div>
+            <div class="timeline-content">
+                <h3>Programming</h3>
+                <p>Python, Java</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-icon">🖥️</div>
+            <div class="timeline-content">
+                <h3>Operating Systems</h3>
+                <p>Linux</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-icon">🔭</div>
+            <div class="timeline-content">
+                <h3>Astronomy & Spectroscopy</h3>
+                <p>Stellar observations, Data analysis</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-icon">🗣️</div>
+            <div class="timeline-content">
+                <h3>Communication</h3>
+                <p>Public Speaking, Diplomacy</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-icon">📊</div>
+            <div class="timeline-content">
+                <h3>Other</h3>
+                <p>Data visualization, Research methodology</p>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div id="experience" class="content">
@@ -308,17 +360,70 @@
 
 <div id="achievements" class="content">
     <h2>Achievements</h2>
-    <p>
-        Astro Club Poster Exhibitions: 1st place (2024), 3rd place (2023)<br>
-        Participated in multiple inter-college science fairs and astronomy competitions.
-    </p>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-icon">🏆</div>
+            <div class="timeline-content">
+                <h3>Astro Club Poster Exhibitions</h3>
+                <p>1st place (2024), 3rd place (2023)</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-icon">🔬</div>
+            <div class="timeline-content">
+                <h3>Science Fairs & Competitions</h3>
+                <p>Participated in multiple inter-college science fairs and astronomy competitions.</p>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div id="hobbies" class="content">
     <h2>Hobbies</h2>
-    <p>
-        Writing, Guitar, Swimming, Football, Reading Sci-Fi, Star-gazing, Travel
-    </p>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-icon">✍️</div>
+            <div class="timeline-content">
+                <h3>Writing</h3>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-icon">🎸</div>
+            <div class="timeline-content">
+                <h3>Guitar</h3>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-icon">🏊</div>
+            <div class="timeline-content">
+                <h3>Swimming</h3>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-icon">⚽</div>
+            <div class="timeline-content">
+                <h3>Football</h3>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-icon">📚</div>
+            <div class="timeline-content">
+                <h3>Reading Sci-Fi</h3>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-icon">🌌</div>
+            <div class="timeline-content">
+                <h3>Star-gazing</h3>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-icon">✈️</div>
+            <div class="timeline-content">
+                <h3>Travel</h3>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div id="contact" class="content">
@@ -355,7 +460,7 @@ function animateTimeline(sectionId) {
     items.forEach((item, index) => {
         setTimeout(() => {
             item.classList.add("show");
-        }, index * 150); // stagger effect
+        }, index * 150);
     });
 }
 
@@ -389,15 +494,13 @@ navLinks.forEach(link => {
             currentSection = targetSection;
         }
 
-        // Animate timeline if needed
-        if (targetId === "experience" || targetId === "projects") {
-            animateTimeline(targetId);
-        }
+        // Animate timeline if section has timeline
+        if (targetId !== "contact") animateTimeline(targetId);
     });
 });
 
 // Animate default section if it has timeline
-animateTimeline(currentSection.id);
+if (currentSection.id !== "contact") animateTimeline(currentSection.id);
 
 // Back to Top Button
 const backToTop = document.getElementById("backToTop");
@@ -411,7 +514,3 @@ backToTop.addEventListener("click", () => {
 
 </body>
 </html>
-
-
-
-
