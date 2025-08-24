@@ -7,16 +7,16 @@
 <style>
 html, body { height:100%; margin:0; font-family:'Segoe UI', Tahoma, sans-serif; background:#fafafa; color:#222; scroll-behavior:smooth; }
 body { display:flex; flex-direction:column; min-height:100vh; }
-header, .content, footer { max-width:1000px; margin:auto; box-sizing:border-box; }
-header { text-align:center; background: linear-gradient(135deg,#1e3c72,#2a5298); color:white; padding:30px 20px; border-bottom: 4px solid #ffcc00; }
-.profile-pic { width:100px; height:100px; border-radius:50%; border:4px solid white; object-fit:cover; margin-bottom:10px; transition: transform 0.3s, box-shadow 0.3s; }
-.profile-pic:hover { transform: scale(1.1); box-shadow: 0 0 15px rgba(255,204,0,0.6); }
-header h1 { margin:0; font-size:2em; } 
+header, .content, footer { max-width:1100px; margin:auto; box-sizing:border-box; }
+header { text-align:center; background: linear-gradient(135deg,#1e3c72,#2a5298); color:white; padding:40px 20px; border-bottom: 4px solid #ffcc00; }
+.profile-pic { width:120px; height:120px; border-radius:50%; border:4px solid white; object-fit:cover; margin-bottom:15px; transition: transform 0.3s, box-shadow 0.3s; }
+.profile-pic:hover { transform: scale(1.1); box-shadow: 0 0 20px rgba(255,204,0,0.6); }
+header h1 { margin:0; font-size:2.2em; } 
 header h1 span { font-size:0.6em; vertical-align:super; }
-header p { margin:5px 0; font-size:1em; }
+header p { margin:8px 0; font-size:1.1em; }
 
-/* --- Navigation --- */
-nav { position:sticky; top:0; z-index:1000; background:#1e3c72; display:flex; flex-wrap:wrap; justify-content:center; gap:10px; padding:8px; }
+/* Navigation */
+nav { position:sticky; top:0; z-index:1000; background:#1e3c72; display:flex; flex-wrap:wrap; justify-content:center; gap:12px; padding:10px 0; }
 nav a { color:white; text-decoration:none; font-weight:500; transition: color 0.3s, border-bottom 0.3s; padding-bottom:4px; cursor:pointer; }
 nav a:hover, nav a.active { color:#ffcc00; border-bottom:2px solid #ffcc00; }
 
@@ -25,8 +25,8 @@ nav a:hover, nav a.active { color:#ffcc00; border-bottom:2px solid #ffcc00; }
     background: linear-gradient(120deg,#ffffff,#f3f3f3);
     border-radius:10px;
     box-shadow:0 4px 12px rgba(0,0,0,0.08);
-    margin:15px 0;
-    padding:20px;
+    margin:25px 0;
+    padding:25px;
     opacity:0;
     transform: translateY(20px);
     transition: all 0.6s ease;
@@ -34,27 +34,34 @@ nav a:hover, nav a.active { color:#ffcc00; border-bottom:2px solid #ffcc00; }
 .content.active { opacity:1; transform: translateY(0); }
 
 /* Timeline */
-.timeline { position:relative; padding-left:20px; border-left:3px solid #2a5298; }
-.timeline-item { display:flex; flex-direction:row; align-items:flex-start; margin-bottom:15px; position:relative; padding:5px 10px; }
-.timeline-item::before { content: attr(data-icon); position: absolute; left: -50px; top: 0; width: 30px; height: 30px; background: #ffcc00; border-radius: 50%; display:flex; align-items:center; justify-content:center; font-size:16px; color:#222; }
-.timeline-content { margin-left:40px; }
-.timeline-content h3 { margin:0 0 4px 0; font-size:1.1em; color:#1e3c72; }
+.timeline { position:relative; padding-left:40px; border-left:3px solid #2a5298; }
+.timeline-item { display:flex; flex-direction:row; align-items:flex-start; margin-bottom:20px; position:relative; padding:5px 10px; opacity:0; transform:translateX(-30px); transition: all 0.5s ease; }
+.timeline-item.show { opacity:1; transform:translateX(0); }
+.timeline-item::before { content: attr(data-icon); position: absolute; left: -55px; top: 0; width: 35px; height: 35px; background: #ffcc00; border-radius: 50%; display:flex; align-items:center; justify-content:center; font-size:18px; color:#222; }
+.timeline-content { margin-left:50px; }
+.timeline-content h3 { margin:0 0 5px 0; font-size:1.2em; color:#1e3c72; }
 .timeline-content p, .timeline-content ul, .timeline-content li { margin:0; padding:0; list-style:none; }
 
 /* Headers */
-h2 { color:#1e3c72; border-left:4px solid #2a5298; padding-left:10px; font-size:1.5em; margin-bottom:15px; }
+h2 { color:#1e3c72; border-left:5px solid #2a5298; padding-left:12px; font-size:1.6em; margin-bottom:20px; }
 
 /* Footer */
-footer { background: #1e3c72; color: white; padding: 15px 20px; font-size: 0.9em; margin-top:auto; text-align:center; }
+footer { background: #1e3c72; color: white; padding: 20px; font-size: 0.9em; margin-top:auto; text-align:center; }
 footer p, footer a { color:white; text-decoration:none; font-size:0.9em; }
 
 /* Responsive */
+@media (max-width:1024px){
+    header h1{font-size:2em;}
+    .profile-pic{width:100px;height:100px;}
+    .timeline-item{flex-direction:column; align-items:flex-start; margin-left:0; padding-left:0;}
+    .timeline-item::before { left:-15px; margin-bottom:8px; }
+    .timeline-content{margin-left:0; margin-top:8px;}
+}
 @media (max-width:768px){
-    header h1{font-size:1.7em;}
-    .profile-pic{width:80px;height:80px;}
-    .timeline-item{flex-direction:column; align-items:flex-start; margin-left:0;}
-    .timeline-item::before { left:-10px; margin-bottom:5px; }
-    .timeline-content{margin-left:0; margin-top:5px;}
+    header h1{font-size:1.8em;}
+    header p{font-size:1em;}
+    nav { gap:8px; }
+    .profile-pic{width:90px;height:90px;}
 }
 @media (max-width:480px){
     header h1{font-size:1.5em;} header p{font-size:0.9em;}
@@ -73,7 +80,7 @@ footer p, footer a { color:white; text-decoration:none; font-size:0.9em; }
     <a data-section="projects">Projects</a>
     <a data-section="achievements">Achievements</a>
     <a data-section="hobbies">Hobbies</a>
-    <a data-section="contact">Contact</a>
+    <a data-section="contact" class="active">Contact</a>
 </nav>
 
 <header>
@@ -82,22 +89,25 @@ footer p, footer a { color:white; text-decoration:none; font-size:0.9em; }
     <p>B.Sc (Hons) Physics, Fergusson College, Pune</p>
 </header>
 
+<!-- Sections -->
 <div class="content" id="education">
 <h2>Education</h2>
-<p><strong>B.Sc (Hons) Physics</strong> – Fergusson College, Pune (2023-2026)<br>
-<strong>Higher Secondary</strong> – Carmel Junior College (2021-2023)<br>
-<strong>Schooling</strong> – Jusco School Kadma (2005-2021)</p>
+<div class="timeline">
+<div class="timeline-item" data-icon="🎓"><div class="timeline-content"><h3>B.Sc (Hons) Physics</h3><p>Fergusson College, Pune (2023-2026)</p></div></div>
+<div class="timeline-item" data-icon="🏫"><div class="timeline-content"><h3>Higher Secondary</h3><p>Carmel Junior College (2021-2023)</p></div></div>
+<div class="timeline-item" data-icon="🏠"><div class="timeline-content"><h3>Schooling</h3><p>Jusco School Kadma (2005-2021)</p></div></div>
+</div>
 </div>
 
 <div class="content" id="skills">
 <h2>Skills</h2>
-<ul>
-<li>Programming: Python, Java</li>
-<li>Operating Systems: Linux</li>
-<li>Astronomy & Spectroscopy: Stellar observations, Data analysis</li>
-<li>Communication: Public Speaking, Diplomacy</li>
-<li>Other: Data visualization, Research methodology</li>
-</ul>
+<div class="timeline">
+<div class="timeline-item" data-icon="💻"><div class="timeline-content"><h3>Programming</h3><p>Python, Java</p></div></div>
+<div class="timeline-item" data-icon="🖥️"><div class="timeline-content"><h3>Operating Systems</h3><p>Linux</p></div></div>
+<div class="timeline-item" data-icon="🔭"><div class="timeline-content"><h3>Astronomy & Spectroscopy</h3><p>Stellar observations, Data analysis</p></div></div>
+<div class="timeline-item" data-icon="🗣️"><div class="timeline-content"><h3>Communication</h3><p>Public Speaking, Diplomacy</p></div></div>
+<div class="timeline-item" data-icon="📊"><div class="timeline-content"><h3>Other</h3><p>Data visualization, Research methodology</p></div></div>
+</div>
 </div>
 
 <div class="content" id="experience">
@@ -122,21 +132,31 @@ footer p, footer a { color:white; text-decoration:none; font-size:0.9em; }
 
 <div class="content" id="achievements">
 <h2>Achievements</h2>
-<p>Astro Club Poster Exhibitions: 1st place (2024), 3rd place (2023)<br>
-Participated in multiple inter-college science fairs and astronomy competitions.</p>
+<div class="timeline">
+<div class="timeline-item" data-icon="🏆"><div class="timeline-content"><h3>Astro Club Poster Exhibitions</h3><p>1st place (2024), 3rd place (2023)</p></div></div>
+<div class="timeline-item" data-icon="🎖️"><div class="timeline-content"><h3>Other Competitions</h3><p>Participated in multiple inter-college science fairs and astronomy competitions.</p></div></div>
+</div>
 </div>
 
 <div class="content" id="hobbies">
 <h2>Hobbies</h2>
-<p>Writing, Guitar, Swimming, Football, Reading Sci-Fi, Star-gazing, Travel</p>
+<div class="timeline">
+<div class="timeline-item" data-icon="✍️"><div class="timeline-content"><h3>Writing</h3><p>Creative writing and blogging</p></div></div>
+<div class="timeline-item" data-icon="🎸"><div class="timeline-content"><h3>Guitar</h3><p>Playing and learning music</p></div></div>
+<div class="timeline-item" data-icon="🏊"><div class="timeline-content"><h3>Swimming</h3><p>Fitness and leisure activity</p></div></div>
+<div class="timeline-item" data-icon="⚽"><div class="timeline-content"><h3>Football</h3><p>Team sports and outdoor activity</p></div></div>
+<div class="timeline-item" data-icon="📚"><div class="timeline-content"><h3>Reading Sci-Fi</h3><p>Books and science fiction novels</p></div></div>
+<div class="timeline-item" data-icon="🌌"><div class="timeline-content"><h3>Star-gazing & Travel</h3><p>Exploring skies and places</p></div></div>
+</div>
 </div>
 
-<div class="content" id="contact">
+<div class="content active" id="contact">
 <h2>Contact</h2>
-<p>📞 <a href="tel:+919955502069">+91-9955502069</a> | <a href="tel:+916200316593">+91-6200316593</a><br>
-✉️ <a href="mailto:tripteshacharjee2005@gmail.com">tripteshacharjee2005@gmail.com</a><br>
-🌐 <a href="https://www.linkedin.com/in/triptesh-acharjee-09b0a3163/" target="_blank">LinkedIn</a> | 
-📸 <a href="https://www.instagram.com/loveliholic" target="_blank">Instagram</a></p>
+<div class="timeline">
+<div class="timeline-item" data-icon="📞"><div class="timeline-content"><h3>Phone</h3><p><a href="tel:+919955502069">+91-9955502069</a> | <a href="tel:+916200316593">+91-6200316593</a></p></div></div>
+<div class="timeline-item" data-icon="✉️"><div class="timeline-content"><h3>Email</h3><p><a href="mailto:tripteshacharjee2005@gmail.com">tripteshacharjee2005@gmail.com</a></p></div></div>
+<div class="timeline-item" data-icon="🌐"><div class="timeline-content"><h3>Social</h3><p><a href="https://www.linkedin.com/in/triptesh-acharjee-09b0a3163/" target="_blank">LinkedIn</a> | <a href="https://www.instagram.com/loveliholic" target="_blank">Instagram</a></p></div></div>
+</div>
 </div>
 
 <footer>
@@ -149,17 +169,29 @@ Participated in multiple inter-college science fairs and astronomy competitions.
 // Sections navigation
 const navLinks = document.querySelectorAll("nav a");
 const contents = document.querySelectorAll(".content");
-let currentSection = contents[0];
-currentSection.classList.add("active");
+
+function showTimeline(section){
+    const items = section.querySelectorAll(".timeline-item");
+    items.forEach((item,index)=>{
+        setTimeout(()=>{item.classList.add("show");}, index*150);
+    });
+}
+
+contents.forEach(c=>c.classList.remove("active"));
+const defaultSection = document.getElementById("contact");
+defaultSection.classList.add("active");
+showTimeline(defaultSection);
 
 navLinks.forEach(link=>{
     link.addEventListener("click",()=>{
         const targetId = link.getAttribute("data-section");
         const targetSection = document.getElementById(targetId);
-        contents.forEach(c => c.classList.remove("active"));
+        contents.forEach(c => { c.classList.remove("active"); c.querySelectorAll(".timeline-item").forEach(i=>i.classList.remove("show")); });
         targetSection.classList.add("active");
+        showTimeline(targetSection);
         navLinks.forEach(l => l.classList.remove("active"));
         link.classList.add("active");
+        window.scrollTo({top:0, behavior:'smooth'});
     });
 });
 </script>
