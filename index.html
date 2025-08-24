@@ -17,11 +17,12 @@ header h1 span { font-size:0.6em; vertical-align:super; }
 header p { margin:8px 0; font-size:1.1em; }
 
 /* Content Box */
-.content { background:#fff; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.08); margin:25px 0; padding:25px; max-width:1000px; width:90%; }
+.content { background:#fff; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.08); margin:20px 0; padding:25px; max-width:1000px; width:90%; }
 
 /* Timeline */
 .timeline { position:relative; padding-left:40px; border-left:3px solid #2a5298; }
-.timeline-item { display:flex; flex-direction:row; align-items:flex-start; margin-bottom:20px; position:relative; padding:5px 10px; }
+.timeline-item { display:flex; flex-direction:row; align-items:flex-start; margin-bottom:20px; position:relative; padding:5px 10px; opacity:0; transform: translateY(30px); transition: all 0.6s ease-out; }
+.timeline-item.visible { opacity:1; transform: translateY(0); }
 .timeline-item::before { content: attr(data-icon); position:absolute; left:-55px; top:0; width:35px; height:35px; background:#ffcc00; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:18px; color:#222; }
 .timeline-content { margin-left:50px; }
 .timeline-content h3 { margin:0 0 5px 0; font-size:1.2em; color:#1e3c72; }
@@ -56,7 +57,13 @@ footer p, footer a { color:white; text-decoration:none; font-size:0.9em; }
 </head>
 <body>
 
-<!-- Contact at top -->
+<header>
+    <img src="profile.jpg" alt="Triptesh Acharjee" class="profile-pic">
+    <h1>Triptesh Acharjee<span>®</span></h1>
+    <p>B.Sc (Hons) Physics, Fergusson College, Pune</p>
+</header>
+
+<!-- Contact -->
 <div class="content" id="contact">
 <h2>Contact</h2>
 <div class="timeline">
@@ -65,12 +72,6 @@ footer p, footer a { color:white; text-decoration:none; font-size:0.9em; }
 <div class="timeline-item" data-icon="🌐"><div class="timeline-content"><h3>Social</h3><p><a href="https://www.linkedin.com/in/triptesh-acharjee-09b0a3163/" target="_blank">LinkedIn</a> | <a href="https://www.instagram.com/loveliholic" target="_blank">Instagram</a></p></div></div>
 </div>
 </div>
-
-<header>
-    <img src="profile.jpg" alt="Triptesh Acharjee" class="profile-pic">
-    <h1>Triptesh Acharjee<span>®</span></h1>
-    <p>B.Sc (Hons) Physics, Fergusson College, Pune</p>
-</header>
 
 <!-- Education -->
 <div class="content" id="education">
@@ -110,7 +111,7 @@ footer p, footer a { color:white; text-decoration:none; font-size:0.9em; }
 <div class="content" id="projects">
 <h2>Projects</h2>
 <div class="timeline">
-<div class="timeline-item" data-icon="⭐"><div class="timeline-content"><h3>Detecting Stellar Variability (TESS) – 2024</h3><p>Analyzed TESS data to study periodic brightness variations of stars.</p></div></div>
+<div class="timeline-item" data-icon="🌠"><div class="timeline-content"><h3>Detecting Stellar Variability (TESS) – 2024</h3><p>Analyzed TESS data to study periodic brightness variations of stars.</p></div></div>
 <div class="timeline-item" data-icon="⚡"><div class="timeline-content"><h3>Accelerating Astronomy – 2023</h3><p>Created Python scripts to optimize observational data processing.</p></div></div>
 <div class="timeline-item" data-icon="🌡️"><div class="timeline-content"><h3>Heat Wave Monitoring – 2025</h3><p>Remote sensing project to analyze temperature anomalies across regions.</p></div></div>
 </div>
@@ -138,11 +139,28 @@ footer p, footer a { color:white; text-decoration:none; font-size:0.9em; }
 </div>
 </div>
 
+<!-- Footer -->
 <footer>
 <p>&copy; 2025 Triptesh Acharjee ®. All Rights Reserved.</p>
 <p>Designed & Developed by Triptesh Acharjee</p>
 <p>Contact: <a href="tel:+919955502069">+91-9955502069</a> | <a href="mailto:tripteshacharjee2005@gmail.com">tripteshacharjee2005@gmail.com</a></p>
 </footer>
+
+<script>
+// Animate timeline items on scroll
+const timelineItems = document.querySelectorAll('.timeline-item');
+function showTimelineItems() {
+  const triggerBottom = window.innerHeight * 0.85;
+  timelineItems.forEach(item => {
+    const itemTop = item.getBoundingClientRect().top;
+    if(itemTop < triggerBottom) {
+      item.classList.add('visible');
+    }
+  });
+}
+window.addEventListener('scroll', showTimelineItems);
+window.addEventListener('load', showTimelineItems);
+</script>
 
 </body>
 </html>
