@@ -30,6 +30,9 @@ header p.tagline { margin:5px 0 15px 0; font-size:1em; font-style:italic; color:
 
 /* Content Box */
 .content { background:#fff; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.08); margin:20px 0; padding:25px; max-width:1000px; width:90%; }
+.content h2 { cursor:pointer; user-select:none; display:flex; justify-content:space-between; align-items:center; font-size:1.4em; }
+.content h2 span.arrow { display:inline-block; transition: transform 0.3s ease; }
+.content .section-body { display:none; margin-top:15px; }
 
 /* Timeline */
 .timeline { position:relative; padding-left:40px; border-left:3px solid #2a5298; }
@@ -39,9 +42,6 @@ header p.tagline { margin:5px 0 15px 0; font-size:1em; font-style:italic; color:
 .timeline-content { margin-left:50px; }
 .timeline-content h3 { margin:0 0 5px 0; font-size:1.2em; color:#1e3c72; }
 .timeline-content p, .timeline-content ul, .timeline-content li { margin:0; padding:0; list-style:none; }
-
-/* Headers */
-h2 { color:#1e3c72; border-left:5px solid #2a5298; padding-left:12px; font-size:1.6em; margin-bottom:20px; }
 
 /* Footer */
 footer { background:#1e3c72; color:white; padding:15px 20px; font-size:0.9em; width:100%; }
@@ -86,10 +86,20 @@ footer a { color:white; text-decoration:none; }
     </div>
 </header>
 
-<!-- All content sections (Contact, Education, Skills, Experience, Projects, Achievements, Hobbies) -->
-<!-- Use the same timeline HTML from previous version here -->
+<!-- Example Section: Contact -->
+<div class="content" id="contact">
+  <h2>Contact <span class="arrow">►</span></h2>
+  <div class="section-body">
+    <div class="timeline">
+      <div class="timeline-item" data-icon="📞"><div class="timeline-content"><h3>Phone</h3><p><a href="tel:+919955502069">+91-9955502069</a> | <a href="tel:+916200316593">+91-6200316593</a></p></div></div>
+      <div class="timeline-item" data-icon="✉️"><div class="timeline-content"><h3>Email</h3><p><a href="mailto:tripteshacharjee2005@gmail.com">tripteshacharjee2005@gmail.com</a></p></div></div>
+      <div class="timeline-item" data-icon="🌐"><div class="timeline-content"><h3>Social</h3><p><a href="https://www.linkedin.com/in/triptesh-acharjee-09b0a3163/" target="_blank">LinkedIn</a> | <a href="https://www.instagram.com/loveliholic" target="_blank">Instagram</a></p></div></div>
+    </div>
+  </div>
+</div>
 
-<!-- Footer -->
+<!-- Repeat for other sections (Education, Skills, Experience, Projects, Achievements, Hobbies) with same structure -->
+
 <footer>
   <div class="footer-container">
     <span>&copy; 2025 Triptesh Acharjee ®. All Rights Reserved.</span>
@@ -114,9 +124,8 @@ for(let i=0;i<numStars;i++){
     star.style.animation = `twinkle ${Math.random()*5+3}s infinite alternate`;
     header.appendChild(star);
 }
-
 const style = document.createElement('style');
-style.innerHTML = `@keyframes twinkle { 0% {opacity:0.2;} 50% {opacity:0.8;} 100% {opacity:0.2;} }`;
+style.innerHTML = `@keyframes twinkle {0% {opacity:0.2;} 50% {opacity:0.8;} 100% {opacity:0.2;}}`;
 document.head.appendChild(style);
 
 // Scroll Animation for timeline
@@ -130,7 +139,23 @@ function animateTimeline() {
 }
 window.addEventListener('scroll', animateTimeline);
 window.addEventListener('load', animateTimeline);
-</script>
 
+// Collapsible Sections with arrow rotation
+document.querySelectorAll('.content h2').forEach(header => {
+    header.addEventListener('click', () => {
+        const body = header.nextElementSibling;
+        const arrow = header.querySelector('.arrow');
+        const isOpen = body.style.display === 'block';
+        body.style.display = isOpen ? 'none' : 'block';
+        arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(90deg)';
+        animateTimeline();
+    });
+});
+
+// Open Contact by default
+const contactBody = document.querySelector('#contact .section-body');
+contactBody.style.display = 'block';
+document.querySelector('#contact .arrow').style.transform = 'rotate(90deg)';
+</script>
 </body>
 </html>
