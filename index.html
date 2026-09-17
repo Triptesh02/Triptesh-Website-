@@ -4,9 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Triptesh Acharjee | Astrophysicist & Researcher</title>
+
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Triptesh Acharjee | Astrophysicist & Researcher">
+  <meta property="og:description" content="Portfolio of Triptesh Acharjee — Research in Ionospheric Physics, Semiconductors, Thin-Films, and Exoplanets.">
+  <meta property="og:image" content="profile.jpg">
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Triptesh Acharjee | Astrophysicist & Researcher">
+  <meta name="twitter:description" content="Research in Ionospheric Physics, Semiconductors, Thin-Films, and Exoplanets.">
+  <meta name="twitter:image" content="profile.jpg">
+
+  <!-- SVG Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+  
   <style>
     :root {
       --bg-dark: #0a0d14;
@@ -46,6 +63,18 @@
       pointer-events: none;
     }
 
+    /* Scroll Reveal Animation */
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-in-section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* Navigation */
     nav {
       position: sticky;
@@ -53,7 +82,7 @@
       z-index: 1000;
       width: 90%;
       max-width: 1000px;
-      background: rgba(10, 13, 20, 0.75);
+      background: rgba(10, 13, 20, 0.85);
       backdrop-filter: blur(16px);
       border: 1px solid var(--card-border);
       border-radius: 40px;
@@ -87,6 +116,15 @@
     }
 
     .nav-links a:hover { color: var(--accent-cyan); }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-main);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
 
     /* Hero Section */
     header {
@@ -134,6 +172,8 @@
       color: var(--accent-cyan);
       font-weight: 600;
       margin-bottom: 25px;
+      max-width: 750px;
+      line-height: 1.4;
     }
 
     .cta-group {
@@ -214,6 +254,72 @@
       background: linear-gradient(90deg, var(--card-border), transparent);
     }
 
+    /* Coursework Badges */
+    .coursework-container {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 10px;
+    }
+
+    .coursework-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .coursework-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--text-main);
+      transition: all 0.3s ease;
+    }
+
+    .chip:hover {
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    /* Category Filter Buttons */
+    .filter-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .filter-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: rgba(0, 242, 254, 0.15);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
     .grid-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -232,6 +338,10 @@
       cursor: pointer;
       display: flex;
       flex-direction: column;
+    }
+
+    .card.hidden {
+      display: none !important;
     }
 
     .card:hover {
@@ -293,7 +403,7 @@
       gap: 5px;
     }
 
-    /* Skills Grid with Hidden/Optional Ratings */
+    /* Skills Grid */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -322,7 +432,6 @@
       transition: opacity 0.3s ease, visibility 0.3s ease;
     }
 
-    /* Revealed state for skill scores */
     .show-ratings .skill-score {
       opacity: 1;
       visibility: visible;
@@ -343,14 +452,14 @@
       transition: width 1s ease-in-out;
     }
 
-    /* Modal Styling */
+    /* Modals */
     .modal-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(5, 7, 12, 0.85);
+      background: rgba(5, 7, 12, 0.88);
       backdrop-filter: blur(12px);
       z-index: 2000;
       display: flex;
@@ -371,7 +480,7 @@
       background: #111622;
       border: 1px solid var(--accent-cyan);
       border-radius: 20px;
-      max-width: 680px;
+      max-width: 720px;
       width: 100%;
       padding: 30px;
       position: relative;
@@ -380,6 +489,13 @@
       box-shadow: 0 20px 50px rgba(0, 242, 254, 0.2);
       max-height: 85vh;
       overflow-y: auto;
+    }
+
+    .modal-box.large-modal {
+      max-width: 900px;
+      height: 85vh;
+      display: flex;
+      flex-direction: column;
     }
 
     .modal-overlay.active .modal-box {
@@ -401,6 +517,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 10;
     }
 
     .modal-close:hover { background: rgba(255, 255, 255, 0.2); }
@@ -453,6 +570,15 @@
       font-weight: 600;
     }
 
+    .resume-frame {
+      width: 100%;
+      flex: 1;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      margin-top: 15px;
+      background: #fff;
+    }
+
     /* Footer */
     footer {
       width: 100%;
@@ -466,9 +592,40 @@
 
     footer a { color: var(--accent-cyan); text-decoration: none; }
 
+    .copy-btn {
+      background: rgba(0, 242, 254, 0.1);
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      color: var(--accent-cyan);
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      margin-left: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .copy-btn:hover {
+      background: var(--accent-cyan);
+      color: #000;
+    }
+
     @media (max-width: 768px) {
       h1 { font-size: 2rem; }
-      .nav-links { display: none; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 13, 20, 0.95);
+        border: 1px solid var(--card-border);
+        border-radius: 20px;
+        padding: 20px;
+        gap: 15px;
+      }
+      .nav-links.mobile-open { display: flex; }
+      .menu-toggle { display: block; }
     }
   </style>
 </head>
@@ -478,37 +635,74 @@
 
   <nav>
     <div class="nav-logo">T.A.</div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#achievements">Achievements</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle Navigation">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" onclick="closeMenu()">About</a></li>
+      <li><a href="#education" onclick="closeMenu()">Education</a></li>
+      <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
+      <li><a href="#achievements" onclick="closeMenu()">Achievements</a></li>
+      <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
+      <li><a href="#experience" onclick="closeMenu()">Experience</a></li>
     </ul>
   </nav>
 
-  <header id="about">
+  <header id="about" class="fade-in-section">
     <img src="profile.jpg" alt="Triptesh Acharjee" class="profile-pic">
     <h1>Triptesh Acharjee®</h1>
     <div class="degree-badge">B.Sc (Hons) Physics • Fergusson College, Pune</div>
-    <p class="tagline">Aspiring ISRO Scientist & Exoplanet Research Enthusiast, Currently Working in Semi Conductors</p>
+    <p class="tagline">Aspiring ISRO Scientist & Exoplanet Research Enthusiast, Currently Working in Semiconductors & Thin-Film Technologies</p>
     
     <div class="cta-group">
       <a class="btn btn-primary" href="Triptesh_Acharjee_Resume (3).pdf" download>📄 Download CV</a>
+      <button class="btn btn-secondary" onclick="openResumeModal()">👁️ View Resume</button>
       <a class="btn btn-secondary" href="https://www.linkedin.com/in/triptesh-acharjee-09b0a3163/" target="_blank">LinkedIn</a>
+      <a class="btn btn-secondary" href="https://github.com" target="_blank">GitHub</a>
       <a class="btn btn-secondary" href="https://www.instagram.com/loveliholic.private" target="_blank">Instagram</a>
     </div>
   </header>
 
   <main>
 
-    <!-- Key Featured Projects -->
-    <section id="projects">
-      <h2 class="section-title">Key Academic & Graduation Projects</h2>
+    <!-- Education & Relevant Coursework -->
+    <section id="education" class="fade-in-section">
+      <h2 class="section-title">Education & Relevant Coursework</h2>
+      <div class="coursework-container">
+        <div style="margin-bottom:15px;">
+          <h3 style="font-size:1.15rem; color:var(--text-main);">B.Sc (Hons) Physics</h3>
+          <p style="font-size:0.9rem; color:var(--accent-cyan); font-weight:600;">Fergusson College, Pune • Savitribai Phule Pune University (2023 – 2026)</p>
+        </div>
+        <div class="coursework-title">📚 Core & Advanced Academic Coursework:</div>
+        <div class="coursework-chips">
+          <span class="chip">Classical Electrodynamics</span>
+          <span class="chip">Statistical Mechanics</span>
+          <span class="chip">Quantum Mechanics</span>
+          <span class="chip">Solid State Physics</span>
+          <span class="chip">Thin-Film & Semiconductor Technology</span>
+          <span class="chip">Computational Physics</span>
+          <span class="chip">Observational Astronomy</span>
+          <span class="chip">Hydrology & Geophysics</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Featured Projects with Filters -->
+    <section id="projects" class="fade-in-section">
+      <div class="section-header-flex">
+        <h2 class="section-title" style="margin-bottom:0;">Key Academic & Research Projects</h2>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="filter-group">
+        <button class="filter-btn active" onclick="filterCategory('all', this)">All Projects</button>
+        <button class="filter-btn" onclick="filterCategory('astrophysics', this)">Astrophysics & Space</button>
+        <button class="filter-btn" onclick="filterCategory('semiconductors', this)">Semiconductors & Sensors</button>
+        <button class="filter-btn" onclick="filterCategory('data', this)">Data & Computation</button>
+      </div>
+
       <div class="grid-container">
 
         <!-- IIT Indore Graduation Project -->
-        <div class="card" onclick="openModal('iit-indore')">
+        <div class="card" data-category="astrophysics data" onclick="openModal('iit-indore')">
           <span class="card-badge award-tag">🥇 1st Prize Winner</span>
           <div class="card-icon">🏛️</div>
           <h3>Ionospheric TEC & Solar Storm Study</h3>
@@ -517,8 +711,8 @@
           <div class="click-hint">🔍 View full project details & outcome &rarr;</div>
         </div>
 
-        <!-- Fergusson College PICC Project -->
-        <div class="card" onclick="openModal('fergusson-picc')">
+        <!-- Fergusson College PICC CuO Project -->
+        <div class="card" data-category="semiconductors" onclick="openModal('fergusson-picc')">
           <span class="card-badge">PICC Research</span>
           <div class="card-icon">🔬</div>
           <h3>CuO Semiconducting Gas Sensors</h3>
@@ -527,8 +721,18 @@
           <div class="click-hint">🔍 View full project details & outcome &rarr;</div>
         </div>
 
+        <!-- LnZnO Thin-Film Photoelectrocatalysis Project -->
+        <div class="card" data-category="semiconductors" onclick="openModal('lnzno-project')">
+          <span class="card-badge">Material Science</span>
+          <div class="card-icon">⚡</div>
+          <h3>LnZnO Thin Films on FTO Substrates</h3>
+          <div class="card-subtitle">SPPU Collaboration • Photoelectrocatalysis</div>
+          <p>Deposition and characterization of Lanthanum-doped Zinc Oxide films onto FTO substrates for enhanced photoelectrocatalytic efficiency.</p>
+          <div class="click-hint">🔍 View full project details & outcome &rarr;</div>
+        </div>
+
         <!-- TESS Stellar Variability -->
-        <div class="card" onclick="openModal('tess-project')">
+        <div class="card" data-category="astrophysics data" onclick="openModal('tess-project')">
           <span class="card-badge">Data Analysis</span>
           <div class="card-icon">⭐</div>
           <h3>Stellar Variability (TESS)</h3>
@@ -537,11 +741,21 @@
           <div class="click-hint">🔍 View project details & outcome &rarr;</div>
         </div>
 
+        <!-- Heat Wave Monitoring -->
+        <div class="card" data-category="data" onclick="openModal('iirs-heatwave')">
+          <span class="card-badge">Remote Sensing</span>
+          <div class="card-icon">🌡️</div>
+          <h3>Heat Wave & Thermal Monitoring</h3>
+          <div class="card-subtitle">IIRS Remote Sensing • 2025</div>
+          <p>Satellite data processing and analysis of regional surface temperature anomalies and thermal patterns.</p>
+          <div class="click-hint">🔍 View project details & outcome &rarr;</div>
+        </div>
+
       </div>
     </section>
 
     <!-- Achievements Section -->
-    <section id="achievements">
+    <section id="achievements" class="fade-in-section">
       <h2 class="section-title">Honors & Achievements</h2>
       <div class="grid-container">
         
@@ -563,7 +777,7 @@
     </section>
 
     <!-- Skills Section with Optional Toggle Button -->
-    <section id="skills">
+    <section id="skills" class="fade-in-section">
       <div class="section-header-flex">
         <h2 class="section-title" style="margin-bottom:0;">Skills & Competencies</h2>
         <button class="btn btn-secondary" id="toggle-skills-btn" onclick="toggleRatings()" style="font-size:0.85rem; padding:6px 16px;">
@@ -641,7 +855,7 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience">
+    <section id="experience" class="fade-in-section">
       <h2 class="section-title">Research Experience & Internships</h2>
       <div class="grid-container">
         <div class="card" style="cursor:default;">
@@ -674,23 +888,76 @@
     </div>
   </div>
 
+  <!-- PDF Resume Modal -->
+  <div class="modal-overlay" id="resumeModal" onclick="closeResumeModalOnOverlay(event)">
+    <div class="modal-box large-modal">
+      <button class="modal-close" onclick="closeResumeModal()">&times;</button>
+      <h3 class="modal-title">Curriculum Vitae Preview</h3>
+      <div class="modal-subtitle">Triptesh Acharjee • Resume</div>
+      <iframe src="Triptesh_Acharjee_Resume (3).pdf" class="resume-frame" title="Resume PDF"></iframe>
+    </div>
+  </div>
+
   <footer>
     <p>&copy; 2026 Triptesh Acharjee®. All Rights Reserved.</p>
-    <p>Contact: <a href="mailto:tripteshacharjee2005@gmail.com">tripteshacharjee2005@gmail.com</a> | +91-9955502069</p>
+    <p style="margin-top:8px;">
+      Contact: 
+      <a href="mailto:tripteshacharjee2005@gmail.com">tripteshacharjee2005@gmail.com</a>
+      <button class="copy-btn" onclick="copyEmail()">📋 Copy</button>
+      | <a href="tel:+919955502069">+91-9955502069</a>
+    </p>
   </footer>
 
   <script>
+    // Navigation Menu Toggle
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('mobile-open');
+    }
+    function closeMenu() {
+      document.getElementById('navLinks').classList.remove('mobile-open');
+    }
+
+    // Category Filter for Projects
+    function filterCategory(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('#projects .card');
+      cards.forEach(card => {
+        const categories = card.getAttribute('data-category');
+        if (cat === 'all' || (categories && categories.includes(cat))) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
     // Skill Rating Toggle
     function toggleRatings() {
       const container = document.getElementById('skillsContainer');
       const btn = document.getElementById('toggle-skills-btn');
       container.classList.toggle('show-ratings');
-      
-      if (container.classList.contains('show-ratings')) {
-        btn.innerHTML = '🙈 Hide Skill Ratings';
-      } else {
-        btn.innerHTML = '👁️ View Skill Ratings';
-      }
+      btn.innerHTML = container.classList.contains('show-ratings') ? '🙈 Hide Skill Ratings' : '👁️ View Skill Ratings';
+    }
+
+    // Copy Email to Clipboard
+    function copyEmail() {
+      navigator.clipboard.writeText('tripteshacharjee2005@gmail.com');
+      const copyBtn = document.querySelector('.copy-btn');
+      copyBtn.innerHTML = '✓ Copied!';
+      setTimeout(() => { copyBtn.innerHTML = '📋 Copy'; }, 2000);
+    }
+
+    // Resume Modal Controls
+    function openResumeModal() {
+      document.getElementById('resumeModal').classList.add('active');
+    }
+    function closeResumeModal() {
+      document.getElementById('resumeModal').classList.remove('active');
+    }
+    function closeResumeModalOnOverlay(e) {
+      if (e.target.id === 'resumeModal') closeResumeModal();
     }
 
     // Detailed Project Content
@@ -739,6 +1006,21 @@
           <p>Supervised by <strong>Prof. Dr. Ashish Yengantiwar</strong> with guidance from <strong>Mr. Bosco V. Ruptake</strong>, Department of Physics, Fergusson College.</p>
         `
       },
+      'lnzno-project': {
+        title: "Lanthanum-Doped Zinc Oxide (LnZnO) Thin Films for Photoelectrocatalysis",
+        subtitle: "SPPU Department Collaboration • Material Science Research",
+        body: `
+          <h4>Overview & Objectives</h4>
+          <p>Investigated thin-film photoelectrocatalysis using Lanthanum-doped Zinc Oxide (LnZnO) deposited onto Fluorine-doped Tin Oxide (FTO) conductive glass substrates to evaluate solar energy conversion efficiency.</p>
+
+          <h4>Methodology & Processing</h4>
+          <ul>
+            <li><strong>Material Acquisition:</strong> High-temperature synthesised LnZnO material obtained from the Chemistry Department to ensure precise doping stoichiometry.</li>
+            <li><strong>Thin Film Deposition:</strong> Deposited synthesized LnZnO onto pre-cleaned FTO substrates using physical deposition techniques.</li>
+            <li><strong>Photoelectrochemical Evaluation:</strong> Analyzed charge transfer mechanisms and photo-response for catalysis applications.</li>
+          </ul>
+        `
+      },
       'tess-project': {
         title: "Detecting Stellar Variability (TESS)",
         subtitle: "NASA Transiting Exoplanet Survey Satellite • 2024",
@@ -748,6 +1030,18 @@
           <ul>
             <li>Engineered Python data pipelines to filter systematic noise and instrument trends.</li>
             <li>Identified periodic light drops corresponding to stellar activity and candidate transits.</li>
+          </ul>
+        `
+      },
+      'iirs-heatwave': {
+        title: "Heat Wave & Regional Thermal Monitoring",
+        subtitle: "IIRS Remote Sensing Project • 2025",
+        body: `
+          <h4>Overview</h4>
+          <p>Processed multi-spectral satellite datasets to monitor regional surface temperature anomalies and heat wave dynamics.</p>
+          <ul>
+            <li>Extracted land surface temperature (LST) metrics from satellite observations.</li>
+            <li>Mapped thermal variation trends across target geographical zones.</li>
           </ul>
         `
       }
@@ -811,6 +1105,17 @@
     resizeCanvas();
     initStars();
     drawStars();
+
+    // Scroll Reveal Observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
   </script>
 </body>
 </html>
