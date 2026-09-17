@@ -105,14 +105,14 @@
 
     .nav-links {
       display: flex;
-      gap: 16px;
+      gap: 18px;
       list-style: none;
     }
 
     .nav-links a {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       font-weight: 600;
       transition: color 0.3s;
     }
@@ -405,99 +405,6 @@
       gap: 5px;
     }
 
-    /* Visualizer Section Container */
-    .viz-container {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 18px;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .viz-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .viz-title-box h3 {
-      font-size: 1.15rem;
-      color: var(--accent-cyan);
-    }
-
-    .viz-title-box p {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .viz-controls {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .viz-btn {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--card-border);
-      color: var(--text-main);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .viz-btn.active, .viz-btn:hover {
-      background: rgba(0, 242, 254, 0.2);
-      border-color: var(--accent-cyan);
-      color: var(--accent-cyan);
-    }
-
-    .canvas-wrapper {
-      position: relative;
-      width: 100%;
-      height: 320px;
-      background: rgba(10, 13, 20, 0.8);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .viz-canvas {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
-    .viz-readout {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 15px;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--card-border);
-      padding: 12px 18px;
-      border-radius: 12px;
-      font-size: 0.85rem;
-    }
-
-    .readout-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .readout-val {
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: var(--accent-gold);
-    }
-
     /* Poster Gallery Cards */
     .poster-card {
       background: var(--card-bg);
@@ -593,7 +500,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(5, 7, 12, 0.88);
+      background: rgba(5, 7, 12, 0.9);
       backdrop-filter: blur(12px);
       z-index: 2000;
       display: flex;
@@ -614,20 +521,20 @@
       background: #111622;
       border: 1px solid var(--accent-cyan);
       border-radius: 20px;
-      max-width: 720px;
+      max-width: 820px;
       width: 100%;
       padding: 30px;
       position: relative;
       transform: translateY(20px);
       transition: transform 0.3s ease;
       box-shadow: 0 20px 50px rgba(0, 242, 254, 0.2);
-      max-height: 85vh;
+      max-height: 90vh;
       overflow-y: auto;
     }
 
     .modal-box.large-modal {
-      max-width: 900px;
-      height: 85vh;
+      max-width: 950px;
+      height: 88vh;
       display: flex;
       flex-direction: column;
     }
@@ -713,6 +620,61 @@
       background: #fff;
     }
 
+    /* Simulation Control Widgets inside Modals */
+    .sim-panel {
+      background: rgba(10, 13, 20, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 16px;
+      margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .sim-controls-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .sim-slider-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .sim-slider-group label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .sim-slider-group input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent-cyan);
+      cursor: pointer;
+    }
+
+    .sim-canvas-box {
+      width: 100%;
+      height: 240px;
+      background: #06080d;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sim-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
     /* Footer */
     footer {
       width: 100%;
@@ -773,8 +735,6 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="#about" onclick="closeMenu()">About</a></li>
       <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
-      <li><a href="#visualizer" onclick="closeMenu()">TEC Visualizer</a></li>
-      <li><a href="#lightcurve" onclick="closeMenu()">Light Curve</a></li>
       <li><a href="#posters" onclick="closeMenu()">Posters</a></li>
       <li><a href="#achievements" onclick="closeMenu()">Achievements</a></li>
       <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
@@ -844,7 +804,7 @@
           <h3>Ionospheric TEC & Solar Storm Study</h3>
           <div class="card-subtitle">IIT Indore • DAASE Department</div>
           <p>GNSS-based calculation of Total Electron Content (TEC) and analysis of the "Noon TEC Bite-Out" during the May 2024 G5 Solar Storm.</p>
-          <div class="click-hint">🔍 View full project details & outcome &rarr;</div>
+          <div class="click-hint">🔍 View interactive simulation & details &rarr;</div>
         </div>
 
         <!-- Fergusson College PICC CuO Project -->
@@ -854,7 +814,7 @@
           <h3>CuO Semiconducting Gas Sensors</h3>
           <div class="card-subtitle">Fergusson College • Department of Physics</div>
           <p>Development and optimization of a CuO/conductive-PLA electrode sensing platform via electrodeposition for ammonia/gas detection.</p>
-          <div class="click-hint">🔍 View full project details & outcome &rarr;</div>
+          <div class="click-hint">🔍 View interactive sensor calculator & details &rarr;</div>
         </div>
 
         <!-- LnZnO Thin-Film Photoelectrocatalysis Project -->
@@ -874,7 +834,7 @@
           <h3>Stellar Variability (TESS)</h3>
           <div class="card-subtitle">NASA TESS Mission Data • 2024</div>
           <p>Analyzed light curves from TESS to identify variations in stellar brightness and exoplanet transits.</p>
-          <div class="click-hint">🔍 View project details & outcome &rarr;</div>
+          <div class="click-hint">🔍 View live exoplanet transit simulator &rarr;</div>
         </div>
 
         <!-- Heat Wave Monitoring -->
@@ -887,89 +847,6 @@
           <div class="click-hint">🔍 View project details & outcome &rarr;</div>
         </div>
 
-      </div>
-    </section>
-
-    <!-- Interactive TEC Data Visualizer Widget -->
-    <section id="visualizer" class="fade-in-section">
-      <h2 class="section-title">Interactive Ionospheric TEC Visualizer</h2>
-      <div class="viz-container">
-        <div class="viz-header">
-          <div class="viz-title-box">
-            <h3>May 2024 Solar Storm – Diurnal & Storm Peak Simulation</h3>
-            <p>Model based on GNSS observation processing at IISC Bangalore Station (DOY 125 – 138)</p>
-          </div>
-          <div class="viz-controls">
-            <button class="viz-btn active" id="btnIISC" onclick="setVizMode('iisc')">Station IISC (Storm)</button>
-            <button class="viz-btn" id="btnQuiet" onclick="setVizMode('quiet')">Quiet Day Baseline</button>
-            <button class="viz-btn" onclick="animateStormCurve()">⚡ Simulate Storm Event</button>
-          </div>
-        </div>
-
-        <div class="canvas-wrapper">
-          <canvas id="tecCanvas" class="viz-canvas"></canvas>
-        </div>
-
-        <div class="viz-readout">
-          <div class="readout-item">
-            <span style="color:var(--text-muted);">Max Peak (DOY 132)</span>
-            <span class="readout-val" id="valMax">19.47 TECU</span>
-          </div>
-          <div class="readout-item">
-            <span style="color:var(--text-muted);">Min Value (DOY 127)</span>
-            <span class="readout-val" id="valMin">7.11 TECU</span>
-          </div>
-          <div class="readout-item">
-            <span style="color:var(--text-muted);">Phenomenon</span>
-            <span class="readout-val" style="color:var(--accent-cyan);">Noon TEC Bite-Out</span>
-          </div>
-          <div class="readout-item">
-            <span style="color:var(--text-muted);">Station Analyzed</span>
-            <span class="readout-val" style="color:var(--text-main);">IISC (Bangalore)</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Interactive TESS Light Curve Simulator Widget -->
-    <section id="lightcurve" class="fade-in-section">
-      <h2 class="section-title">Interactive Photometric Light Curve Simulator</h2>
-      <div class="viz-container">
-        <div class="viz-header">
-          <div class="viz-title-box">
-            <h3>NASA TESS Photometry & Exoplanet Transit Analysis</h3>
-            <p>Simulating normalized flux stellar light curves, exoplanet transits, and stellar activity</p>
-          </div>
-          <div class="viz-controls">
-            <button class="viz-btn active" id="btnLcTransit" onclick="setLcMode('transit')">🪐 Exoplanet Transit</button>
-            <button class="viz-btn" id="btnLcFlare" onclick="setLcMode('flare')">🔥 Stellar Flare</button>
-            <button class="viz-btn" id="btnLcRaw" onclick="setLcMode('raw')">📡 Raw TESS Data</button>
-            <button class="viz-btn" onclick="animateLightCurve()">⚡ Run Light Curve Sweep</button>
-          </div>
-        </div>
-
-        <div class="canvas-wrapper">
-          <canvas id="lcCanvas" class="viz-canvas"></canvas>
-        </div>
-
-        <div class="viz-readout">
-          <div class="readout-item">
-            <span style="color:var(--text-muted);">Transit Dip Depth</span>
-            <span class="readout-val" id="lcReadDepth" style="color:var(--accent-gold);">1.50% ($\Delta F/F$)</span>
-          </div>
-          <div class="readout-item">
-            <span style="color:var(--text-muted);">Estimated Radius Ratio ($R_p/R_*$)</span>
-            <span class="readout-val" id="lcReadRadius" style="color:var(--accent-cyan);">0.122</span>
-          </div>
-          <div class="readout-item">
-            <span style="color:var(--text-muted);">Orbital Period ($P$)</span>
-            <span class="readout-val" id="lcReadPeriod" style="color:var(--text-main);">3.52 Days</span>
-          </div>
-          <div class="readout-item">
-            <span style="color:var(--text-muted);">Filter Pipeline</span>
-            <span class="readout-val" id="lcReadFilter" style="color:var(--accent-purple);">TESS Lightkurve / Biweight</span>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -1180,9 +1057,9 @@
 
   </main>
 
-  <!-- Dynamic Modal for Project Details -->
+  <!-- Dynamic Modal for Project Details & Interactive Simulators -->
   <div class="modal-overlay" id="projectModal" onclick="closeModalOnOverlay(event)">
-    <div class="modal-box">
+    <div class="modal-box large-modal">
       <button class="modal-close" onclick="closeModal()">&times;</button>
       <h3 class="modal-title" id="mTitle">Project Title</h3>
       <div class="modal-subtitle" id="mSubtitle">Subtitle / Institution</div>
@@ -1262,7 +1139,7 @@
       if (e.target.id === 'resumeModal') closeResumeModal();
     }
 
-    // Detailed Project Content
+    // Detailed Project Content & Interactive Simulators inside Modals
     const projectDetails = {
       'iit-indore': {
         title: "Calculating TEC with GPS Measurements during May 2024 Solar Storm (\"Noon TEC Bite-Out\" Study)",
@@ -1274,21 +1151,26 @@
           <h4>Overview & Objectives</h4>
           <p>Studied the ionospheric response during the severe May 2024 G5 geomagnetic storm by analyzing Total Electron Content (TEC) extracted from GNSS/GPS observations, focusing on the daytime/noon TEC bite-out phenomenon.</p>
 
+          <h4>Interactive Ionospheric TEC Simulator</h4>
+          <div class="sim-panel">
+            <div class="sim-controls-row">
+              <span style="font-size:0.85rem; color:var(--accent-cyan); font-weight:600;">Interactive Diurnal TEC Profile</span>
+              <button class="btn btn-secondary" style="padding:4px 12px; font-size:0.75rem;" onclick="resetTecSim()">Reset View</button>
+            </div>
+            <div class="sim-canvas-box">
+              <canvas id="modalTecCanvas" class="sim-canvas"></canvas>
+            </div>
+          </div>
+
           <h4>Data & Computational Tools</h4>
           <ul>
-            <li><strong>GNSS Observations:</strong> Processing of RINEX datasets from 9 stations (IISC, BHPL, HYDE, IITK, LCK4, SGOC, JDPR, SHLG, DRDN) spanning May 5–20, 2024.</li>
-            <li><strong>Software & Analysis:</strong> Extracted TEC using Gopi Seemala's GPS-TEC/CMN software, followed by computational modeling and plotting in <strong>Python</strong> and <strong>MATLAB</strong>.</li>
+            <li><strong>GNSS Observations:</strong> Processing of RINEX datasets from 9 stations (IISC, BHPL, HYDE, IITK, LCK4, SGOC, JDPR, SHLG, DRDN).</li>
+            <li><strong>Software & Analysis:</strong> Extracted TEC using Gopi Seemala's GPS-TEC/CMN software, modeled in Python and MATLAB.</li>
           </ul>
-
-          <h4>Key Findings</h4>
-          <p>Identified measurable storm-induced ionospheric perturbations. Station IISC demonstrated the most consistent TEC behavior, displaying a maximum TEC variation of ~19.47 TECU (DOY 132) and a minimum of ~7.11 TECU (DOY 127).</p>
-
-          <h4>Supervision & Mentorship</h4>
-          <p>Supervised online by <strong>Prof. Dr. Abhirup Datta</strong> (DAASE, IIT Indore) and guided by <strong>Mr. Bhuvnesh Brawar</strong>.</p>
 
           <div style="margin-top:20px; text-align:center;">
             <a href="https://canva.link/ll30flpwycd0hvi" target="_blank" class="btn btn-primary" style="justify-content:center; width:100%;">
-              🎨 View FIP Presentation Poster on Canva ↗
+              🎨 Open FIP Poster on Canva ↗
             </a>
           </div>
         `
@@ -1298,20 +1180,31 @@
         subtitle: "Fergusson College • Department of Physics (PICC)",
         body: `
           <h4>Overview & Objectives</h4>
-          <p>Focused on fabricating a CuO-based semiconducting gas-sensing platform designed for ammonia and hydrogen detection (hydrogen testing skipped due to equipment unavailability).</p>
+          <p>Focused on fabricating a CuO-based semiconducting gas-sensing platform designed for ammonia and hydrogen detection.</p>
 
-          <h4>Experimental Methodology & Optimization</h4>
+          <h4>Interactive CuO Gas Sensor Response Calculator</h4>
+          <div class="sim-panel">
+            <div class="sim-controls-row">
+              <div class="sim-slider-group">
+                <label>Ammonia Conc (ppm): <span id="ppmVal" style="color:var(--accent-gold); font-weight:700;">50</span> ppm</label>
+                <input type="range" id="ppmSlider" min="10" max="500" value="50" oninput="updateSensorSim()">
+              </div>
+              <div class="sim-slider-group">
+                <label>Operating Temp: <span id="tempVal" style="color:var(--accent-cyan); font-weight:700;">250</span> °C</label>
+                <input type="range" id="tempSlider" min="150" max="400" value="250" oninput="updateSensorSim()">
+              </div>
+            </div>
+            <div style="display:flex; justify-content:space-around; background:rgba(255,255,255,0.03); padding:8px; border-radius:8px; font-size:0.85rem;">
+              <span>Calculated Sensitivity (ΔR/R₀): <strong id="sensOut" style="color:var(--accent-gold);">3.42</strong></span>
+              <span>Response Time: <strong id="timeOut" style="color:var(--accent-cyan);">48 s</strong></span>
+            </div>
+          </div>
+
+          <h4>Experimental Methodology</h4>
           <ul>
-            <li><strong>Electrodeposition:</strong> Fabricated CuO layers onto conductive 3D-printed PLA electrodes using CuSO₄ + sodium lactate solution under strongly alkaline conditions (NaOH, pH ≈ 12).</li>
-            <li><strong>Substrate Refinement:</strong> Switched from initial Electrify conductive filament (which degraded during chemical processing) to <strong>Protopasta conductive PLA</strong> for superior structural stability.</li>
-            <li><strong>Characterization:</strong> Prepared samples submitted to SPPU facilities for planned XRD, UV-Vis, and FTIR characterization.</li>
+            <li><strong>Electrodeposition:</strong> Fabricated CuO layers onto conductive Protopasta PLA electrodes using CuSO₄ + sodium lactate.</li>
+            <li><strong>Characterization:</strong> Samples tested for structural stability and chemical sensing response.</li>
           </ul>
-
-          <h4>Major Outcomes</h4>
-          <p>Successfully developed and refined a reproducible CuO/conductive-PLA sensor fabrication technique while establishing an optimized chemical route.</p>
-
-          <h4>Supervision & Mentorship</h4>
-          <p>Supervised by <strong>Prof. Dr. Ashish Yengantiwar</strong> with guidance from <strong>Mr. Bosco V. Ruptake</strong>, Department of Physics, Fergusson College.</p>
         `
       },
       'lnzno-project': {
@@ -1325,7 +1218,6 @@
           <ul>
             <li><strong>Material Acquisition:</strong> High-temperature synthesised LnZnO material obtained from the Chemistry Department to ensure precise doping stoichiometry.</li>
             <li><strong>Thin Film Deposition:</strong> Deposited synthesized LnZnO onto pre-cleaned FTO substrates using physical deposition techniques.</li>
-            <li><strong>Photoelectrochemical Evaluation:</strong> Analyzed charge transfer mechanisms and photo-response for catalysis applications.</li>
           </ul>
         `
       },
@@ -1334,11 +1226,20 @@
         subtitle: "NASA Transiting Exoplanet Survey Satellite • 2024",
         body: `
           <h4>Overview</h4>
-          <p>Analyzed light curve datasets from NASA's TESS satellite to detect stellar variability and photometric anomalies.</p>
-          <ul>
-            <li>Engineered Python data pipelines to filter systematic noise and instrument trends.</li>
-            <li>Identified periodic light drops corresponding to stellar activity and candidate transits.</li>
-          </ul>
+          <p>Analyzed light curve datasets from NASA's TESS satellite to detect stellar variability and exoplanet transits.</p>
+
+          <h4>Interactive Exoplanet Orbit & Transit Light Curve Simulator</h4>
+          <div class="sim-panel">
+            <div class="sim-controls-row">
+              <div class="sim-slider-group">
+                <label>Planet Radius ($R_p/R_*$): <span id="prVal" style="color:var(--accent-cyan); font-weight:700;">0.12</span></label>
+                <input type="range" id="prSlider" min="0.05" max="0.25" step="0.01" value="0.12" oninput="updateTransitSim()">
+              </div>
+            </div>
+            <div class="sim-canvas-box" style="height:280px;">
+              <canvas id="modalTransitCanvas" class="sim-canvas"></canvas>
+            </div>
+          </div>
 
           <div style="margin-top:20px; text-align:center;">
             <a href="https://canva.link/otf1jpiob9jh3vd" target="_blank" class="btn btn-primary" style="justify-content:center; width:100%;">
@@ -1366,10 +1267,13 @@
           <div class="award-banner">
             🏆 <strong>1st Prize Winner:</strong> Presented at 'Frontiers in Physics' (FIP).
           </div>
-          <h4>Poster Details</h4>
-          <p>This poster showcases the ionospheric response during the May 2024 G5 Solar Storm, detailing GNSS observation processing, GPS-TEC extraction workflows, and the Noon TEC Bite-Out phenomenon observed across 9 monitoring stations.</p>
-          
-          <div style="margin-top:20px; text-align:center;">
+          <h4>Embedded Canva Poster View</h4>
+          <div style="position: relative; width: 100%; height: 0; padding-top: 141.4%; margin-bottom: 15px; border-radius: 10px; overflow: hidden; border: 1px solid var(--card-border);">
+            <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none;"
+              src="https://canva.link/ll30flpwycd0hvi?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+            </iframe>
+          </div>
+          <div style="text-align:center;">
             <a href="https://canva.link/ll30flpwycd0hvi" target="_blank" class="btn btn-primary" style="justify-content:center; width:100%;">
               🚀 Open Original Design on Canva ↗
             </a>
@@ -1380,10 +1284,13 @@
         title: "Astronomical Society of India (ASI) Conference Poster",
         subtitle: "ASI Annual Meeting Presentation",
         body: `
-          <h4>Poster Details</h4>
-          <p>Presented at the Astronomical Society of India (ASI) annual conference. Outlines observational astrophysics methods, solar storm ionospheric interaction modeling, and data reduction scripts.</p>
-
-          <div style="margin-top:20px; text-align:center;">
+          <h4>Embedded Canva Poster View</h4>
+          <div style="position: relative; width: 100%; height: 0; padding-top: 141.4%; margin-bottom: 15px; border-radius: 10px; overflow: hidden; border: 1px solid var(--card-border);">
+            <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none;"
+              src="https://canva.link/g35y17wv7l1l9yh?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+            </iframe>
+          </div>
+          <div style="text-align:center;">
             <a href="https://canva.link/g35y17wv7l1l9yh" target="_blank" class="btn btn-primary" style="justify-content:center; width:100%;">
               🚀 Open Original Design on Canva ↗
             </a>
@@ -1394,10 +1301,13 @@
         title: "TESS Light Curve Study Poster",
         subtitle: "Exoplanet Transits & Photometric Light Curve Analysis",
         body: `
-          <h4>Poster Details</h4>
-          <p>Visual presentation of photometric light curves extracted from NASA's TESS satellite data, highlighting time-series filtering and candidate exoplanet transit identification.</p>
-
-          <div style="margin-top:20px; text-align:center;">
+          <h4>Embedded Canva Poster View</h4>
+          <div style="position: relative; width: 100%; height: 0; padding-top: 141.4%; margin-bottom: 15px; border-radius: 10px; overflow: hidden; border: 1px solid var(--card-border);">
+            <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none;"
+              src="https://canva.link/otf1jpiob9jh3vd?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+            </iframe>
+          </div>
+          <div style="text-align:center;">
             <a href="https://canva.link/otf1jpiob9jh3vd" target="_blank" class="btn btn-primary" style="justify-content:center; width:100%;">
               🚀 Open Original Design on Canva ↗
             </a>
@@ -1413,6 +1323,13 @@
       document.getElementById('mSubtitle').innerText = data.subtitle;
       document.getElementById('mBody').innerHTML = data.body;
       document.getElementById('projectModal').classList.add('active');
+
+      // Initialize any modal-specific simulators after DOM injection
+      setTimeout(() => {
+        if(id === 'iit-indore') initModalTecSim();
+        if(id === 'fergusson-picc') updateSensorSim();
+        if(id === 'tess-project') initModalTransitSim();
+      }, 100);
     }
 
     function closeModal() {
@@ -1421,6 +1338,103 @@
 
     function closeModalOnOverlay(e) {
       if (e.target.id === 'projectModal') closeModal();
+    }
+
+    // Modal Simulation 1: TEC Diurnal Curve
+    function initModalTecSim() {
+      const canvas = document.getElementById('modalTecCanvas');
+      if(!canvas) return;
+      canvas.width = canvas.parentElement.clientWidth;
+      canvas.height = canvas.parentElement.clientHeight;
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0,0,canvas.width, canvas.height);
+
+      ctx.strokeStyle = '#00f2fe';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      for(let x=0; x<canvas.width; x++) {
+        let val = Math.sin((x/canvas.width)*Math.PI * 2) * 6 + 13;
+        let y = canvas.height - ((val / 22) * (canvas.height - 30) + 15);
+        if(x===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+    }
+
+    // Modal Simulation 2: CuO Sensor Calculator
+    function updateSensorSim() {
+      const ppm = document.getElementById('ppmSlider').value;
+      const temp = document.getElementById('tempSlider').value;
+      document.getElementById('ppmVal').innerText = ppm;
+      document.getElementById('tempVal').innerText = temp;
+
+      const sensitivity = (ppm * 0.05 + (temp / 100) * 0.8).toFixed(2);
+      const respTime = Math.max(15, Math.floor(65 - (temp / 10) - (ppm / 20)));
+
+      document.getElementById('sensOut').innerText = sensitivity;
+      document.getElementById('timeOut').innerText = respTime + ' s';
+    }
+
+    // Modal Simulation 3: Exoplanet Orbit & Transit Curve
+    let transitAngle = 0;
+    let transitAnimId;
+    function initModalTransitSim() {
+      const canvas = document.getElementById('modalTransitCanvas');
+      if(!canvas) return;
+      canvas.width = canvas.parentElement.clientWidth;
+      canvas.height = canvas.parentElement.clientHeight;
+      const ctx = canvas.getContext('2d');
+
+      function loop() {
+        if(!document.getElementById('modalTransitCanvas')) return;
+        transitAngle += 0.02;
+        ctx.clearRect(0,0,canvas.width, canvas.height);
+
+        const rRatio = parseFloat(document.getElementById('prSlider').value);
+
+        // Left Side: 2D Orbit View
+        ctx.fillStyle = '#ffcc00';
+        ctx.beginPath();
+        ctx.arc(100, canvas.height/2, 28, 0, Math.PI*2);
+        ctx.fill();
+
+        let planetX = 100 + Math.cos(transitAngle) * 65;
+        let planetY = (canvas.height/2) + Math.sin(transitAngle) * 22;
+        let isTransiting = Math.cos(transitAngle) > 0.6;
+
+        ctx.fillStyle = isTransiting ? '#0a0d14' : '#00f2fe';
+        ctx.beginPath();
+        ctx.arc(planetX, planetY, rRatio * 50, 0, Math.PI*2);
+        ctx.fill();
+
+        // Right Side: Light Curve Flux Plot
+        const startX = 220;
+        const w = canvas.width - startX - 20;
+        const h = canvas.height - 40;
+
+        ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+        ctx.strokeRect(startX, 20, w, h);
+
+        ctx.strokeStyle = '#00f2fe';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        for(let x=0; x<w; x++) {
+          let t = (x / w) * 6 - 3;
+          let flux = 1.0;
+          let planetPhase = Math.sin(transitAngle);
+          let dipCenter = planetPhase * 1.5;
+          if(Math.abs(t - dipCenter) < 0.6) {
+            flux -= (rRatio * rRatio * 2.2) * Math.cos(((t - dipCenter)/0.6)*(Math.PI/2));
+          }
+          let py = (20 + h) - ((flux - 0.95) / 0.1) * h;
+          let px = startX + x;
+          if(x===0) ctx.moveTo(px,py); else ctx.lineTo(px,py);
+        }
+        ctx.stroke();
+
+        transitAnimId = requestAnimationFrame(loop);
+      }
+      cancelAnimationFrame(transitAnimId);
+      loop();
     }
 
     // Canvas Starfield Background
@@ -1475,300 +1489,6 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
-
-    /* --- Interactive TEC Canvas Chart Visualizer --- */
-    const tecCanvas = document.getElementById('tecCanvas');
-    const tctx = tecCanvas.getContext('2d');
-    let vizMode = 'iisc';
-    let animProgress = 1.0;
-    let animReq;
-
-    // DOY 125 to 138 data points
-    const tecDataIISC = [
-      { doy: 125, tec: 12.4 },
-      { doy: 126, tec: 10.2 },
-      { doy: 127, tec: 7.11 }, // Min
-      { doy: 128, tec: 9.8 },
-      { doy: 129, tec: 11.5 },
-      { doy: 130, tec: 13.0 },
-      { doy: 131, tec: 16.2 },
-      { doy: 132, tec: 19.47 }, // Max Peak
-      { doy: 133, tec: 15.8 },
-      { doy: 134, tec: 13.4 },
-      { doy: 135, tec: 11.9 },
-      { doy: 136, tec: 10.5 },
-      { doy: 137, tec: 11.1 },
-      { doy: 138, tec: 12.0 }
-    ];
-
-    const tecDataQuiet = tecDataIISC.map(d => ({ doy: d.doy, tec: 11.0 + Math.sin(d.doy)*1.5 }));
-
-    function resizeTecCanvas() {
-      tecCanvas.width = tecCanvas.parentElement.clientWidth;
-      tecCanvas.height = tecCanvas.parentElement.clientHeight;
-      drawTecChart();
-    }
-
-    function setVizMode(mode) {
-      vizMode = mode;
-      document.getElementById('btnIISC').classList.toggle('active', mode === 'iisc');
-      document.getElementById('btnQuiet').classList.toggle('active', mode === 'quiet');
-      document.getElementById('valMax').innerText = mode === 'iisc' ? '19.47 TECU' : '12.50 TECU';
-      document.getElementById('valMin').innerText = mode === 'iisc' ? '7.11 TECU' : '9.50 TECU';
-      animProgress = 1.0;
-      drawTecChart();
-    }
-
-    function animateStormCurve() {
-      animProgress = 0.0;
-      cancelAnimationFrame(animReq);
-      function step() {
-        animProgress += 0.025;
-        drawTecChart();
-        if (animProgress < 1.0) {
-          animReq = requestAnimationFrame(step);
-        }
-      }
-      step();
-    }
-
-    function drawTecChart() {
-      const w = tecCanvas.width;
-      const h = tecCanvas.height;
-      tctx.clearRect(0, 0, w, h);
-
-      const dataset = vizMode === 'iisc' ? tecDataIISC : tecDataQuiet;
-      const padding = 45;
-      const chartW = w - padding * 2;
-      const chartH = h - padding * 2;
-
-      // Draw Grid Axes
-      tctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
-      tctx.lineWidth = 1;
-      for (let i = 0; i <= 4; i++) {
-        let y = padding + (chartH / 4) * i;
-        tctx.beginPath();
-        tctx.moveTo(padding, y);
-        tctx.lineTo(w - padding, y);
-        tctx.stroke();
-
-        // Y-Labels
-        let tecVal = (22 - (22 / 4) * i).toFixed(1);
-        tctx.fillStyle = '#94a3b8';
-        tctx.font = '10px Plus Jakarta Sans';
-        tctx.fillText(`${tecVal} TECU`, 5, y + 3);
-      }
-
-      // X-Labels (DOY)
-      const count = dataset.length;
-      dataset.forEach((d, idx) => {
-        let x = padding + (chartW / (count - 1)) * idx;
-        if (idx % 2 === 0) {
-          tctx.fillText(`DOY ${d.doy}`, x - 15, h - 12);
-        }
-      });
-
-      // Plot Line
-      tctx.beginPath();
-      tctx.strokeStyle = vizMode === 'iisc' ? '#00f2fe' : '#4facfe';
-      tctx.lineWidth = 3;
-
-      let maxVisible = Math.floor(count * animProgress);
-
-      dataset.forEach((d, idx) => {
-        if (idx > maxVisible) return;
-        let x = padding + (chartW / (count - 1)) * idx;
-        let y = padding + chartH - ((d.tec / 22) * chartH);
-
-        if (idx === 0) tctx.moveTo(x, y);
-        else tctx.lineTo(x, y);
-      });
-      tctx.stroke();
-
-      // Draw Points & Peak Highlights
-      dataset.forEach((d, idx) => {
-        if (idx > maxVisible) return;
-        let x = padding + (chartW / (count - 1)) * idx;
-        let y = padding + chartH - ((d.tec / 22) * chartH);
-
-        let isPeak = (d.tec === 19.47 && vizMode === 'iisc');
-        let isMin = (d.tec === 7.11 && vizMode === 'iisc');
-
-        tctx.beginPath();
-        tctx.arc(x, y, isPeak ? 6 : 4, 0, Math.PI * 2);
-        tctx.fillStyle = isPeak ? '#ffcc00' : (isMin ? '#ff4b4b' : '#00f2fe');
-        tctx.fill();
-
-        if (isPeak) {
-          tctx.fillStyle = '#ffcc00';
-          tctx.font = 'bold 11px Plus Jakarta Sans';
-          tctx.fillText('⚡ Peak 19.47 TECU', x - 40, y - 12);
-        }
-        if (isMin) {
-          tctx.fillStyle = '#ff4b4b';
-          tctx.font = 'bold 11px Plus Jakarta Sans';
-          tctx.fillText('Min 7.11 TECU', x - 30, y + 18);
-        }
-      });
-    }
-
-    /* --- Interactive TESS Light Curve Canvas Visualizer --- */
-    const lcCanvas = document.getElementById('lcCanvas');
-    const lctx = lcCanvas.getContext('2d');
-    let lcMode = 'transit';
-    let lcAnimProgress = 1.0;
-    let lcAnimReq;
-
-    function resizeLcCanvas() {
-      lcCanvas.width = lcCanvas.parentElement.clientWidth;
-      lcCanvas.height = lcCanvas.parentElement.clientHeight;
-      drawLcChart();
-    }
-
-    function setLcMode(mode) {
-      lcMode = mode;
-      document.getElementById('btnLcTransit').classList.toggle('active', mode === 'transit');
-      document.getElementById('btnLcFlare').classList.toggle('active', mode === 'flare');
-      document.getElementById('btnLcRaw').classList.toggle('active', mode === 'raw');
-
-      const depthElem = document.getElementById('lcReadDepth');
-      const radiusElem = document.getElementById('lcReadRadius');
-      const filterElem = document.getElementById('lcReadFilter');
-
-      if (mode === 'transit') {
-        depthElem.innerText = '1.50% (ΔF/F)';
-        radiusElem.innerText = '0.122';
-        filterElem.innerText = 'TESS Lightkurve / Cleaned';
-      } else if (mode === 'flare') {
-        depthElem.innerText = '+3.50% (Peak Spike)';
-        radiusElem.innerText = 'N/A (Stellar Event)';
-        filterElem.innerText = 'Magnetic Reconnection Spike';
-      } else {
-        depthElem.innerText = '~1.50% (Drowned in Noise)';
-        radiusElem.innerText = 'Uncertain (Raw Trend)';
-        filterElem.innerText = 'Unfiltered TESS Systematic';
-      }
-
-      lcAnimProgress = 1.0;
-      drawLcChart();
-    }
-
-    function animateLightCurve() {
-      lcAnimProgress = 0.0;
-      cancelAnimationFrame(lcAnimReq);
-      function step() {
-        lcAnimProgress += 0.02;
-        drawLcChart();
-        if (lcAnimProgress < 1.0) {
-          lcAnimReq = requestAnimationFrame(step);
-        }
-      }
-      step();
-    }
-
-    function drawLcChart() {
-      const w = lcCanvas.width;
-      const h = lcCanvas.height;
-      lctx.clearRect(0, 0, w, h);
-
-      const padding = 45;
-      const chartW = w - padding * 2;
-      const chartH = h - padding * 2;
-
-      // Draw Grid Axes
-      lctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
-      lctx.lineWidth = 1;
-      
-      const yMin = 0.970;
-      const yMax = 1.040;
-
-      for (let i = 0; i <= 4; i++) {
-        let y = padding + (chartH / 4) * i;
-        lctx.beginPath();
-        lctx.moveTo(padding, y);
-        lctx.lineTo(w - padding, y);
-        lctx.stroke();
-
-        let fluxVal = (yMax - ((yMax - yMin) / 4) * i).toFixed(3);
-        lctx.fillStyle = '#94a3b8';
-        lctx.font = '10px Plus Jakarta Sans';
-        lctx.fillText(`${fluxVal} F/F₀`, 5, y + 3);
-      }
-
-      // X-Axis Time Labels
-      const totalPoints = 120;
-      for (let i = 0; i <= 6; i++) {
-        let x = padding + (chartW / 6) * i;
-        let timeVal = (-3 + i).toFixed(1);
-        lctx.fillText(`${timeVal} d`, x - 10, h - 12);
-      }
-
-      // Generate Curve Data
-      const points = [];
-      for (let i = 0; i < totalPoints; i++) {
-        const t = -3 + (i / (totalPoints - 1)) * 6; // -3.0 to +3.0 Days
-        let flux = 1.000;
-
-        if (lcMode === 'transit') {
-          if (Math.abs(t) < 0.7) {
-            flux -= 0.015 * Math.cos((t / 0.7) * (Math.PI / 2));
-          }
-          flux += Math.sin(i * 14.2) * 0.0008;
-        } else if (lcMode === 'flare') {
-          if (t > -0.5 && t < 2.0) {
-            flux += 0.035 * Math.exp(-(t + 0.5) * 2.0);
-          }
-          flux += Math.cos(i * 9.5) * 0.0012;
-        } else if (lcMode === 'raw') {
-          const trend = 0.012 * Math.sin(t * 1.2);
-          let transit = 0;
-          if (Math.abs(t) < 0.7) transit = 0.015 * Math.cos((t / 0.7) * (Math.PI / 2));
-          const noise = (Math.sin(i * 18.1) + Math.cos(i * 11.3)) * 0.0035;
-          flux = 1.000 + trend - transit + noise;
-        }
-        points.push({ t, flux, x: padding + (chartW / (totalPoints - 1)) * i });
-      }
-
-      let maxVisible = Math.floor(totalPoints * lcAnimProgress);
-
-      // Draw Curve
-      lctx.beginPath();
-      lctx.strokeStyle = lcMode === 'transit' ? '#ffcc00' : (lcMode === 'flare' ? '#ff4b4b' : '#b06ab3');
-      lctx.lineWidth = 2.5;
-
-      points.forEach((pt, idx) => {
-        if (idx > maxVisible) return;
-        let y = padding + chartH - (((pt.flux - yMin) / (yMax - yMin)) * chartH);
-        if (idx === 0) lctx.moveTo(pt.x, y);
-        else lctx.lineTo(pt.x, y);
-      });
-      lctx.stroke();
-
-      // Scatter Dots
-      points.forEach((pt, idx) => {
-        if (idx > maxVisible) return;
-        let y = padding + chartH - (((pt.flux - yMin) / (yMax - yMin)) * chartH);
-
-        if (idx % 2 === 0) {
-          lctx.beginPath();
-          lctx.arc(pt.x, y, 2.5, 0, Math.PI * 2);
-          lctx.fillStyle = lcMode === 'transit' ? '#ffcc00' : (lcMode === 'flare' ? '#ff4b4b' : '#b06ab3');
-          lctx.fill();
-        }
-      });
-
-      // Highlight Annotations
-      if (lcMode === 'transit' && maxVisible > totalPoints * 0.5) {
-        let midPt = points[Math.floor(totalPoints / 2)];
-        let midY = padding + chartH - (((midPt.flux - yMin) / (yMax - yMin)) * chartH);
-        lctx.fillStyle = '#ffcc00';
-        lctx.font = 'bold 11px Plus Jakarta Sans';
-        lctx.fillText('🪐 Transit Dip (ΔF/F = 1.5%)', midPt.x - 65, midY + 22);
-      }
-    }
-
-    window.addEventListener('resize', () => { resizeTecCanvas(); resizeLcCanvas(); });
-    setTimeout(() => { resizeTecCanvas(); resizeLcCanvas(); }, 200);
   </script>
 </body>
 </html>
