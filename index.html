@@ -33,6 +33,7 @@
       --accent-blue: #4facfe;
       --accent-gold: #ffcc00;
       --accent-red: #ff4b4b;
+      --accent-purple: #b06ab3;
       --text-main: #f1f5f9;
       --text-muted: #94a3b8;
     }
@@ -104,14 +105,14 @@
 
     .nav-links {
       display: flex;
-      gap: 18px;
+      gap: 16px;
       list-style: none;
     }
 
     .nav-links a {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 600;
       transition: color 0.3s;
     }
@@ -404,7 +405,7 @@
       gap: 5px;
     }
 
-    /* TEC Visualizer Container */
+    /* Visualizer Section Container */
     .viz-container {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -467,7 +468,7 @@
       overflow: hidden;
     }
 
-    #tecCanvas {
+    .viz-canvas {
       width: 100%;
       height: 100%;
       display: block;
@@ -773,6 +774,7 @@
       <li><a href="#about" onclick="closeMenu()">About</a></li>
       <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
       <li><a href="#visualizer" onclick="closeMenu()">TEC Visualizer</a></li>
+      <li><a href="#lightcurve" onclick="closeMenu()">Light Curve</a></li>
       <li><a href="#posters" onclick="closeMenu()">Posters</a></li>
       <li><a href="#achievements" onclick="closeMenu()">Achievements</a></li>
       <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
@@ -905,7 +907,7 @@
         </div>
 
         <div class="canvas-wrapper">
-          <canvas id="tecCanvas"></canvas>
+          <canvas id="tecCanvas" class="viz-canvas"></canvas>
         </div>
 
         <div class="viz-readout">
@@ -929,6 +931,48 @@
       </div>
     </section>
 
+    <!-- Interactive TESS Light Curve Simulator Widget -->
+    <section id="lightcurve" class="fade-in-section">
+      <h2 class="section-title">Interactive Photometric Light Curve Simulator</h2>
+      <div class="viz-container">
+        <div class="viz-header">
+          <div class="viz-title-box">
+            <h3>NASA TESS Photometry & Exoplanet Transit Analysis</h3>
+            <p>Simulating normalized flux stellar light curves, exoplanet transits, and stellar activity</p>
+          </div>
+          <div class="viz-controls">
+            <button class="viz-btn active" id="btnLcTransit" onclick="setLcMode('transit')">🪐 Exoplanet Transit</button>
+            <button class="viz-btn" id="btnLcFlare" onclick="setLcMode('flare')">🔥 Stellar Flare</button>
+            <button class="viz-btn" id="btnLcRaw" onclick="setLcMode('raw')">📡 Raw TESS Data</button>
+            <button class="viz-btn" onclick="animateLightCurve()">⚡ Run Light Curve Sweep</button>
+          </div>
+        </div>
+
+        <div class="canvas-wrapper">
+          <canvas id="lcCanvas" class="viz-canvas"></canvas>
+        </div>
+
+        <div class="viz-readout">
+          <div class="readout-item">
+            <span style="color:var(--text-muted);">Transit Dip Depth</span>
+            <span class="readout-val" id="lcReadDepth" style="color:var(--accent-gold);">1.50% ($\Delta F/F$)</span>
+          </div>
+          <div class="readout-item">
+            <span style="color:var(--text-muted);">Estimated Radius Ratio ($R_p/R_*$)</span>
+            <span class="readout-val" id="lcReadRadius" style="color:var(--accent-cyan);">0.122</span>
+          </div>
+          <div class="readout-item">
+            <span style="color:var(--text-muted);">Orbital Period ($P$)</span>
+            <span class="readout-val" id="lcReadPeriod" style="color:var(--text-main);">3.52 Days</span>
+          </div>
+          <div class="readout-item">
+            <span style="color:var(--text-muted);">Filter Pipeline</span>
+            <span class="readout-val" id="lcReadFilter" style="color:var(--accent-purple);">TESS Lightkurve / Biweight</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Canva Research Poster Gallery Section -->
     <section id="posters" class="fade-in-section">
       <h2 class="section-title">Canva Research Poster Gallery</h2>
@@ -943,10 +987,14 @@
           </div>
           <h3 style="font-size:1.1rem; color:var(--text-main);">Calculating TEC during May 2024 Solar Storm</h3>
           <p style="font-size:0.85rem; color:var(--text-muted);">Highlighting the daytime ionospheric response and Noon TEC Bite-Out using GNSS RINEX observation processing.</p>
-          <div style="display:flex; gap:10px; margin-top:5px;">
-            <button class="btn btn-primary" onclick="openModal('fip-poster-modal')" style="font-size:0.8rem; padding:6px 16px; width:100%; justify-content:center;">
+
+          <div style="display:flex; flex-direction:column; gap:8px; margin-top:5px;">
+            <button class="btn btn-primary" onclick="openModal('fip-poster-modal')" style="font-size:0.8rem; padding:8px 16px; width:100%; justify-content:center;">
               👁️ View Poster Presentation
             </button>
+            <a href="https://canva.link/ll30flpwycd0hvi" target="_blank" class="btn btn-secondary" style="font-size:0.8rem; padding:8px 16px; width:100%; justify-content:center;">
+              🎨 Open Design on Canva ↗
+            </a>
           </div>
         </div>
 
@@ -959,10 +1007,34 @@
           </div>
           <h3 style="font-size:1.1rem; color:var(--text-main);">Observational Astrophysics & Solar Modeling</h3>
           <p style="font-size:0.85rem; color:var(--text-muted);">Presented at the ASI Meeting focusing on observational solar datasets, spectroscopy, and space weather diagnostics.</p>
-          <div style="display:flex; gap:10px; margin-top:5px;">
-            <button class="btn btn-primary" onclick="openModal('asi-poster-modal')" style="font-size:0.8rem; padding:6px 16px; width:100%; justify-content:center;">
+
+          <div style="display:flex; flex-direction:column; gap:8px; margin-top:5px;">
+            <button class="btn btn-primary" onclick="openModal('asi-poster-modal')" style="font-size:0.8rem; padding:8px 16px; width:100%; justify-content:center;">
               👁️ View Poster Presentation
             </button>
+            <a href="https://canva.link/g35y17wv7l1l9yh" target="_blank" class="btn btn-secondary" style="font-size:0.8rem; padding:8px 16px; width:100%; justify-content:center;">
+              🎨 Open Design on Canva ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- TESS Light Curve Design Card -->
+        <div class="poster-card">
+          <div class="poster-preview-placeholder" style="border-color:rgba(255, 204, 0, 0.4); color:var(--accent-gold);">
+            <span class="icon">⭐</span>
+            <strong>TESS Light Curve Study Poster</strong>
+            <p style="font-size:0.78rem; color:var(--text-muted);">Exoplanet Transits & Photometry</p>
+          </div>
+          <h3 style="font-size:1.1rem; color:var(--text-main);">Detecting Stellar Variability & Transits</h3>
+          <p style="font-size:0.85rem; color:var(--text-muted);">Visual analysis of light curves extracted from NASA's TESS satellite to detect stellar fluctuations and transit events.</p>
+
+          <div style="display:flex; flex-direction:column; gap:8px; margin-top:5px;">
+            <button class="btn btn-primary" onclick="openModal('tess-poster-modal')" style="font-size:0.8rem; padding:8px 16px; width:100%; justify-content:center;">
+              👁️ View Poster Details
+            </button>
+            <a href="https://canva.link/otf1jpiob9jh3vd" target="_blank" class="btn btn-secondary" style="font-size:0.8rem; padding:8px 16px; width:100%; justify-content:center;">
+              🎨 Open Design on Canva ↗
+            </a>
           </div>
         </div>
 
@@ -1213,6 +1285,12 @@
 
           <h4>Supervision & Mentorship</h4>
           <p>Supervised online by <strong>Prof. Dr. Abhirup Datta</strong> (DAASE, IIT Indore) and guided by <strong>Mr. Bhuvnesh Brawar</strong>.</p>
+
+          <div style="margin-top:20px; text-align:center;">
+            <a href="https://canva.link/ll30flpwycd0hvi" target="_blank" class="btn btn-primary" style="justify-content:center; width:100%;">
+              🎨 View FIP Presentation Poster on Canva ↗
+            </a>
+          </div>
         `
       },
       'fergusson-picc': {
@@ -1261,6 +1339,12 @@
             <li>Engineered Python data pipelines to filter systematic noise and instrument trends.</li>
             <li>Identified periodic light drops corresponding to stellar activity and candidate transits.</li>
           </ul>
+
+          <div style="margin-top:20px; text-align:center;">
+            <a href="https://canva.link/otf1jpiob9jh3vd" target="_blank" class="btn btn-primary" style="justify-content:center; width:100%;">
+              🎨 View TESS Light Curve Poster on Canva ↗
+            </a>
+          </div>
         `
       },
       'iirs-heatwave': {
@@ -1282,18 +1366,42 @@
           <div class="award-banner">
             🏆 <strong>1st Prize Winner:</strong> Presented at 'Frontiers in Physics' (FIP).
           </div>
-          <h4>Poster Presentation Summary</h4>
-          <p>This Canva-designed poster features the ionospheric response during the May 2024 G5 Solar Storm, detailing GNSS observations, GPS-TEC/CMN extraction workflows, and the Noon TEC Bite-Out phenomenon across 9 monitoring stations.</p>
-          <p style="margin-top:10px; color:var(--accent-gold);">💡 <em>Tip: You can replace or paste your Canva public view link directly into this modal iframe or link button!</em></p>
+          <h4>Poster Details</h4>
+          <p>This poster showcases the ionospheric response during the May 2024 G5 Solar Storm, detailing GNSS observation processing, GPS-TEC extraction workflows, and the Noon TEC Bite-Out phenomenon observed across 9 monitoring stations.</p>
+          
+          <div style="margin-top:20px; text-align:center;">
+            <a href="https://canva.link/ll30flpwycd0hvi" target="_blank" class="btn btn-primary" style="justify-content:center; width:100%;">
+              🚀 Open Original Design on Canva ↗
+            </a>
+          </div>
         `
       },
       'asi-poster-modal': {
         title: "Astronomical Society of India (ASI) Conference Poster",
         subtitle: "ASI Annual Meeting Presentation",
         body: `
-          <h4>Poster Presentation Summary</h4>
-          <p>Presented at the Astronomical Society of India (ASI) annual conference. The poster outlines observational astrophysics methods, solar storm ionospheric interaction modeling, and data reduction scripts.</p>
-          <p style="margin-top:10px; color:var(--accent-gold);">💡 <em>Tip: You can replace or paste your Canva public view link directly into this modal iframe or link button!</em></p>
+          <h4>Poster Details</h4>
+          <p>Presented at the Astronomical Society of India (ASI) annual conference. Outlines observational astrophysics methods, solar storm ionospheric interaction modeling, and data reduction scripts.</p>
+
+          <div style="margin-top:20px; text-align:center;">
+            <a href="https://canva.link/g35y17wv7l1l9yh" target="_blank" class="btn btn-primary" style="justify-content:center; width:100%;">
+              🚀 Open Original Design on Canva ↗
+            </a>
+          </div>
+        `
+      },
+      'tess-poster-modal': {
+        title: "TESS Light Curve Study Poster",
+        subtitle: "Exoplanet Transits & Photometric Light Curve Analysis",
+        body: `
+          <h4>Poster Details</h4>
+          <p>Visual presentation of photometric light curves extracted from NASA's TESS satellite data, highlighting time-series filtering and candidate exoplanet transit identification.</p>
+
+          <div style="margin-top:20px; text-align:center;">
+            <a href="https://canva.link/otf1jpiob9jh3vd" target="_blank" class="btn btn-primary" style="justify-content:center; width:100%;">
+              🚀 Open Original Design on Canva ↗
+            </a>
+          </div>
         `
       }
     };
@@ -1504,8 +1612,163 @@
       });
     }
 
-    window.addEventListener('resize', resizeTecCanvas);
-    setTimeout(resizeTecCanvas, 200);
+    /* --- Interactive TESS Light Curve Canvas Visualizer --- */
+    const lcCanvas = document.getElementById('lcCanvas');
+    const lctx = lcCanvas.getContext('2d');
+    let lcMode = 'transit';
+    let lcAnimProgress = 1.0;
+    let lcAnimReq;
+
+    function resizeLcCanvas() {
+      lcCanvas.width = lcCanvas.parentElement.clientWidth;
+      lcCanvas.height = lcCanvas.parentElement.clientHeight;
+      drawLcChart();
+    }
+
+    function setLcMode(mode) {
+      lcMode = mode;
+      document.getElementById('btnLcTransit').classList.toggle('active', mode === 'transit');
+      document.getElementById('btnLcFlare').classList.toggle('active', mode === 'flare');
+      document.getElementById('btnLcRaw').classList.toggle('active', mode === 'raw');
+
+      const depthElem = document.getElementById('lcReadDepth');
+      const radiusElem = document.getElementById('lcReadRadius');
+      const filterElem = document.getElementById('lcReadFilter');
+
+      if (mode === 'transit') {
+        depthElem.innerText = '1.50% (ΔF/F)';
+        radiusElem.innerText = '0.122';
+        filterElem.innerText = 'TESS Lightkurve / Cleaned';
+      } else if (mode === 'flare') {
+        depthElem.innerText = '+3.50% (Peak Spike)';
+        radiusElem.innerText = 'N/A (Stellar Event)';
+        filterElem.innerText = 'Magnetic Reconnection Spike';
+      } else {
+        depthElem.innerText = '~1.50% (Drowned in Noise)';
+        radiusElem.innerText = 'Uncertain (Raw Trend)';
+        filterElem.innerText = 'Unfiltered TESS Systematic';
+      }
+
+      lcAnimProgress = 1.0;
+      drawLcChart();
+    }
+
+    function animateLightCurve() {
+      lcAnimProgress = 0.0;
+      cancelAnimationFrame(lcAnimReq);
+      function step() {
+        lcAnimProgress += 0.02;
+        drawLcChart();
+        if (lcAnimProgress < 1.0) {
+          lcAnimReq = requestAnimationFrame(step);
+        }
+      }
+      step();
+    }
+
+    function drawLcChart() {
+      const w = lcCanvas.width;
+      const h = lcCanvas.height;
+      lctx.clearRect(0, 0, w, h);
+
+      const padding = 45;
+      const chartW = w - padding * 2;
+      const chartH = h - padding * 2;
+
+      // Draw Grid Axes
+      lctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+      lctx.lineWidth = 1;
+      
+      const yMin = 0.970;
+      const yMax = 1.040;
+
+      for (let i = 0; i <= 4; i++) {
+        let y = padding + (chartH / 4) * i;
+        lctx.beginPath();
+        lctx.moveTo(padding, y);
+        lctx.lineTo(w - padding, y);
+        lctx.stroke();
+
+        let fluxVal = (yMax - ((yMax - yMin) / 4) * i).toFixed(3);
+        lctx.fillStyle = '#94a3b8';
+        lctx.font = '10px Plus Jakarta Sans';
+        lctx.fillText(`${fluxVal} F/F₀`, 5, y + 3);
+      }
+
+      // X-Axis Time Labels
+      const totalPoints = 120;
+      for (let i = 0; i <= 6; i++) {
+        let x = padding + (chartW / 6) * i;
+        let timeVal = (-3 + i).toFixed(1);
+        lctx.fillText(`${timeVal} d`, x - 10, h - 12);
+      }
+
+      // Generate Curve Data
+      const points = [];
+      for (let i = 0; i < totalPoints; i++) {
+        const t = -3 + (i / (totalPoints - 1)) * 6; // -3.0 to +3.0 Days
+        let flux = 1.000;
+
+        if (lcMode === 'transit') {
+          if (Math.abs(t) < 0.7) {
+            flux -= 0.015 * Math.cos((t / 0.7) * (Math.PI / 2));
+          }
+          flux += Math.sin(i * 14.2) * 0.0008;
+        } else if (lcMode === 'flare') {
+          if (t > -0.5 && t < 2.0) {
+            flux += 0.035 * Math.exp(-(t + 0.5) * 2.0);
+          }
+          flux += Math.cos(i * 9.5) * 0.0012;
+        } else if (lcMode === 'raw') {
+          const trend = 0.012 * Math.sin(t * 1.2);
+          let transit = 0;
+          if (Math.abs(t) < 0.7) transit = 0.015 * Math.cos((t / 0.7) * (Math.PI / 2));
+          const noise = (Math.sin(i * 18.1) + Math.cos(i * 11.3)) * 0.0035;
+          flux = 1.000 + trend - transit + noise;
+        }
+        points.push({ t, flux, x: padding + (chartW / (totalPoints - 1)) * i });
+      }
+
+      let maxVisible = Math.floor(totalPoints * lcAnimProgress);
+
+      // Draw Curve
+      lctx.beginPath();
+      lctx.strokeStyle = lcMode === 'transit' ? '#ffcc00' : (lcMode === 'flare' ? '#ff4b4b' : '#b06ab3');
+      lctx.lineWidth = 2.5;
+
+      points.forEach((pt, idx) => {
+        if (idx > maxVisible) return;
+        let y = padding + chartH - (((pt.flux - yMin) / (yMax - yMin)) * chartH);
+        if (idx === 0) lctx.moveTo(pt.x, y);
+        else lctx.lineTo(pt.x, y);
+      });
+      lctx.stroke();
+
+      // Scatter Dots
+      points.forEach((pt, idx) => {
+        if (idx > maxVisible) return;
+        let y = padding + chartH - (((pt.flux - yMin) / (yMax - yMin)) * chartH);
+
+        if (idx % 2 === 0) {
+          lctx.beginPath();
+          lctx.arc(pt.x, y, 2.5, 0, Math.PI * 2);
+          lctx.fillStyle = lcMode === 'transit' ? '#ffcc00' : (lcMode === 'flare' ? '#ff4b4b' : '#b06ab3');
+          lctx.fill();
+        }
+      });
+
+      // Highlight Annotations
+      if (lcMode === 'transit' && maxVisible > totalPoints * 0.5) {
+        let midPt = points[Math.floor(totalPoints / 2)];
+        let midY = padding + chartH - (((midPt.flux - yMin) / (yMax - yMin)) * chartH);
+        lctx.fillStyle = '#ffcc00';
+        lctx.font = 'bold 11px Plus Jakarta Sans';
+        lctx.fillText('🪐 Transit Dip (ΔF/F = 1.5%)', midPt.x - 65, midY + 22);
+      }
+    }
+
+    window.addEventListener('resize', () => { resizeTecCanvas(); resizeLcCanvas(); });
+    setTimeout(() => { resizeTecCanvas(); resizeLcCanvas(); }, 200);
   </script>
 </body>
 </html>
