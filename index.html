@@ -32,6 +32,7 @@
       --accent-cyan: #00f2fe;
       --accent-blue: #4facfe;
       --accent-gold: #ffcc00;
+      --accent-red: #ff4b4b;
       --text-main: #f1f5f9;
       --text-muted: #94a3b8;
     }
@@ -103,14 +104,14 @@
 
     .nav-links {
       display: flex;
-      gap: 20px;
+      gap: 18px;
       list-style: none;
     }
 
     .nav-links a {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
       transition: color 0.3s;
     }
@@ -326,7 +327,7 @@
       gap: 20px;
     }
 
-    /* Interactive Project Card */
+    /* Interactive Cards */
     .card {
       background: var(--card-bg);
       backdrop-filter: blur(12px);
@@ -401,6 +402,138 @@
       display: flex;
       align-items: center;
       gap: 5px;
+    }
+
+    /* TEC Visualizer Container */
+    .viz-container {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .viz-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .viz-title-box h3 {
+      font-size: 1.15rem;
+      color: var(--accent-cyan);
+    }
+
+    .viz-title-box p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .viz-controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .viz-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .viz-btn.active, .viz-btn:hover {
+      background: rgba(0, 242, 254, 0.2);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    .canvas-wrapper {
+      position: relative;
+      width: 100%;
+      height: 320px;
+      background: rgba(10, 13, 20, 0.8);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    #tecCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .viz-readout {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 15px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--card-border);
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+    }
+
+    .readout-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .readout-val {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--accent-gold);
+    }
+
+    /* Poster Gallery Cards */
+    .poster-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .poster-card:hover {
+      border-color: var(--accent-gold);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(255, 204, 0, 0.15);
+    }
+
+    .poster-preview-placeholder {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, rgba(30, 60, 114, 0.4), rgba(42, 82, 152, 0.4));
+      border: 1px dashed rgba(255, 204, 0, 0.4);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent-gold);
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 15px;
+    }
+
+    .poster-preview-placeholder span.icon {
+      font-size: 2.2rem;
     }
 
     /* Skills Grid */
@@ -638,8 +771,9 @@
     <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle Navigation">☰</button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about" onclick="closeMenu()">About</a></li>
-      <li><a href="#education" onclick="closeMenu()">Education</a></li>
       <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
+      <li><a href="#visualizer" onclick="closeMenu()">TEC Visualizer</a></li>
+      <li><a href="#posters" onclick="closeMenu()">Posters</a></li>
       <li><a href="#achievements" onclick="closeMenu()">Achievements</a></li>
       <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
       <li><a href="#experience" onclick="closeMenu()">Experience</a></li>
@@ -754,6 +888,87 @@
       </div>
     </section>
 
+    <!-- Interactive TEC Data Visualizer Widget -->
+    <section id="visualizer" class="fade-in-section">
+      <h2 class="section-title">Interactive Ionospheric TEC Visualizer</h2>
+      <div class="viz-container">
+        <div class="viz-header">
+          <div class="viz-title-box">
+            <h3>May 2024 Solar Storm – Diurnal & Storm Peak Simulation</h3>
+            <p>Model based on GNSS observation processing at IISC Bangalore Station (DOY 125 – 138)</p>
+          </div>
+          <div class="viz-controls">
+            <button class="viz-btn active" id="btnIISC" onclick="setVizMode('iisc')">Station IISC (Storm)</button>
+            <button class="viz-btn" id="btnQuiet" onclick="setVizMode('quiet')">Quiet Day Baseline</button>
+            <button class="viz-btn" onclick="animateStormCurve()">⚡ Simulate Storm Event</button>
+          </div>
+        </div>
+
+        <div class="canvas-wrapper">
+          <canvas id="tecCanvas"></canvas>
+        </div>
+
+        <div class="viz-readout">
+          <div class="readout-item">
+            <span style="color:var(--text-muted);">Max Peak (DOY 132)</span>
+            <span class="readout-val" id="valMax">19.47 TECU</span>
+          </div>
+          <div class="readout-item">
+            <span style="color:var(--text-muted);">Min Value (DOY 127)</span>
+            <span class="readout-val" id="valMin">7.11 TECU</span>
+          </div>
+          <div class="readout-item">
+            <span style="color:var(--text-muted);">Phenomenon</span>
+            <span class="readout-val" style="color:var(--accent-cyan);">Noon TEC Bite-Out</span>
+          </div>
+          <div class="readout-item">
+            <span style="color:var(--text-muted);">Station Analyzed</span>
+            <span class="readout-val" style="color:var(--text-main);">IISC (Bangalore)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Canva Research Poster Gallery Section -->
+    <section id="posters" class="fade-in-section">
+      <h2 class="section-title">Canva Research Poster Gallery</h2>
+      <div class="grid-container">
+
+        <!-- FIP National Poster Card -->
+        <div class="poster-card">
+          <div class="poster-preview-placeholder">
+            <span class="icon">🖼️</span>
+            <strong>Frontiers in Physics (FIP) Poster</strong>
+            <p style="font-size:0.78rem; color:var(--text-muted);">National Level Competition • 1st Prize Winner</p>
+          </div>
+          <h3 style="font-size:1.1rem; color:var(--text-main);">Calculating TEC during May 2024 Solar Storm</h3>
+          <p style="font-size:0.85rem; color:var(--text-muted);">Highlighting the daytime ionospheric response and Noon TEC Bite-Out using GNSS RINEX observation processing.</p>
+          <div style="display:flex; gap:10px; margin-top:5px;">
+            <button class="btn btn-primary" onclick="openModal('fip-poster-modal')" style="font-size:0.8rem; padding:6px 16px; width:100%; justify-content:center;">
+              👁️ View Poster Presentation
+            </button>
+          </div>
+        </div>
+
+        <!-- ASI Poster Card -->
+        <div class="poster-card">
+          <div class="poster-preview-placeholder" style="border-color:rgba(0, 242, 254, 0.4); color:var(--accent-cyan);">
+            <span class="icon">🌌</span>
+            <strong>Astronomical Society of India (ASI) Poster</strong>
+            <p style="font-size:0.78rem; color:var(--text-muted);">Annual ASI Conference Presentation</p>
+          </div>
+          <h3 style="font-size:1.1rem; color:var(--text-main);">Observational Astrophysics & Solar Modeling</h3>
+          <p style="font-size:0.85rem; color:var(--text-muted);">Presented at the ASI Meeting focusing on observational solar datasets, spectroscopy, and space weather diagnostics.</p>
+          <div style="display:flex; gap:10px; margin-top:5px;">
+            <button class="btn btn-primary" onclick="openModal('asi-poster-modal')" style="font-size:0.8rem; padding:6px 16px; width:100%; justify-content:center;">
+              👁️ View Poster Presentation
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <!-- Achievements Section -->
     <section id="achievements" class="fade-in-section">
       <h2 class="section-title">Honors & Achievements</h2>
@@ -856,23 +1071,38 @@
 
     <!-- Experience Section -->
     <section id="experience" class="fade-in-section">
-      <h2 class="section-title">Research Experience & Internships</h2>
+      <h2 class="section-title">Research Experience & Academic Roles</h2>
       <div class="grid-container">
+
+        <!-- BRICS Grader Experience -->
+        <div class="card" style="cursor:default; border-color: rgba(0, 242, 254, 0.3);">
+          <div class="card-icon">📝</div>
+          <h3>Grader – BRICS Data Analysis Program</h3>
+          <div class="card-subtitle">May 2026 – August 2026</div>
+          <p>Evaluated participant submissions on astronomical data analysis, Python computational pipelines, and astrophysics exercises.</p>
+        </div>
+
         <div class="card" style="cursor:default;">
           <div class="card-icon">🛰️</div>
-          <h3>IIRS Internship (2025)</h3>
+          <h3>IIRS Internship</h3>
+          <div class="card-subtitle">2025</div>
           <p>Focused on atmospheric sciences, satellite remote sensing, and experimental processing.</p>
         </div>
+
         <div class="card" style="cursor:default;">
           <div class="card-icon">🔭</div>
-          <h3>PRL Internship (Ahmedabad, 2024)</h3>
+          <h3>PRL Internship</h3>
+          <div class="card-subtitle">Ahmedabad • 2024</div>
           <p>Worked with solar observation datasets and participated in astrophysics group seminars.</p>
         </div>
+
         <div class="card" style="cursor:default;">
           <div class="card-icon">🛠️</div>
-          <h3>IDIA BRICS Workshop (2024)</h3>
+          <h3>IDIA BRICS Workshop</h3>
+          <div class="card-subtitle">Pune • 2024</div>
           <p>Hands-on astronomical data processing using Python and spectral plotting tools.</p>
         </div>
+
       </div>
     </section>
 
@@ -1044,6 +1274,27 @@
             <li>Mapped thermal variation trends across target geographical zones.</li>
           </ul>
         `
+      },
+      'fip-poster-modal': {
+        title: "Frontiers in Physics (FIP) Award-Winning Poster",
+        subtitle: "Fergusson College National Competition • 1st Prize Winner",
+        body: `
+          <div class="award-banner">
+            🏆 <strong>1st Prize Winner:</strong> Presented at 'Frontiers in Physics' (FIP).
+          </div>
+          <h4>Poster Presentation Summary</h4>
+          <p>This Canva-designed poster features the ionospheric response during the May 2024 G5 Solar Storm, detailing GNSS observations, GPS-TEC/CMN extraction workflows, and the Noon TEC Bite-Out phenomenon across 9 monitoring stations.</p>
+          <p style="margin-top:10px; color:var(--accent-gold);">💡 <em>Tip: You can replace or paste your Canva public view link directly into this modal iframe or link button!</em></p>
+        `
+      },
+      'asi-poster-modal': {
+        title: "Astronomical Society of India (ASI) Conference Poster",
+        subtitle: "ASI Annual Meeting Presentation",
+        body: `
+          <h4>Poster Presentation Summary</h4>
+          <p>Presented at the Astronomical Society of India (ASI) annual conference. The poster outlines observational astrophysics methods, solar storm ionospheric interaction modeling, and data reduction scripts.</p>
+          <p style="margin-top:10px; color:var(--accent-gold);">💡 <em>Tip: You can replace or paste your Canva public view link directly into this modal iframe or link button!</em></p>
+        `
       }
     };
 
@@ -1116,6 +1367,145 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
+
+    /* --- Interactive TEC Canvas Chart Visualizer --- */
+    const tecCanvas = document.getElementById('tecCanvas');
+    const tctx = tecCanvas.getContext('2d');
+    let vizMode = 'iisc';
+    let animProgress = 1.0;
+    let animReq;
+
+    // DOY 125 to 138 data points
+    const tecDataIISC = [
+      { doy: 125, tec: 12.4 },
+      { doy: 126, tec: 10.2 },
+      { doy: 127, tec: 7.11 }, // Min
+      { doy: 128, tec: 9.8 },
+      { doy: 129, tec: 11.5 },
+      { doy: 130, tec: 13.0 },
+      { doy: 131, tec: 16.2 },
+      { doy: 132, tec: 19.47 }, // Max Peak
+      { doy: 133, tec: 15.8 },
+      { doy: 134, tec: 13.4 },
+      { doy: 135, tec: 11.9 },
+      { doy: 136, tec: 10.5 },
+      { doy: 137, tec: 11.1 },
+      { doy: 138, tec: 12.0 }
+    ];
+
+    const tecDataQuiet = tecDataIISC.map(d => ({ doy: d.doy, tec: 11.0 + Math.sin(d.doy)*1.5 }));
+
+    function resizeTecCanvas() {
+      tecCanvas.width = tecCanvas.parentElement.clientWidth;
+      tecCanvas.height = tecCanvas.parentElement.clientHeight;
+      drawTecChart();
+    }
+
+    function setVizMode(mode) {
+      vizMode = mode;
+      document.getElementById('btnIISC').classList.toggle('active', mode === 'iisc');
+      document.getElementById('btnQuiet').classList.toggle('active', mode === 'quiet');
+      document.getElementById('valMax').innerText = mode === 'iisc' ? '19.47 TECU' : '12.50 TECU';
+      document.getElementById('valMin').innerText = mode === 'iisc' ? '7.11 TECU' : '9.50 TECU';
+      animProgress = 1.0;
+      drawTecChart();
+    }
+
+    function animateStormCurve() {
+      animProgress = 0.0;
+      cancelAnimationFrame(animReq);
+      function step() {
+        animProgress += 0.025;
+        drawTecChart();
+        if (animProgress < 1.0) {
+          animReq = requestAnimationFrame(step);
+        }
+      }
+      step();
+    }
+
+    function drawTecChart() {
+      const w = tecCanvas.width;
+      const h = tecCanvas.height;
+      tctx.clearRect(0, 0, w, h);
+
+      const dataset = vizMode === 'iisc' ? tecDataIISC : tecDataQuiet;
+      const padding = 45;
+      const chartW = w - padding * 2;
+      const chartH = h - padding * 2;
+
+      // Draw Grid Axes
+      tctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+      tctx.lineWidth = 1;
+      for (let i = 0; i <= 4; i++) {
+        let y = padding + (chartH / 4) * i;
+        tctx.beginPath();
+        tctx.moveTo(padding, y);
+        tctx.lineTo(w - padding, y);
+        tctx.stroke();
+
+        // Y-Labels
+        let tecVal = (22 - (22 / 4) * i).toFixed(1);
+        tctx.fillStyle = '#94a3b8';
+        tctx.font = '10px Plus Jakarta Sans';
+        tctx.fillText(`${tecVal} TECU`, 5, y + 3);
+      }
+
+      // X-Labels (DOY)
+      const count = dataset.length;
+      dataset.forEach((d, idx) => {
+        let x = padding + (chartW / (count - 1)) * idx;
+        if (idx % 2 === 0) {
+          tctx.fillText(`DOY ${d.doy}`, x - 15, h - 12);
+        }
+      });
+
+      // Plot Line
+      tctx.beginPath();
+      tctx.strokeStyle = vizMode === 'iisc' ? '#00f2fe' : '#4facfe';
+      tctx.lineWidth = 3;
+
+      let maxVisible = Math.floor(count * animProgress);
+
+      dataset.forEach((d, idx) => {
+        if (idx > maxVisible) return;
+        let x = padding + (chartW / (count - 1)) * idx;
+        let y = padding + chartH - ((d.tec / 22) * chartH);
+
+        if (idx === 0) tctx.moveTo(x, y);
+        else tctx.lineTo(x, y);
+      });
+      tctx.stroke();
+
+      // Draw Points & Peak Highlights
+      dataset.forEach((d, idx) => {
+        if (idx > maxVisible) return;
+        let x = padding + (chartW / (count - 1)) * idx;
+        let y = padding + chartH - ((d.tec / 22) * chartH);
+
+        let isPeak = (d.tec === 19.47 && vizMode === 'iisc');
+        let isMin = (d.tec === 7.11 && vizMode === 'iisc');
+
+        tctx.beginPath();
+        tctx.arc(x, y, isPeak ? 6 : 4, 0, Math.PI * 2);
+        tctx.fillStyle = isPeak ? '#ffcc00' : (isMin ? '#ff4b4b' : '#00f2fe');
+        tctx.fill();
+
+        if (isPeak) {
+          tctx.fillStyle = '#ffcc00';
+          tctx.font = 'bold 11px Plus Jakarta Sans';
+          tctx.fillText('⚡ Peak 19.47 TECU', x - 40, y - 12);
+        }
+        if (isMin) {
+          tctx.fillStyle = '#ff4b4b';
+          tctx.font = 'bold 11px Plus Jakarta Sans';
+          tctx.fillText('Min 7.11 TECU', x - 30, y + 18);
+        }
+      });
+    }
+
+    window.addEventListener('resize', resizeTecCanvas);
+    setTimeout(resizeTecCanvas, 200);
   </script>
 </body>
 </html>
