@@ -10,7 +10,7 @@
   <style>
     :root {
       --bg-dark: #0a0d14;
-      --card-bg: rgba(22, 27, 38, 0.65);
+      --card-bg: rgba(22, 27, 38, 0.7);
       --card-border: rgba(255, 255, 255, 0.08);
       --accent-cyan: #00f2fe;
       --accent-blue: #4facfe;
@@ -36,7 +36,6 @@
       align-items: center;
     }
 
-    /* Cosmic Canvas Background */
     #canvas-bg {
       position: fixed;
       top: 0;
@@ -54,7 +53,7 @@
       z-index: 1000;
       width: 90%;
       max-width: 1000px;
-      background: rgba(10, 13, 20, 0.7);
+      background: rgba(10, 13, 20, 0.75);
       backdrop-filter: blur(16px);
       border: 1px solid var(--card-border);
       border-radius: 40px;
@@ -93,31 +92,27 @@
     header {
       width: 100%;
       max-width: 1000px;
-      padding: 80px 20px 40px;
+      padding: 70px 20px 40px;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    .profile-wrapper {
-      position: relative;
-      margin-bottom: 25px;
-    }
-
     .profile-pic {
-      width: 140px;
-      height: 140px;
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid transparent;
       background: linear-gradient(var(--bg-dark), var(--bg-dark)) padding-box,
                   linear-gradient(135deg, var(--accent-cyan), var(--accent-gold)) border-box;
       box-shadow: 0 0 30px rgba(0, 242, 254, 0.25);
+      margin-bottom: 20px;
     }
 
     h1 {
-      font-size: 2.8rem;
+      font-size: 2.6rem;
       font-weight: 800;
       letter-spacing: -0.5px;
       margin-bottom: 10px;
@@ -135,7 +130,7 @@
     }
 
     .tagline {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       color: var(--accent-cyan);
       font-weight: 600;
       margin-bottom: 25px;
@@ -143,7 +138,7 @@
 
     .cta-group {
       display: flex;
-      gap: 15px;
+      gap: 12px;
       flex-wrap: wrap;
       justify-content: center;
     }
@@ -158,12 +153,14 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      cursor: pointer;
     }
 
     .btn-primary {
       background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
       color: #000;
       box-shadow: 0 4px 20px rgba(0, 242, 254, 0.3);
+      border: none;
     }
 
     .btn-primary:hover {
@@ -182,13 +179,13 @@
       border-color: rgba(255, 255, 255, 0.2);
     }
 
-    /* Container Grid */
+    /* Main Content */
     main {
       width: 90%;
       max-width: 1000px;
       display: flex;
       flex-direction: column;
-      gap: 40px;
+      gap: 45px;
       margin-bottom: 80px;
     }
 
@@ -208,13 +205,13 @@
       background: linear-gradient(90deg, var(--card-border), transparent);
     }
 
-    /* Grid Cards */
     .grid-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
     }
 
+    /* Interactive Project Card */
     .card {
       background: var(--card-bg);
       backdrop-filter: blur(12px);
@@ -223,22 +220,42 @@
       padding: 24px;
       transition: all 0.3s ease;
       position: relative;
-      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
     }
 
     .card:hover {
       transform: translateY(-4px);
-      border-color: rgba(0, 242, 254, 0.3);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 10px 30px rgba(0, 242, 254, 0.15);
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 0.75rem;
+      background: rgba(0, 242, 254, 0.1);
+      color: var(--accent-cyan);
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+
+    .award-tag {
+      background: rgba(255, 204, 0, 0.15);
+      color: var(--accent-gold);
+      border: 1px solid rgba(255, 204, 0, 0.3);
     }
 
     .card-icon {
-      font-size: 1.8rem;
+      font-size: 2rem;
       margin-bottom: 12px;
     }
 
     .card h3 {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       margin-bottom: 6px;
       color: var(--text-main);
     }
@@ -246,7 +263,7 @@
     .card-subtitle {
       font-size: 0.85rem;
       color: var(--accent-cyan);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       font-weight: 600;
     }
 
@@ -254,56 +271,168 @@
       font-size: 0.9rem;
       color: var(--text-muted);
       line-height: 1.5;
+      margin-bottom: 15px;
     }
 
-    /* Horizontal Timeline */
-    .timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .timeline-node {
-      display: flex;
-      gap: 20px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 20px;
-      align-items: flex-start;
-    }
-
-    .node-icon {
-      background: rgba(0, 242, 254, 0.1);
-      color: var(--accent-cyan);
-      padding: 12px;
-      border-radius: 12px;
-      font-size: 1.2rem;
-    }
-
-    /* Skill Badges */
-    .skills-flex {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .skill-badge {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--card-border);
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 0.85rem;
+    .click-hint {
+      margin-top: auto;
+      font-size: 0.8rem;
+      color: var(--accent-gold);
       font-weight: 600;
-      color: var(--text-main);
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 5px;
     }
 
-    .skill-badge:hover {
-      border-color: var(--accent-cyan);
+    /* Skills Grid with 1-10 Ratings */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .skill-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 18px 20px;
+      border-radius: 14px;
+    }
+
+    .skill-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .skill-score {
       color: var(--accent-cyan);
+    }
+
+    .skill-bar-bg {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue));
+      border-radius: 4px;
+      transition: width 1s ease-in-out;
+    }
+
+    /* Modal Styling */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(5, 7, 12, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 2000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-box {
+      background: #111622;
+      border: 1px solid var(--accent-cyan);
+      border-radius: 20px;
+      max-width: 680px;
+      width: 100%;
+      padding: 30px;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.3s ease;
+      box-shadow: 0 20px 50px rgba(0, 242, 254, 0.2);
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+
+    .modal-overlay.active .modal-box {
+      transform: translateY(0);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: var(--text-main);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-close:hover { background: rgba(255, 255, 255, 0.2); }
+
+    .modal-title {
+      font-size: 1.4rem;
+      margin-bottom: 6px;
+      color: var(--accent-cyan);
+      padding-right: 30px;
+    }
+
+    .modal-subtitle {
+      font-size: 0.9rem;
+      color: var(--accent-gold);
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .modal-content-body {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--text-main);
+    }
+
+    .modal-content-body h4 {
+      color: var(--accent-cyan);
+      margin-top: 14px;
+      margin-bottom: 6px;
+    }
+
+    .modal-content-body ul {
+      margin-left: 20px;
+      margin-bottom: 12px;
+    }
+
+    .modal-content-body li {
+      margin-bottom: 6px;
+    }
+
+    .award-banner {
+      background: rgba(255, 204, 0, 0.1);
+      border: 1px solid rgba(255, 204, 0, 0.4);
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent-gold);
+      font-weight: 600;
     }
 
     /* Footer */
@@ -320,9 +449,8 @@
     footer a { color: var(--accent-cyan); text-decoration: none; }
 
     @media (max-width: 768px) {
-      h1 { font-size: 2.2rem; }
+      h1 { font-size: 2rem; }
       .nav-links { display: none; }
-      .timeline-node { flex-direction: column; gap: 10px; }
     }
   </style>
 </head>
@@ -334,16 +462,15 @@
     <div class="nav-logo">TA.</div>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#achievements">Achievements</a></li>
       <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
     </ul>
   </nav>
 
   <header id="about">
-    <div class="profile-wrapper">
-      <img src="profile.jpg" alt="Triptesh Acharjee" class="profile-pic">
-    </div>
+    <img src="profile.jpg" alt="Triptesh Acharjee" class="profile-pic">
     <h1>Triptesh Acharjee®</h1>
     <div class="degree-badge">B.Sc (Hons) Physics • Fergusson College, Pune</div>
     <p class="tagline">Aspiring ISRO Scientist & Exoplanet Research Enthusiast</p>
@@ -351,109 +478,177 @@
     <div class="cta-group">
       <a class="btn btn-primary" href="Triptesh_Acharjee_CV.pdf" download>📄 Download CV</a>
       <a class="btn btn-secondary" href="https://www.linkedin.com/in/triptesh-acharjee-09b0a3163/" target="_blank">LinkedIn</a>
-      <a class="btn btn-secondary" href="https://www.instagram.com/loveliholic.private/" target="_blank">Instagram</a>
+      <a class="btn btn-secondary" href="https://www.instagram.com/loveliholic" target="_blank">Instagram</a>
     </div>
   </header>
 
   <main>
+
+    <!-- Key Featured Projects -->
+    <section id="projects">
+      <h2 class="section-title">Key Academic & Graduation Projects</h2>
+      <div class="grid-container">
+
+        <!-- IIT Indore Graduation Project -->
+        <div class="card" onclick="openModal('iit-indore')">
+          <span class="card-badge award-tag">🥇 1st Prize Winner</span>
+          <div class="card-icon">🏛️</div>
+          <h3>Ionospheric TEC & Solar Storm Study</h3>
+          <div class="card-subtitle">IIT Indore • DAASE Department</div>
+          <p>GNSS-based calculation of Total Electron Content (TEC) and analysis of the "Noon TEC Bite-Out" during the May 2024 G5 Solar Storm.</p>
+          <div class="click-hint">🔍 View full project details & outcome &rarr;</div>
+        </div>
+
+        <!-- Fergusson College PICC Project -->
+        <div class="card" onclick="openModal('fergusson-picc')">
+          <span class="card-badge">PICC Research</span>
+          <div class="card-icon">🔬</div>
+          <h3>CuO Semiconducting Gas Sensors</h3>
+          <div class="card-subtitle">Fergusson College • Department of Physics</div>
+          <p>Development and optimization of a CuO/conductive-PLA electrode sensing platform via electrodeposition for ammonia/gas detection.</p>
+          <div class="click-hint">🔍 View full project details & outcome &rarr;</div>
+        </div>
+
+        <!-- TESS Stellar Variability -->
+        <div class="card" onclick="openModal('tess-project')">
+          <span class="card-badge">Data Analysis</span>
+          <div class="card-icon">⭐</div>
+          <h3>Stellar Variability (TESS)</h3>
+          <div class="card-subtitle">NASA TESS Mission Data • 2024</div>
+          <p>Analyzed light curves from TESS to identify variations in stellar brightness and exoplanet transits.</p>
+          <div class="click-hint">🔍 View project details & outcome &rarr;</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements">
+      <h2 class="section-title">Honors & Achievements</h2>
+      <div class="grid-container">
+        
+        <div class="card" style="cursor:default; border-color: rgba(255, 204, 0, 0.4);">
+          <div class="card-icon">🏆</div>
+          <h3>1st Prize – Frontiers in Physics (FIP)</h3>
+          <div class="card-subtitle">National Level Competition • Fergusson College</div>
+          <p>Secured 1st Prize for presenting research on <em>"Calculating TEC with GPS Measurements During the May 2024 Solar Storm"</em> conducted with IIT Indore.</p>
+        </div>
+
+        <div class="card" style="cursor:default;">
+          <div class="card-icon">🥇</div>
+          <h3>Astro Club Poster Exhibitions</h3>
+          <div class="card-subtitle">Fergusson College</div>
+          <p>Secured 1st Place (2024) and 3rd Place (2023) for poster presentations on astronomy research and observational techniques.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Skills Section with Updated Ratings -->
+    <section id="skills">
+      <h2 class="section-title">Skills & Competencies (Scale 1–10)</h2>
+      <div class="skills-grid">
+
+        <div class="skill-card">
+          <div class="skill-info">
+            <span>Python Programming</span>
+            <span class="skill-score">8.5 / 10</span>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-info">
+            <span>Data Analysis</span>
+            <span class="skill-score">8.0 / 10</span>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 80%;"></div></div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-info">
+            <span>Astronomical & Astrophysical Methods</span>
+            <span class="skill-score">7.5 / 10</span>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 75%;"></div></div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-info">
+            <span>Public Speaking & Presentation</span>
+            <span class="skill-score">9.0 / 10</span>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%;"></div></div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-info">
+            <span>Research Methodology</span>
+            <span class="skill-score">8.0 / 10</span>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 80%;"></div></div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-info">
+            <span>Radio Interferometry</span>
+            <span class="skill-score">7.0 / 10</span>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 70%;"></div></div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-info">
+            <span>Java Programming</span>
+            <span class="skill-score">6.5 / 10</span>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 65%;"></div></div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-info">
+            <span>Linux Operating System</span>
+            <span class="skill-score">5.0 / 10</span>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 50%;"></div></div>
+        </div>
+
+      </div>
+    </section>
+
     <!-- Experience Section -->
     <section id="experience">
-      <h2 class="section-title">Research & Experience</h2>
-      <div class="timeline">
-        <div class="timeline-node">
-          <div class="node-icon">🛰️</div>
-          <div>
-            <h3>IIRS Internship</h3>
-            <div class="card-subtitle">2025 • Remote Sensing & Satellite Processing</div>
-            <p>Focused on atmospheric sciences, processing satellite datasets, and experimental modeling.</p>
-          </div>
-        </div>
-        <div class="timeline-node">
-          <div class="node-icon">🛠️</div>
-          <div>
-            <h3>IDIA BRICS Workshop</h3>
-            <div class="card-subtitle">Pune, 2024 • Data Analysis</div>
-            <p>Hands-on astronomical data analysis using Python scripting and observational datasets.</p>
-          </div>
-        </div>
-        <div class="timeline-node">
-          <div class="node-icon">🔭</div>
-          <div>
-            <h3>PRL Internship</h3>
-            <div class="card-subtitle">Ahmedabad, 2024 • Solar Physics</div>
-            <p>Analyzed solar observation datasets and participated in high-level research discussions.</p>
-          </div>
-        </div>
-        <div class="timeline-node">
-          <div class="node-icon">🌌</div>
-          <div>
-            <h3>IUCAA & NCRA Workshops</h3>
-            <div class="card-subtitle">Pune, 2023 • Astrophysics</div>
-            <p>Exoplanet detection spectroscopy, radio astronomy, and interferometry learning.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects">
-      <h2 class="section-title">Featured Projects</h2>
+      <h2 class="section-title">Research Experience & Internships</h2>
       <div class="grid-container">
-        <div class="card">
-          <div class="card-icon">⭐</div>
-          <h3>Detecting Stellar Variability</h3>
-          <div class="card-subtitle">TESS Mission Data • 2024</div>
-          <p>Extracted and analyzed photometric light curves from the TESS satellite to identify stellar brightness fluctuations.</p>
+        <div class="card" style="cursor:default;">
+          <div class="card-icon">🛰️</div>
+          <h3>IIRS Internship (2025)</h3>
+          <p>Focused on atmospheric sciences, satellite remote sensing, and experimental processing.</p>
         </div>
-        <div class="card">
-          <div class="card-icon">🌡️</div>
-          <h3>Heat Wave Monitoring</h3>
-          <div class="card-subtitle">Remote Sensing • 2025</div>
-          <p>Evaluated regional temperature anomalies and surface thermal patterns using multi-spectral satellite observations.</p>
+        <div class="card" style="cursor:default;">
+          <div class="card-icon">🔭</div>
+          <h3>PRL Internship (Ahmedabad, 2024)</h3>
+          <p>Worked with solar observation datasets and participated in astrophysics group seminars.</p>
         </div>
-        <div class="card">
-          <div class="card-icon">⚡</div>
-          <h3>Accelerating Astronomy</h3>
-          <div class="card-subtitle">Python Pipelines • 2023</div>
-          <p>Engineered custom Python scripts to automate and optimize raw astronomical data preprocessing workflows.</p>
+        <div class="card" style="cursor:default;">
+          <div class="card-icon">🛠️</div>
+          <h3>IDIA BRICS Workshop (2024)</h3>
+          <p>Hands-on astronomical data processing using Python and spectral plotting tools.</p>
         </div>
       </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills">
-      <h2 class="section-title">Skills & Technologies</h2>
-      <div class="skills-flex">
-        <div class="skill-badge">🐍 Python</div>
-        <div class="skill-badge">☕ Java</div>
-        <div class="skill-badge">🐧 Linux OS</div>
-        <div class="skill-badge">🔭 Astronomical Spectroscopy</div>
-        <div class="skill-badge">📊 Data Visualization</div>
-        <div class="skill-badge">📡 Interferometry</div>
-        <div class="skill-badge">🗣️ Public Speaking</div>
-        <div class="skill-badge">📜 Research Methodology</div>
-      </div>
-    </section>
-
-    <!-- Education & Achievements -->
-    <section>
-      <h2 class="section-title">Education & Milestones</h2>
-      <div class="grid-container">
-        <div class="card">
-          <div class="card-icon">🎓</div>
-          <h3>B.Sc (Hons) Physics</h3>
-          <div class="card-subtitle">Fergusson College (2023 - 2026)</div>
-          <p>Focusing on Astrophysics, Quantum Mechanics, and Computational Physics.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">🏆</div>
-          <h3>Astro Club Exhibitions</h3>
-          <div class="card-subtitle">1st Place (2024) | 3rd Place (2023)</div>
-          <p>Awarded for outstanding poster presentations on astronomical research and data visualization.</p>
-        </div>
-      </div>
-    </section>
   </main>
+
+  <!-- Dynamic Modal for Project Details -->
+  <div class="modal-overlay" id="projectModal" onclick="closeModalOnOverlay(event)">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <h3 class="modal-title" id="mTitle">Project Title</h3>
+      <div class="modal-subtitle" id="mSubtitle">Subtitle / Institution</div>
+      <div class="modal-content-body" id="mBody"></div>
+    </div>
+  </div>
 
   <footer>
     <p>&copy; 2026 Triptesh Acharjee®. All Rights Reserved.</p>
@@ -461,7 +656,84 @@
   </footer>
 
   <script>
-    // Starfield Background Animation
+    // Detailed Project Content
+    const projectDetails = {
+      'iit-indore': {
+        title: "Calculating TEC with GPS Measurements during May 2024 Solar Storm (\"Noon TEC Bite-Out\" Study)",
+        subtitle: "IIT Indore • Department of Astronomy, Astrophysics & Space Engineering (DAASE)",
+        body: `
+          <div class="award-banner">
+            🏆 <strong>1st Prize Winner:</strong> Presented at 'Frontiers in Physics' (FIP), a National Level Event held at Fergusson College, Pune.
+          </div>
+          <h4>Overview & Objectives</h4>
+          <p>Studied the ionospheric response during the severe May 2024 G5 geomagnetic storm by analyzing Total Electron Content (TEC) extracted from GNSS/GPS observations, focusing on the daytime/noon TEC bite-out phenomenon.</p>
+
+          <h4>Data & Computational Tools</h4>
+          <ul>
+            <li><strong>GNSS Observations:</strong> Processing of RINEX datasets from 9 stations (IISC, BHPL, HYDE, IITK, LCK4, SGOC, JDPR, SHLG, DRDN) spanning May 5–20, 2024.</li>
+            <li><strong>Software & Analysis:</strong> Extracted TEC using Gopi Seemala's GPS-TEC/CMN software, followed by computational modeling and plotting in <strong>Python</strong> and <strong>MATLAB</strong>.</li>
+          </ul>
+
+          <h4>Key Findings</h4>
+          <p>Identified measurable storm-induced ionospheric perturbations. Station IISC demonstrated the most consistent TEC behavior, displaying a maximum TEC variation of ~19.47 TECU (DOY 132) and a minimum of ~7.11 TECU (DOY 127).</p>
+
+          <h4>Supervision & Mentorship</h4>
+          <p>Supervised online by <strong>Prof. Dr. Abhirup Datta</strong> (DAASE, IIT Indore) and guided by <strong>Mr. Bhuvnesh Brawar</strong>.</p>
+        `
+      },
+      'fergusson-picc': {
+        title: "CuO Semiconducting Gas Sensors Platform",
+        subtitle: "Fergusson College • Department of Physics (PICC)",
+        body: `
+          <h4>Overview & Objectives</h4>
+          <p>Focused on fabricating a CuO-based semiconducting gas-sensing platform designed for ammonia and hydrogen detection (hydrogen testing skipped due to equipment unavailability).</p>
+
+          <h4>Experimental Methodology & Optimization</h4>
+          <ul>
+            <li><strong>Electrodeposition:</strong> Fabricated CuO layers onto conductive 3D-printed PLA electrodes using CuSO₄ + sodium lactate solution under strongly alkaline conditions (NaOH, pH ≈ 12).</li>
+            <li><strong>Substrate Refinement:</strong> Switched from initial Electrify conductive filament (which degraded during chemical processing) to <strong>Protopasta conductive PLA</strong> for superior structural stability.</li>
+            <li><strong>Characterization:</strong> Prepared samples submitted to SPPU facilities for planned XRD, UV-Vis, and FTIR characterization.</li>
+          </ul>
+
+          <h4>Major Outcomes</h4>
+          <p>Successfully developed and refined a reproducible CuO/conductive-PLA sensor fabrication technique while establishing an optimized chemical route.</p>
+
+          <h4>Supervision & Mentorship</h4>
+          <p>Supervised by <strong>Prof. Dr. Ashish Yengantiwar</strong> with guidance from <strong>Mr. Bosco V. Ruptake</strong>, Department of Physics, Fergusson College.</p>
+        `
+      },
+      'tess-project': {
+        title: "Detecting Stellar Variability (TESS)",
+        subtitle: "NASA Transiting Exoplanet Survey Satellite • 2024",
+        body: `
+          <h4>Overview</h4>
+          <p>Analyzed light curve datasets from NASA's TESS satellite to detect stellar variability and photometric anomalies.</p>
+          <ul>
+            <li>Engineered Python data pipelines to filter systematic noise and instrument trends.</li>
+            <li>Identified periodic light drops corresponding to stellar activity and candidate transits.</li>
+          </ul>
+        `
+      }
+    };
+
+    function openModal(id) {
+      const data = projectDetails[id];
+      if(!data) return;
+      document.getElementById('mTitle').innerText = data.title;
+      document.getElementById('mSubtitle').innerText = data.subtitle;
+      document.getElementById('mBody').innerHTML = data.body;
+      document.getElementById('projectModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('projectModal').classList.remove('active');
+    }
+
+    function closeModalOnOverlay(e) {
+      if (e.target.id === 'projectModal') closeModal();
+    }
+
+    // Canvas Starfield Background
     const canvas = document.getElementById('canvas-bg');
     const ctx = canvas.getContext('2d');
     let stars = [];
@@ -490,7 +762,6 @@
       stars.forEach(star => {
         star.alpha += star.speed;
         if (star.alpha > 1 || star.alpha < 0) star.speed = -star.speed;
-        
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(255, 255, 255, ${Math.abs(star.alpha)})`;
