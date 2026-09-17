@@ -1,211 +1,508 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Triptesh Acharjee | Portfolio</title>
-<style>
-html, body { margin:0; font-family:'Segoe UI', Tahoma, sans-serif; background:#fafafa; color:#222; scroll-behavior:smooth; }
-body { display:flex; flex-direction:column; align-items:center; min-height:100vh; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Triptesh Acharjee | Astrophysicist & Researcher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0a0d14;
+      --card-bg: rgba(22, 27, 38, 0.65);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent-cyan: #00f2fe;
+      --accent-blue: #4facfe;
+      --accent-gold: #ffcc00;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+    }
 
-/* Header */
-header { position:relative; text-align:center; color:white; padding:60px 20px; width:100%; overflow:hidden; }
-.header-bg { position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; background: linear-gradient(135deg,#1e3c72,#2a5298); }
-.star { position:absolute; background:white; border-radius:50%; opacity:0.8; }
-.header-content { position:relative; z-index:1; }
-.profile-pic { width:120px; height:120px; border-radius:50%; border:4px solid white; object-fit:cover; margin-bottom:15px; transition: transform 0.3s, box-shadow 0.3s; }
-.profile-pic:hover { transform: scale(1.1); box-shadow:0 0 20px rgba(255,204,0,0.6); }
-header h1 { margin:0; font-size:2.2em; } 
-header p.degree { margin:5px 0; font-size:1.1em; }
-header p.tagline { margin:5px 0 15px 0; font-size:1em; font-style:italic; color:#ffcc00; }
-.header-buttons { display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-top:10px; }
-.cv-button { padding:10px 20px; background:#ffcc00; color:#222; text-decoration:none; font-weight:bold; border-radius:6px; transition:0.3s; }
-.cv-button:hover { background:#e6b800; transform:translateY(-2px) scale(1.05); }
-.social-link { color:white; font-weight:bold; text-decoration:none; padding:6px 12px; background:rgba(255,255,255,0.2); border-radius:5px; transition:0.3s; }
-.social-link:hover { background:rgba(255,255,255,0.4); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+    }
 
-/* Content Box */
-.content { background:#fff; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.08); margin:20px 0; padding:25px; max-width:1000px; width:90%; }
-.content h2 { cursor:pointer; user-select:none; display:flex; justify-content:space-between; align-items:center; font-size:1.4em; }
-.content h2 span.arrow { display:inline-block; transition: transform 0.3s ease; }
-.content .section-body { display:none; margin-top:15px; }
+    body {
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-/* Timeline */
-.timeline { position:relative; padding-left:40px; border-left:3px solid #2a5298; }
-.timeline-item { display:flex; flex-direction:row; align-items:flex-start; margin-bottom:20px; position:relative; padding:5px 10px; opacity:0; transform: translateY(30px); transition: all 0.6s ease-out; }
-.timeline-item.visible { opacity:1; transform: translateY(0); }
-.timeline-item::before { content: attr(data-icon); position:absolute; left:-55px; top:0; width:35px; height:35px; background:#ffcc00; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:18px; color:#222; }
-.timeline-content { margin-left:50px; }
-.timeline-content h3 { margin:0 0 5px 0; font-size:1.2em; color:#1e3c72; }
-.timeline-content p, .timeline-content ul, .timeline-content li { margin:0; padding:0; list-style:none; }
+    /* Cosmic Canvas Background */
+    #canvas-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      pointer-events: none;
+    }
 
-/* Footer */
-footer { background:#1e3c72; color:white; padding:15px 20px; font-size:0.9em; width:100%; }
-footer a { color:white; text-decoration:none; }
-.footer-container { display:flex; justify-content:space-between; flex-wrap:wrap; align-items:center; max-width:1000px; margin:auto; gap:10px; }
-.footer-container span { margin:5px 0; }
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 15px;
+      z-index: 1000;
+      width: 90%;
+      max-width: 1000px;
+      background: rgba(10, 13, 20, 0.7);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: 40px;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
 
-/* Responsive */
-@media (max-width:1024px){
-    header h1{font-size:2em;}
-    .profile-pic{width:100px;height:100px;}
-    .timeline-item{flex-direction:column; align-items:flex-start; margin-left:0; padding-left:0;}
-    .timeline-item::before { left:-15px; margin-bottom:8px; }
-    .timeline-content{margin-left:0; margin-top:8px;}
-}
-@media (max-width:768px){
-    header h1{font-size:1.8em;}
-    header p.degree{font-size:1em;}
-    .profile-pic{width:90px;height:90px;}
-}
-@media (max-width:480px){
-    header h1{font-size:1.5em;} header p.degree{font-size:0.9em;}
-    .timeline-item::before{width:25px;height:25px;font-size:14px;}
-    .timeline-content h3{font-size:1em;}
-}
-</style>
+    .nav-logo {
+      font-weight: 800;
+      font-size: 1.1rem;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--accent-cyan); }
+
+    /* Hero Section */
+    header {
+      width: 100%;
+      max-width: 1000px;
+      padding: 80px 20px 40px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .profile-wrapper {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    .profile-pic {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid transparent;
+      background: linear-gradient(var(--bg-dark), var(--bg-dark)) padding-box,
+                  linear-gradient(135deg, var(--accent-cyan), var(--accent-gold)) border-box;
+      box-shadow: 0 0 30px rgba(0, 242, 254, 0.25);
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+
+    .degree-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .tagline {
+      font-size: 1.15rem;
+      color: var(--accent-cyan);
+      font-weight: 600;
+      margin-bottom: 25px;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+      color: #000;
+      box-shadow: 0 4px 20px rgba(0, 242, 254, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(0, 242, 254, 0.5);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      border: 1px solid var(--card-border);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Container Grid */
+    main {
+      width: 90%;
+      max-width: 1000px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      margin-bottom: 80px;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--card-border), transparent);
+    }
+
+    /* Grid Cards */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0, 242, 254, 0.3);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+      color: var(--text-main);
+    }
+
+    .card-subtitle {
+      font-size: 0.85rem;
+      color: var(--accent-cyan);
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Horizontal Timeline */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .timeline-node {
+      display: flex;
+      gap: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 20px;
+      align-items: flex-start;
+    }
+
+    .node-icon {
+      background: rgba(0, 242, 254, 0.1);
+      color: var(--accent-cyan);
+      padding: 12px;
+      border-radius: 12px;
+      font-size: 1.2rem;
+    }
+
+    /* Skill Badges */
+    .skills-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-badge {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .skill-badge:hover {
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    /* Footer */
+    footer {
+      width: 100%;
+      border-top: 1px solid var(--card-border);
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      background: rgba(10, 13, 20, 0.9);
+    }
+
+    footer a { color: var(--accent-cyan); text-decoration: none; }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.2rem; }
+      .nav-links { display: none; }
+      .timeline-node { flex-direction: column; gap: 10px; }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-    <div class="header-bg"></div>
-    <div class="header-content">
-        <img src="profile.jpg" alt="Triptesh Acharjee" class="profile-pic">
-        <h1>Triptesh Acharjee<span>®</span></h1>
-        <p class="degree">B.Sc (Hons) Physics, Fergusson College, Pune</p>
-        <p class="tagline">Aspiring ISRO Scientist | Exoplanet Research Enthusiast</p>
-        <div class="header-buttons">
-            <a class="cv-button" href="Triptesh_Acharjee_CV.pdf" download>📄 Download CV</a>
-            <a class="social-link" href="https://www.linkedin.com/in/triptesh-acharjee-09b0a3163/" target="_blank">LinkedIn</a>
-            <a class="social-link" href="https://www.instagram.com/loveliholic" target="_blank">Instagram</a>
+  <canvas id="canvas-bg"></canvas>
+
+  <nav>
+    <div class="nav-logo">TA.</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+    </ul>
+  </nav>
+
+  <header id="about">
+    <div class="profile-wrapper">
+      <img src="profile.jpg" alt="Triptesh Acharjee" class="profile-pic">
+    </div>
+    <h1>Triptesh Acharjee®</h1>
+    <div class="degree-badge">B.Sc (Hons) Physics • Fergusson College, Pune</div>
+    <p class="tagline">Aspiring ISRO Scientist & Exoplanet Research Enthusiast</p>
+    
+    <div class="cta-group">
+      <a class="btn btn-primary" href="Triptesh_Acharjee_CV.pdf" download>📄 Download CV</a>
+      <a class="btn btn-secondary" href="https://www.linkedin.com/in/triptesh-acharjee-09b0a3163/" target="_blank">LinkedIn</a>
+      <a class="btn btn-secondary" href="https://www.instagram.com/loveliholic" target="_blank">Instagram</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Experience Section -->
+    <section id="experience">
+      <h2 class="section-title">Research & Experience</h2>
+      <div class="timeline">
+        <div class="timeline-node">
+          <div class="node-icon">🛰️</div>
+          <div>
+            <h3>IIRS Internship</h3>
+            <div class="card-subtitle">2025 • Remote Sensing & Satellite Processing</div>
+            <p>Focused on atmospheric sciences, processing satellite datasets, and experimental modeling.</p>
+          </div>
         </div>
-    </div>
-</header>
+        <div class="timeline-node">
+          <div class="node-icon">🛠️</div>
+          <div>
+            <h3>IDIA BRICS Workshop</h3>
+            <div class="card-subtitle">Pune, 2024 • Data Analysis</div>
+            <p>Hands-on astronomical data analysis using Python scripting and observational datasets.</p>
+          </div>
+        </div>
+        <div class="timeline-node">
+          <div class="node-icon">🔭</div>
+          <div>
+            <h3>PRL Internship</h3>
+            <div class="card-subtitle">Ahmedabad, 2024 • Solar Physics</div>
+            <p>Analyzed solar observation datasets and participated in high-level research discussions.</p>
+          </div>
+        </div>
+        <div class="timeline-node">
+          <div class="node-icon">🌌</div>
+          <div>
+            <h3>IUCAA & NCRA Workshops</h3>
+            <div class="card-subtitle">Pune, 2023 • Astrophysics</div>
+            <p>Exoplanet detection spectroscopy, radio astronomy, and interferometry learning.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- Education -->
-<div class="content" id="education">
-  <h2>Education <span class="arrow">►</span></h2>
-  <div class="section-body">
-    <div class="timeline">
-      <div class="timeline-item" data-icon="🎓"><div class="timeline-content"><h3>B.Sc (Hons) Physics</h3><p>Fergusson College, Pune (2023-2026)</p></div></div>
-      <div class="timeline-item" data-icon="🏫"><div class="timeline-content"><h3>Higher Secondary</h3><p>Carmel Junior College (2021-2023)</p></div></div>
-      <div class="timeline-item" data-icon="🏠"><div class="timeline-content"><h3>Schooling</h3><p>Jusco School Kadma (2005-2021)</p></div></div>
-    </div>
-  </div>
-</div>
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="grid-container">
+        <div class="card">
+          <div class="card-icon">⭐</div>
+          <h3>Detecting Stellar Variability</h3>
+          <div class="card-subtitle">TESS Mission Data • 2024</div>
+          <p>Extracted and analyzed photometric light curves from the TESS satellite to identify stellar brightness fluctuations.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🌡️</div>
+          <h3>Heat Wave Monitoring</h3>
+          <div class="card-subtitle">Remote Sensing • 2025</div>
+          <p>Evaluated regional temperature anomalies and surface thermal patterns using multi-spectral satellite observations.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h3>Accelerating Astronomy</h3>
+          <div class="card-subtitle">Python Pipelines • 2023</div>
+          <p>Engineered custom Python scripts to automate and optimize raw astronomical data preprocessing workflows.</p>
+        </div>
+      </div>
+    </section>
 
-<!-- Skills -->
-<div class="content" id="skills">
-  <h2>Skills <span class="arrow">►</span></h2>
-  <div class="section-body">
-    <div class="timeline">
-      <div class="timeline-item" data-icon="💻"><div class="timeline-content"><h3>Programming</h3><p>Python, Java</p></div></div>
-      <div class="timeline-item" data-icon="🖥️"><div class="timeline-content"><h3>Operating Systems</h3><p>Linux</p></div></div>
-      <div class="timeline-item" data-icon="🔭"><div class="timeline-content"><h3>Astronomy & Spectroscopy</h3><p>Stellar observations, Data analysis</p></div></div>
-      <div class="timeline-item" data-icon="📝"><div class="timeline-content"><h3>Communication</h3><p>Public Speaking, Diplomacy</p></div></div>
-      <div class="timeline-item" data-icon="📊"><div class="timeline-content"><h3>Other Skills</h3><p>Data visualization, Research methodology</p></div></div>
-    </div>
-  </div>
-</div>
+    <!-- Skills Section -->
+    <section id="skills">
+      <h2 class="section-title">Skills & Technologies</h2>
+      <div class="skills-flex">
+        <div class="skill-badge">🐍 Python</div>
+        <div class="skill-badge">☕ Java</div>
+        <div class="skill-badge">🐧 Linux OS</div>
+        <div class="skill-badge">🔭 Astronomical Spectroscopy</div>
+        <div class="skill-badge">📊 Data Visualization</div>
+        <div class="skill-badge">📡 Interferometry</div>
+        <div class="skill-badge">🗣️ Public Speaking</div>
+        <div class="skill-badge">📜 Research Methodology</div>
+      </div>
+    </section>
 
-<!-- Experience -->
-<div class="content" id="experience">
-  <h2>Experience <span class="arrow">►</span></h2>
-  <div class="section-body">
-    <div class="timeline">
-      <div class="timeline-item" data-icon="🛠️"><div class="timeline-content"><h3>IDIA BRICS Workshop – Pune, 2024</h3><p>Hands-on astronomical data analysis and Python scripting.</p></div></div>
-      <div class="timeline-item" data-icon="🔭"><div class="timeline-content"><h3>PRL Internship – Ahmedabad, 2024</h3><p>Worked on solar observation datasets and research discussions.</p></div></div>
-      <div class="timeline-item" data-icon="📡"><div class="timeline-content"><h3>NCRA – Pune, 2023</h3><p>Radio astronomy lab visits and interferometry learning.</p></div></div>
-      <div class="timeline-item" data-icon="🛰️"><div class="timeline-content"><h3>IIRS Internship – 2025</h3><p>Atmospheric sciences, satellite data processing, and experiments.</p></div></div>
-      <div class="timeline-item" data-icon="🌌"><div class="timeline-content"><h3>IUCAA – Pune, 2023</h3><p>Workshops on exoplanet detection and spectroscopy techniques.</p></div></div>
-    </div>
-  </div>
-</div>
+    <!-- Education & Achievements -->
+    <section>
+      <h2 class="section-title">Education & Milestones</h2>
+      <div class="grid-container">
+        <div class="card">
+          <div class="card-icon">🎓</div>
+          <h3>B.Sc (Hons) Physics</h3>
+          <div class="card-subtitle">Fergusson College (2023 - 2026)</div>
+          <p>Focusing on Astrophysics, Quantum Mechanics, and Computational Physics.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🏆</div>
+          <h3>Astro Club Exhibitions</h3>
+          <div class="card-subtitle">1st Place (2024) | 3rd Place (2023)</div>
+          <p>Awarded for outstanding poster presentations on astronomical research and data visualization.</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<!-- Projects -->
-<div class="content" id="projects">
-  <h2>Projects <span class="arrow">►</span></h2>
-  <div class="section-body">
-    <div class="timeline">
-      <div class="timeline-item" data-icon="⭐"><div class="timeline-content"><h3>Detecting Stellar Variability (TESS) – 2024</h3><p>Analyzed TESS data for brightness variations of stars.</p></div></div>
-      <div class="timeline-item" data-icon="⚡"><div class="timeline-content"><h3>Accelerating Astronomy – 2023</h3><p>Created Python scripts to optimize observational data processing.</p></div></div>
-      <div class="timeline-item" data-icon="🌡️"><div class="timeline-content"><h3>Heat Wave Monitoring – 2025</h3><p>Remote sensing project analyzing regional temperature anomalies.</p></div></div>
-    </div>
-  </div>
-</div>
+  <footer>
+    <p>&copy; 2026 Triptesh Acharjee®. All Rights Reserved.</p>
+    <p>Contact: <a href="mailto:tripteshacharjee2005@gmail.com">tripteshacharjee2005@gmail.com</a> | +91-9955502069</p>
+  </footer>
 
-<!-- Achievements -->
-<div class="content" id="achievements">
-  <h2>Achievements <span class="arrow">►</span></h2>
-  <div class="section-body">
-    <div class="timeline">
-      <div class="timeline-item" data-icon="🏆"><div class="timeline-content"><h3>Astro Club Poster Exhibitions</h3><p>1st place (2024), 3rd place (2023)</p></div></div>
-      <div class="timeline-item" data-icon="🎖️"><div class="timeline-content"><h3>Science Fairs & Competitions</h3><p>Participated in multiple inter-college events and astronomy contests.</p></div></div>
-    </div>
-  </div>
-</div>
+  <script>
+    // Starfield Background Animation
+    const canvas = document.getElementById('canvas-bg');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
 
-<!-- Hobbies -->
-<div class="content" id="hobbies">
-  <h2>Hobbies <span class="arrow">►</span></h2>
-  <div class="section-body">
-    <div class="timeline">
-      <div class="timeline-item" data-icon="✍️"><div class="timeline-content"><h3>Writing</h3></div></div>
-      <div class="timeline-item" data-icon="🎸"><div class="timeline-content"><h3>Guitar</h3></div></div>
-      <div class="timeline-item" data-icon="🏊‍♂️"><div class="timeline-content"><h3>Swimming</h3></div></div>
-      <div class="timeline-item" data-icon="⚽"><div class="timeline-content"><h3>Football</h3></div></div>
-      <div class="timeline-item" data-icon="📚"><div class="timeline-content"><h3>Reading Sci-Fi</h3></div></div>
-      <div class="timeline-item" data-icon="🌌"><div class="timeline-content"><h3>Star-gazing</h3></div></div>
-      <div class="timeline-item" data-icon="✈️"><div class="timeline-content"><h3>Travel</h3></div></div>
-    </div>
-  </div>
-</div>
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
 
-<footer>
-  <div class="footer-container">
-    <span>&copy; 2025 Triptesh Acharjee ®. All Rights Reserved.</span>
-    <span>Designed & Developed by Triptesh Acharjee</span>
-    <span>Contact: <a href="tel:+919955502069">+91-9955502069</a> | <a href="mailto:tripteshacharjee2005@gmail.com">tripteshacharjee2005@gmail.com</a></span>
-  </div>
-</footer>
+    function initStars() {
+      stars = [];
+      const count = Math.floor((canvas.width * canvas.height) / 3000);
+      for (let i = 0; i < count; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 1.2,
+          alpha: Math.random(),
+          speed: Math.random() * 0.005 + 0.002
+        });
+      }
+    }
 
-<script>
-// Star Animation
-const headerBg = document.querySelector('.header-bg');
-for(let i=0;i<60;i++){
-    const star = document.createElement('div'); star.classList.add('star');
-    const size=Math.random()*3+1+'px';
-    star.style.width = size; star.style.height = size;
-    star.style.top=Math.random()*100+'%'; star.style.left=Math.random()*100+'%';
-    star.style.opacity = Math.random()*0.8+0.2;
-    star.style.animation = `twinkle ${Math.random()*5+3}s infinite alternate`;
-    headerBg.appendChild(star);
-}
-const style = document.createElement('style');
-style.innerHTML = `@keyframes twinkle {0%{opacity:0.2;}50%{opacity:0.8;}100%{opacity:0.2;}}`;
-document.head.appendChild(style);
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      stars.forEach(star => {
+        star.alpha += star.speed;
+        if (star.alpha > 1 || star.alpha < 0) star.speed = -star.speed;
+        
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${Math.abs(star.alpha)})`;
+        ctx.fill();
+      });
+      requestAnimationFrame(drawStars);
+    }
 
-// Scroll Animation for timeline
-function animateTimeline() {
-    document.querySelectorAll('.timeline-item').forEach(item=>{
-        const top = item.getBoundingClientRect().top;
-        if(top < window.innerHeight-100) item.classList.add('visible');
-    });
-}
-window.addEventListener('scroll', animateTimeline);
-window.addEventListener('load', animateTimeline);
-
-// Collapsible Sections
-document.querySelectorAll('.content h2').forEach(header=>{
-    header.addEventListener('click',()=>{
-        const body = header.nextElementSibling;
-        const arrow = header.querySelector('.arrow');
-        const isOpen = body.style.display === 'block';
-        body.style.display = isOpen ? 'none' : 'block';
-        arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(90deg)';
-        animateTimeline();
-    });
-});
-</script>
+    window.addEventListener('resize', () => { resizeCanvas(); initStars(); });
+    resizeCanvas();
+    initStars();
+    drawStars();
+  </script>
 </body>
 </html>
