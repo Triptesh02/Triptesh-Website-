@@ -169,6 +169,22 @@
       margin-bottom: 12px;
     }
 
+    /* Live Visitor Badge Style */
+    .visitor-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 242, 254, 0.08);
+      border: 1px solid rgba(0, 242, 254, 0.25);
+      padding: 6px 18px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--accent-cyan);
+      font-weight: 600;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 15px rgba(0, 242, 254, 0.1);
+    }
+
     .tagline {
       font-size: 1.1rem;
       color: var(--accent-cyan);
@@ -684,6 +700,10 @@
       font-size: 0.85rem;
       color: var(--text-muted);
       background: rgba(10, 13, 20, 0.9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
     }
 
     footer a { color: var(--accent-cyan); text-decoration: none; }
@@ -746,6 +766,12 @@
     <img src="profile.jpg" alt="Triptesh Acharjee" class="profile-pic">
     <h1>Triptesh Acharjee®</h1>
     <div class="degree-badge">B.Sc (Hons) Physics • Fergusson College, Pune</div>
+    
+    <!-- Live Visitor Badge in Header -->
+    <div class="visitor-badge">
+      👁️ Total Portfolio Views: <span id="header-visitor-count" style="color:var(--accent-gold); font-weight:800;">...</span>
+    </div>
+
     <p class="tagline">Aspiring ISRO Scientist & Exoplanet Research Enthusiast, Currently Working in Semiconductors & Thin-Film Technologies</p>
     
     <div class="cta-group">
@@ -1078,8 +1104,11 @@
   </div>
 
   <footer>
+    <div class="visitor-badge" style="margin-bottom:8px;">
+      👁️ Total Website Views: <span id="footer-visitor-count" style="color:var(--accent-gold); font-weight:800;">...</span>
+    </div>
     <p>&copy; 2026 Triptesh Acharjee®. All Rights Reserved.</p>
-    <p style="margin-top:8px;">
+    <p style="margin-top:4px;">
       Contact: 
       <a href="mailto:tripteshacharjee2005@gmail.com">tripteshacharjee2005@gmail.com</a>
       <button class="copy-btn" onclick="copyEmail()">📋 Copy</button>
@@ -1088,6 +1117,26 @@
   </footer>
 
   <script>
+    // Live Visitor Count API Integration
+    async function updateVisitorCount() {
+      try {
+        const res = await fetch('https://api.counterapi.dev/v1/triptesh_acharjee_portfolio_2026/views/up');
+        const data = await res.json();
+        if (data && data.count) {
+          const formattedCount = data.count.toLocaleString();
+          document.getElementById('header-visitor-count').innerText = formattedCount;
+          document.getElementById('footer-visitor-count').innerText = formattedCount;
+        } else {
+          document.getElementById('header-visitor-count').innerText = '1';
+          document.getElementById('footer-visitor-count').innerText = '1';
+        }
+      } catch (err) {
+        document.getElementById('header-visitor-count').innerText = 'Active';
+        document.getElementById('footer-visitor-count').innerText = 'Active';
+      }
+    }
+    updateVisitorCount();
+
     // Navigation Menu Toggle
     function toggleMenu() {
       document.getElementById('navLinks').classList.toggle('mobile-open');
@@ -1324,7 +1373,6 @@
       document.getElementById('mBody').innerHTML = data.body;
       document.getElementById('projectModal').classList.add('active');
 
-      // Initialize any modal-specific simulators after DOM injection
       setTimeout(() => {
         if(id === 'iit-indore') initModalTecSim();
         if(id === 'fergusson-picc') updateSensorSim();
