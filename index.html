@@ -493,7 +493,7 @@
       transition: width 1s ease-in-out;
     }
 
-    /* Modals General */
+    /* Modals */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -533,7 +533,7 @@
     }
 
     .modal-box.large-modal {
-      max-width: 980px;
+      max-width: 950px;
       height: 88vh;
       display: flex;
       flex-direction: column;
@@ -583,67 +583,19 @@
       color: var(--text-main);
     }
 
-    /* Certificate Viewer Gallery inside Modal */
-    .cert-viewer-container {
-      display: flex;
-      gap: 20px;
-      flex: 1;
-      min-height: 420px;
-    }
-
-    .cert-list {
-      width: 300px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      overflow-y: auto;
-      padding-right: 5px;
-    }
-
-    .cert-item-btn {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--card-border);
-      color: var(--text-main);
-      padding: 12px 14px;
-      border-radius: 12px;
-      text-align: left;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .cert-item-btn:hover, .cert-item-btn.active {
-      background: rgba(0, 242, 254, 0.12);
-      border-color: var(--accent-cyan);
-    }
-
-    .cert-item-btn strong {
-      font-size: 0.9rem;
+    .modal-content-body h4 {
       color: var(--accent-cyan);
+      margin-top: 14px;
+      margin-bottom: 6px;
     }
 
-    .cert-item-btn span {
-      font-size: 0.78rem;
-      color: var(--text-muted);
+    .modal-content-body ul {
+      margin-left: 20px;
+      margin-bottom: 12px;
     }
 
-    .cert-preview-box {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      height: 100%;
-    }
-
-    .cert-iframe {
-      width: 100%;
-      flex: 1;
-      min-height: 380px;
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      background: #000;
+    .modal-content-body li {
+      margin-bottom: 6px;
     }
 
     .award-banner {
@@ -789,14 +741,6 @@
       }
       .nav-links.mobile-open { display: flex; }
       .menu-toggle { display: block; }
-
-      .cert-viewer-container {
-        flex-direction: column;
-      }
-      .cert-list {
-        width: 100%;
-        max-height: 180px;
-      }
     }
   </style>
 </head>
@@ -827,7 +771,6 @@
     <div class="cta-group">
       <a class="btn btn-primary" href="Triptesh_Acharjee_Resume (3).pdf" download>📄 Download CV</a>
       <button class="btn btn-secondary" onclick="openResumeModal()">👁️ View Resume</button>
-      <button class="btn btn-secondary" onclick="openCertsModal()">📜 View Certificates</button>
       <a class="btn btn-secondary" href="https://www.linkedin.com/in/triptesh-acharjee-09b0a3163/" target="_blank">LinkedIn</a>
       <a class="btn btn-secondary" href="https://github.com" target="_blank">GitHub</a>
       <a class="btn btn-secondary" href="https://www.instagram.com/loveliholic.private" target="_blank">Instagram</a>
@@ -1097,13 +1040,7 @@
 
     <!-- Experience Section -->
     <section id="experience" class="fade-in-section">
-      <div class="section-header-flex">
-        <h2 class="section-title" style="margin-bottom:0;">Research Experience & Academic Roles</h2>
-        <button class="btn btn-primary" onclick="openCertsModal()" style="font-size:0.85rem; padding:8px 18px;">
-          📜 Open Certificates Gallery
-        </button>
-      </div>
-
+      <h2 class="section-title">Research Experience & Academic Roles</h2>
       <div class="grid-container">
 
         <!-- BRICS Grader Experience -->
@@ -1114,7 +1051,6 @@
           <p>Evaluated participant submissions on astronomical data analysis, Python computational pipelines, and astrophysics exercises.</p>
         </div>
 
-        <!-- IIRS Internship -->
         <div class="card" style="cursor:default;">
           <div class="card-icon">🛰️</div>
           <h3>IIRS Internship</h3>
@@ -1122,7 +1058,6 @@
           <p>Focused on atmospheric sciences, satellite remote sensing, and experimental processing.</p>
         </div>
 
-        <!-- PRL Internship -->
         <div class="card" style="cursor:default;">
           <div class="card-icon">🔭</div>
           <h3>PRL Internship</h3>
@@ -1130,7 +1065,6 @@
           <p>Worked with solar observation datasets and participated in astrophysics group seminars.</p>
         </div>
 
-        <!-- IDIA BRICS Workshop -->
         <div class="card" style="cursor:default;">
           <div class="card-icon">🛠️</div>
           <h3>IDIA BRICS Workshop</h3>
@@ -1142,61 +1076,6 @@
     </section>
 
   </main>
-
-  <!-- Master Certificates Viewer Popup Modal -->
-  <div class="modal-overlay" id="allCertsModal" onclick="closeCertsModalOnOverlay(event)">
-    <div class="modal-box large-modal">
-      <button class="modal-close" onclick="closeCertsModal()">&times;</button>
-      <h3 class="modal-title">Verified Academic & Research Credentials</h3>
-      <div class="modal-subtitle">Interactive Certificate Viewer • Triptesh Acharjee</div>
-      
-      <div class="cert-viewer-container">
-        <!-- Certificate Selection List on Left -->
-        <div class="cert-list">
-          <button class="cert-item-btn active" onclick="selectCert('YOUR_FIP_FILE_ID', 'Frontiers in Physics (FIP) - 1st Prize', this)">
-            <strong>🏆 1st Prize – FIP National Award</strong>
-            <span>Fergusson College National Level</span>
-          </button>
-
-          <button class="cert-item-btn" onclick="selectCert('YOUR_BRICS_FILE_ID', 'BRICS Data Analysis Program Grader', this)">
-            <strong>📝 BRICS Grader Appointment</strong>
-            <span>BRICS Astronomy Working Group (2026)</span>
-          </button>
-
-          <button class="cert-item-btn" onclick="selectCert('YOUR_IIRS_FILE_ID', 'IIRS Remote Sensing Internship', this)">
-            <strong>🛰️ IIRS Internship Certificate</strong>
-            <span>Indian Institute of Remote Sensing (2025)</span>
-          </button>
-
-          <button class="cert-item-btn" onclick="selectCert('YOUR_PRL_FILE_ID', 'PRL Solar Astrophysics Internship', this)">
-            <strong>🔭 PRL Internship Certificate</strong>
-            <span>Physical Research Laboratory, Ahmedabad (2024)</span>
-          </button>
-
-          <button class="cert-item-btn" onclick="selectCert('YOUR_IDIA_FILE_ID', 'IDIA BRICS Workshop Certification', this)">
-            <strong>🛠️ IDIA BRICS Workshop</strong>
-            <span>Inter-University Institute for Data Astronomy (2024)</span>
-          </button>
-
-          <button class="cert-item-btn" onclick="selectCert('YOUR_ASTROCLUB_FILE_ID', 'Astro Club Poster Exhibition Award', this)">
-            <strong>🥇 Astro Club Poster Winner</strong>
-            <span>Fergusson College Astro Club</span>
-          </button>
-        </div>
-
-        <!-- Google Drive Embedded Preview Box on Right -->
-        <div class="cert-preview-box">
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-            <h4 id="certActiveTitle" style="color:var(--accent-gold); font-size:1rem;">Frontiers in Physics (FIP) - 1st Prize</h4>
-            <a id="certDriveLink" href="https://drive.google.com/file/d/YOUR_FIP_FILE_ID/view?usp=sharing" target="_blank" class="btn btn-secondary" style="font-size:0.8rem; padding:4px 14px;">
-              Open in Google Drive ↗
-            </a>
-          </div>
-          <iframe id="certIframe" src="https://drive.google.com/file/d/YOUR_FIP_FILE_ID/preview" class="cert-iframe" title="Certificate Viewer"></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Dynamic Modal for Project Details & Interactive Simulators -->
   <div class="modal-overlay" id="projectModal" onclick="closeModalOnOverlay(event)">
@@ -1256,26 +1135,6 @@
     }
     function closeMenu() {
       document.getElementById('navLinks').classList.remove('mobile-open');
-    }
-
-    // Master Certificate Modal Controls
-    function openCertsModal() {
-      document.getElementById('allCertsModal').classList.add('active');
-    }
-    function closeCertsModal() {
-      document.getElementById('allCertsModal').classList.remove('active');
-    }
-    function closeCertsModalOnOverlay(e) {
-      if (e.target.id === 'allCertsModal') closeCertsModal();
-    }
-
-    function selectCert(fileId, title, btnElement) {
-      document.querySelectorAll('.cert-item-btn').forEach(b => b.classList.remove('active'));
-      btnElement.classList.add('active');
-
-      document.getElementById('certActiveTitle').innerText = title;
-      document.getElementById('certIframe').src = `https://drive.google.com/file/d/${Certificate}/preview`;
-      document.getElementById('certDriveLink').href = `https://drive.google.com/drive/folders/1fVgORHCCj-O5uQw-3s4rUEj72hG9Mzct?usp=sharing`;
     }
 
     // Category Filter for Projects
